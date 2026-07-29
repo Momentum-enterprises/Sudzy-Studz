@@ -1,0 +1,6 @@
+.DS_Store
+.vscode/
+.claude/
+node_modules/
+temporary screenshots/
+*.log

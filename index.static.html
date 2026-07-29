@@ -1,0 +1,1705 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sudzy Studz Mobile Detailing, We detail. They play.</title>
+<meta name="description" content="Sudzy Studz Mobile Detailing, a student-founded nonprofit in San Diego. 100% of profits are donated to Pro Kids, First Tee – San Diego, which provides golf equipment, coaching, and programs to kids in City Heights and Oceanside who can't afford to play. First responders and military always detail free." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Sudzy Studz Mobile Detailing" />
+<meta property="og:title" content="Sudzy Studz Mobile Detailing, We detail. They play." />
+<meta property="og:description" content="A student-founded nonprofit mobile detailing service in San Diego. Every detail helps put a club in a kid's hands, by funding Pro Kids, First Tee – San Diego, the nonprofit that equips kids in City Heights and Oceanside with golf gear, coaching, and programs." />
+<meta property="og:image" content="brand_assets/logo.png" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Sudzy Studz Mobile Detailing, We detail. They play." />
+<meta name="twitter:description" content="A student-founded nonprofit mobile detailing service in San Diego. Every detail helps put a club in a kid's hands, by funding Pro Kids, First Tee – San Diego, the nonprofit that equips kids with golf gear, coaching, and programs." />
+<meta name="twitter:image" content="brand_assets/logo.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..800,30..100;1,9..144,300..800,30..100&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink:    '#0B2830',
+        deep:   '#0C3F4E',
+        teal:   '#0C9FE4',
+        aqua:   '#2CC6F0',
+        foam:   '#D4EEFB',
+        cream:  '#F6F1E7',
+        paper:  '#FBF8F1',
+        coral:  '#0C9FE4',
+        sun:    '#F2B844',
+      },
+      fontFamily: {
+        display: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+        sans:    ['"DM Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
+    },
+  },
+};
+</script>
+
+<style>
+  :root {
+    --ink:   #0B2830;
+    --deep:  #0C3F4E;
+    --teal:  #0C9FE4;
+    --aqua:  #2CC6F0;
+    --foam:  #D4EEFB;
+    --cream: #F6F1E7;
+    --paper: #FBF8F1;
+    --coral: #0C9FE4;
+    --sun:   #F2B844;
+
+    --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+    --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* layered shadows, tinted with deep teal */
+    --shadow-sm: 0 1px 2px -1px rgba(12,63,78,.18), 0 2px 4px -2px rgba(12,63,78,.08);
+    --shadow-md: 0 6px 14px -6px rgba(12,63,78,.22), 0 12px 30px -12px rgba(12,63,78,.14);
+    --shadow-lg: 0 18px 40px -16px rgba(12,63,78,.28), 0 40px 80px -32px rgba(12,63,78,.18);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Display headings, Fraunces with soft, warm opticals */
+  .font-display { font-family: 'Fraunces', ui-serif, Georgia, serif; font-variation-settings: 'opsz' 120, 'SOFT' 60; }
+  .headline {
+    font-family: 'Fraunces', ui-serif, Georgia, serif;
+    font-variation-settings: 'opsz' 144, 'SOFT' 80;
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+  }
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--teal);
+  }
+
+  /* Noise overlay for atmosphere */
+  .grain::before {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    opacity: .35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.04  0 0 0 0 0.24  0 0 0 0 0.3  0 0 0 0.14 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* Hero background, layered radial gradients, water-like */
+  .hero-bg {
+    background:
+      radial-gradient(ellipse 60% 45% at 15% 18%, rgba(44,198,240,.45), transparent 60%),
+      radial-gradient(ellipse 55% 40% at 92% 10%, rgba(242,184,68,.22), transparent 55%),
+      radial-gradient(ellipse 70% 55% at 85% 95%, rgba(12,159,228,.30), transparent 60%),
+      radial-gradient(ellipse 80% 60% at 35% 100%, rgba(212,238,251,.75), transparent 55%),
+      linear-gradient(180deg, #FBF8F1 0%, #F6F1E7 100%);
+  }
+
+  /* Section with cream tone */
+  .bg-cream-soft {
+    background:
+      radial-gradient(ellipse 45% 35% at 85% 20%, rgba(44,198,240,.16), transparent 60%),
+      radial-gradient(ellipse 40% 30% at 10% 90%, rgba(12,159,228,.08), transparent 60%),
+      #FBF8F1;
+  }
+
+  /* Glass card */
+  .glass {
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(18px) saturate(1.15);
+    -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border: 1px solid rgba(255,255,255,0.75);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: .95rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: -0.005em;
+    transition: transform .35s var(--ease-spring), box-shadow .35s var(--ease-out-soft), background-color .25s ease, color .25s ease;
+    will-change: transform;
+  }
+  .btn:active { transform: translateY(1px) scale(.985); }
+  .btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    box-shadow: 0 10px 24px -10px rgba(11,40,48,.55), inset 0 1px 0 rgba(255,255,255,.12);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 36px -12px rgba(11,40,48,.55); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid rgba(11,40,48,.18);
+  }
+  .btn-ghost:hover { background: rgba(11,40,48,.04); transform: translateY(-2px); }
+
+  .btn-coral {
+    background: var(--coral);
+    color: #fff;
+    box-shadow: 0 10px 22px -10px rgba(12,159,228,.55), inset 0 1px 0 rgba(255,255,255,.28);
+  }
+  .btn-coral:hover { transform: translateY(-2px); box-shadow: 0 18px 34px -12px rgba(12,159,228,.7); }
+
+  /* Progress bar, animated fill + ripple */
+  .progress-track {
+    position: relative;
+    height: 14px;
+    border-radius: 999px;
+    background: rgba(12,63,78,.09);
+    overflow: hidden;
+  }
+  .progress-fill {
+    position: absolute; inset: 0 auto 0 0;
+    width: 0%;
+    border-radius: 999px;
+    background:
+      linear-gradient(90deg, var(--teal) 0%, var(--aqua) 100%);
+    transition: width 1.6s var(--ease-out-soft);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 2px 10px rgba(12,159,228,.45);
+  }
+  .progress-fill::after {
+    content: "";
+    position: absolute; top: 0; right: -14px; bottom: 0;
+    width: 28px;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.55), rgba(255,255,255,0));
+    transform: skewX(-18deg);
+    animation: shimmer 2.4s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0%   { transform: translateX(-80px) skewX(-18deg); }
+    60%  { transform: translateX(40px) skewX(-18deg); }
+    100% { transform: translateX(40px) skewX(-18deg); }
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .9s var(--ease-out-soft), transform .9s var(--ease-out-soft);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* Wave underline decoration */
+  .wave-under {
+    display: inline-block;
+    position: relative;
+  }
+  .wave-under::after {
+    content: "";
+    position: absolute; left: 6%; right: 6%; bottom: -0.18em;
+    height: 0.42em;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'><path d='M0 8 Q25 0 50 8 T100 8 T150 8 T200 8' fill='none' stroke='%230C9FE4' stroke-width='3' stroke-linecap='round'/></svg>") center/100% 100% no-repeat;
+    opacity: .95;
+  }
+
+  /* Amount pill, donation picker */
+  .amount-pill {
+    position: relative;
+    padding: .9rem 1.1rem;
+    border-radius: 14px;
+    border: 1px solid rgba(12,63,78,.14);
+    background: rgba(255,255,255,.6);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    transition: transform .3s var(--ease-spring), background-color .25s ease, border-color .25s ease, color .25s ease;
+    cursor: pointer;
+  }
+  .amount-pill:hover { transform: translateY(-2px); border-color: rgba(12,63,78,.4); }
+  .amount-pill[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .amount-pill:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+  /* Donate frequency toggle */
+  .donate-mode-btn {
+    padding: .55rem 1.1rem;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: rgba(11,40,48,0.6);
+    background: transparent;
+    transition: color .2s ease, background-color .25s ease;
+    cursor: pointer;
+  }
+  .donate-mode-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+  .donate-mode-btn:hover { color: var(--ink); }
+  .donate-mode-btn.donate-mode-btn--active {
+    background: var(--ink);
+    color: var(--paper);
+    box-shadow: 0 2px 6px -2px rgba(11,40,48,0.4);
+  }
+
+  /* Big stat number */
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'opsz' 144, 'SOFT' 100;
+    font-weight: 350;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+  }
+
+  /* Step number chip */
+  .step-chip {
+    width: 44px; height: 44px; border-radius: 999px;
+    display: grid; place-items: center;
+    background: var(--ink); color: var(--paper);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-variation-settings: 'opsz' 72, 'SOFT' 60;
+  }
+
+  /* Subtle bob animation for decorative bubbles */
+  @keyframes bob {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-10px); }
+  }
+  .bob { animation: bob 6s ease-in-out infinite; }
+  .bob-slow { animation: bob 9s ease-in-out infinite; }
+
+  /* Nav link */
+  .nav-link {
+    position: relative;
+    padding: .4rem 0;
+    color: rgba(11,40,48,.72);
+    transition: color .25s ease;
+  }
+  .nav-link::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+    height: 1.5px; background: currentColor;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .45s var(--ease-out-soft);
+  }
+  .nav-link:hover { color: var(--ink); }
+  .nav-link:hover::after { transform: scaleX(1); }
+
+  /* Mobile navigation */
+  .mobile-nav-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(11,40,48,.42);
+    backdrop-filter: blur(4px);
+    opacity: 0; pointer-events: none;
+    transition: opacity .25s ease;
+    z-index: 40;
+  }
+  .mobile-nav-backdrop.is-open { opacity: 1; pointer-events: auto; }
+  .mobile-nav-panel {
+    position: fixed; top: 1rem; right: 1rem;
+    width: min(88vw, 320px);
+    background: var(--paper);
+    border: 1px solid rgba(11,40,48,.08);
+    border-radius: 24px;
+    box-shadow: var(--shadow-lg);
+    padding: 1rem;
+    transform: translateY(-8px) scale(.98);
+    opacity: 0; pointer-events: none;
+    transition: transform .25s var(--ease-out-soft), opacity .25s ease;
+    z-index: 45;
+  }
+  .mobile-nav-panel.is-open { opacity: 1; transform: none; pointer-events: auto; }
+  .mobile-nav-link {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: .8rem .9rem; border-radius: 14px;
+    color: var(--ink);
+    font-weight: 500;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  .mobile-nav-link:hover { background: rgba(12,159,228,.08); color: var(--teal); }
+
+  /* Modal */
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(11,40,48,.55);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center; justify-content: center;
+    z-index: 80;
+    padding: 1rem;
+  }
+  .modal-backdrop.open { display: flex; animation: fadeIn .35s var(--ease-out-soft); }
+  .modal-card {
+    max-width: 460px; width: 100%;
+    background: var(--paper);
+    border-radius: 22px;
+    padding: 1.75rem;
+    box-shadow: var(--shadow-lg);
+    animation: pop .45s var(--ease-spring);
+  }
+  @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes pop { from { opacity: 0; transform: scale(.94) translateY(8px) } to { opacity: 1; transform: none } }
+
+  /* Image treatment */
+  .portrait {
+    position: relative; border-radius: 20px; overflow: hidden;
+    box-shadow: var(--shadow-md);
+    isolation: isolate;
+  }
+  .portrait img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out-soft); }
+  .portrait:hover img { transform: scale(1.04); }
+  .portrait::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(12,63,78,0) 55%, rgba(12,63,78,0.55) 100%);
+    pointer-events: none;
+  }
+  .portrait::before {
+    content: ""; position: absolute; inset: 0;
+    background: rgba(31,122,140,.18);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Selection */
+  ::selection { background: var(--coral); color: #fff; }
+
+  /* Logo image, transparent PNG, just a subtle saturation bump */
+  .logo-img { filter: saturate(1.04); }
+
+  /* Marquee */
+  .marquee {
+    display: flex; gap: 3.5rem;
+    animation: marquee 40s linear infinite;
+    width: max-content;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0) }
+    to   { transform: translateX(-50%) }
+  }
+
+  /* ===== Modern polish layer ===== */
+
+  /* Top-of-page scroll progress bar */
+  .scroll-progress {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    z-index: 90;
+    pointer-events: none;
+  }
+  .scroll-progress__bar {
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: left center;
+    background: linear-gradient(90deg, var(--teal) 0%, var(--aqua) 100%);
+    box-shadow: 0 0 8px rgba(12,159,228,0.55);
+    transition: transform .08s linear;
+    will-change: transform;
+  }
+
+  /* Sticky donation bar */
+  .donate-bar {
+    position: fixed;
+    left: 50%;
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    transform: translate(-50%, 12px);
+    z-index: 70;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s var(--ease-out-soft), transform .35s var(--ease-out-soft);
+    width: calc(100% - 2rem);
+    max-width: 720px;
+  }
+  .donate-bar.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+  }
+  .donate-bar__inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .65rem .75rem .65rem 1.1rem;
+    border-radius: 999px;
+    background: rgba(11,40,48,0.88);
+    backdrop-filter: blur(14px) saturate(1.4);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.06),
+      0 10px 28px -10px rgba(11,40,48,0.5),
+      0 22px 50px -22px rgba(11,40,48,0.55);
+    color: var(--paper);
+  }
+  .donate-bar__progress {
+    display: flex; flex-direction: column;
+    gap: 4px; min-width: 0; flex: 1;
+  }
+  .donate-bar__label {
+    font-size: 0.78rem;
+    line-height: 1.2;
+    color: rgba(251,248,241,0.78);
+    letter-spacing: 0.005em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .donate-bar__label strong { color: var(--paper); font-weight: 600; }
+  .donate-bar__track {
+    position: relative;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.10);
+    overflow: hidden;
+  }
+  .donate-bar__fill {
+    position: absolute; inset: 0 auto 0 0;
+    width: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--teal) 0%, var(--aqua) 100%);
+    box-shadow: 0 0 8px rgba(44,198,240,0.55);
+    transition: width 1.2s var(--ease-out-soft);
+  }
+  .donate-bar__cta {
+    display: inline-flex; align-items: center; gap: .35rem;
+    padding: .55rem 1rem;
+    border-radius: 999px;
+    background: var(--coral);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    box-shadow: 0 6px 14px -6px rgba(12,159,228,0.55), inset 0 1px 0 rgba(255,255,255,0.3);
+    transition: transform .2s cubic-bezier(.34,1.4,.64,1), box-shadow .25s ease;
+    white-space: nowrap;
+  }
+  .donate-bar__cta:hover { transform: translateY(-1px); box-shadow: 0 12px 24px -8px rgba(12,159,228,0.7); }
+  .donate-bar__cta:active { transform: scale(0.97); }
+  .donate-bar__close {
+    display: grid; place-items: center;
+    width: 28px; height: 28px;
+    margin-left: 2px;
+    border-radius: 999px;
+    color: rgba(251,248,241,0.6);
+    background: transparent;
+    transition: color .2s ease, background-color .2s ease;
+    flex-shrink: 0;
+  }
+  .donate-bar__close:hover { color: var(--paper); background: rgba(255,255,255,0.06); }
+
+  /* Oversized pull quote (Our Story centerpiece) */
+  .pull-quote {
+    font-family: 'Fraunces', ui-serif, Georgia, serif;
+    font-variation-settings: 'opsz' 144, 'SOFT' 80;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--teal);
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    text-align: center;
+    font-size: clamp(2.2rem, 7vw, 4.6rem);
+  }
+  .pull-quote::before,
+  .pull-quote::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 60px;
+    margin: 0 auto;
+    background: linear-gradient(90deg, transparent, rgba(12,159,228,0.45), transparent);
+  }
+  .pull-quote::before { margin-bottom: 1.5rem; }
+  .pull-quote::after  { margin-top: 1.5rem; }
+
+  /* Subtle warm grain overlay for cream sections */
+  .grain-soft { position: relative; isolation: isolate; }
+  .grain-soft::before {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    opacity: .05;
+    mix-blend-mode: multiply;
+    z-index: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n2'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.04  0 0 0 0 0.16  0 0 0 0 0.2  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n2)'/></svg>");
+  }
+  .grain-soft > * { position: relative; z-index: 1; }
+
+  /* Tighter button :active scale (modern feel) */
+  .btn:active { transform: scale(0.97); }
+
+  /* Instagram tile placeholder */
+  .ig-tile {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+    overflow: hidden;
+    isolation: isolate;
+    background: linear-gradient(135deg, rgba(212,238,251,0.7), rgba(44,198,240,0.25) 70%, rgba(242,184,68,0.18));
+    box-shadow: var(--shadow-sm);
+    transition: transform .35s var(--ease-spring), box-shadow .35s var(--ease-out-soft);
+  }
+  .ig-tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .ig-tile::after {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 25% 25%, rgba(255,255,255,0.55), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 80% 80%, rgba(12,63,78,0.18), transparent 60%);
+    pointer-events: none;
+  }
+  .ig-tile__overlay {
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    opacity: 0;
+    background: rgba(11,40,48,0.45);
+    backdrop-filter: blur(2px);
+    color: var(--paper);
+    transition: opacity .25s ease;
+    z-index: 2;
+  }
+  .ig-tile:hover .ig-tile__overlay { opacity: 1; }
+
+  /* Team member uniform styles */
+  .team-members-grid { align-items: stretch; }
+  .team-member {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    width: 100%;
+  }
+  .team-member .portrait {
+    box-shadow: var(--shadow-md);
+    border-radius: 18px;
+    max-width: 100%;
+    min-height: 380px;
+    margin: 0 auto 1.1rem;
+    border: 1px solid rgba(12,159,228,.15);
+  }
+  .team-member .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+  }
+  .team-member figcaption {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: flex-start;
+    gap: 1.4rem;
+  }
+  .team-member figcaption .font-display { font-size: 2rem; }
+  .team-card__roles {
+    min-height: 5.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: .8rem;
+  }
+  .team-card__role-title {
+    color: var(--teal);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .team-card__bio {
+    display: flex;
+    flex-direction: column;
+  }
+  .team-card__bio p {
+    margin: 0;
+    font-size: 1.08rem;
+    line-height: 1.75;
+  }
+  .team-badge,
+  .cofounder-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .36rem .95rem;
+    border-radius: 999px;
+    font-size: .84rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    background: rgba(255,255,255,.08);
+    color: var(--paper);
+    border: 1px solid rgba(255,255,255,.12);
+  }
+
+  .team-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: inherit;
+    text-decoration: none;
+    transition: color .25s ease, opacity .25s ease, transform .25s ease;
+  }
+  .team-link:hover .team-link__text,
+  .team-link:focus-visible .team-link__text {
+    color: var(--aqua);
+  }
+  .team-link:hover .team-link__icon,
+  .team-link:focus-visible .team-link__icon {
+    opacity: 1;
+    transform: translateX(1px);
+  }
+  .team-link:focus-visible {
+    outline: 3px solid rgba(44,198,240,.35);
+    outline-offset: 3px;
+  }
+  .team-link__text {
+    color: inherit;
+  }
+  .team-link__icon {
+    width: 1rem;
+    height: 1rem;
+    color: var(--aqua);
+    opacity: .75;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+
+</style>
+<body class="overflow-x-hidden">
+
+<!-- Scroll progress indicator -->
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar" id="scrollProgressBar"></div></div>
+
+<!-- Sticky donation bar (fades in after hero, hides on donate section) -->
+<div class="donate-bar" id="donateBar" role="region" aria-label="Donation progress">
+  <div class="donate-bar__inner">
+    <div class="donate-bar__progress">
+      <div class="donate-bar__label"><strong id="donateBarRaised">$0</strong> raised toward our <strong id="donateBarGoal">$10,000</strong> goal</div>
+      <div class="donate-bar__track"><div class="donate-bar__fill" id="donateBarFill"></div></div>
+    </div>
+    <a href="#donate" class="donate-bar__cta" id="donateBarCta">
+      Donate
+      <svg width="13" height="13" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </a>
+    <button class="donate-bar__close" id="donateBarClose" aria-label="Dismiss donation bar">
+      <svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500" aria-label="Primary">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8">
+    <div id="navInner" class="mt-3 md:mt-4 flex items-center justify-between rounded-full pl-5 pr-2 py-2 transition-all duration-500">
+      <a href="#top" class="flex items-center group">
+        <img src="brand_assets/logo.png" alt="Sudzy Studz" class="logo-img h-14 md:h-16 w-auto transition-transform duration-500 group-hover:scale-[1.03]" />
+      </a>
+
+      <div class="hidden md:flex items-center gap-7 text-[0.92rem]">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#prokids" class="nav-link">Impact</a>
+        <a href="#story" class="nav-link">Our Story</a>
+        <a href="/pricing/" class="nav-link">Pricing</a>
+        <a href="mailto:bbglazer2027@ljcds.org,james.field@ljcds.org?subject=Book%20a%20detail" class="nav-link">Book</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button id="mobileNavToggle" class="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/10 bg-white/70 text-ink shadow-[0_6px_18px_-10px_rgba(11,40,48,0.35)] transition hover:-translate-y-0.5" aria-expanded="false" aria-controls="mobileNavPanel" aria-label="Open menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <a href="#donate" class="btn btn-primary !py-2.5 !px-5 text-[0.88rem]">
+          Donate
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+<div class="mobile-nav-panel" id="mobileNavPanel" aria-label="Mobile navigation" hidden>
+  <div class="flex items-center justify-between mb-3">
+    <div class="text-[0.72rem] tracking-[0.22em] uppercase text-ink/50">Navigate</div>
+    <button id="mobileNavClose" class="h-9 w-9 rounded-full border border-ink/10 text-ink/70 transition hover:text-ink" aria-label="Close menu">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col gap-1">
+    <a href="#about" class="mobile-nav-link">About <span aria-hidden="true">→</span></a>
+    <a href="#prokids" class="mobile-nav-link">Impact <span aria-hidden="true">→</span></a>
+    <a href="#story" class="mobile-nav-link">Our Story <span aria-hidden="true">→</span></a>
+    <a href="/pricing/" class="mobile-nav-link">Pricing <span aria-hidden="true">→</span></a>
+    <a href="mailto:bbglazer2027@ljcds.org,james.field@ljcds.org?subject=Book%20a%20detail" class="mobile-nav-link">Book a detail <span aria-hidden="true">→</span></a>
+    <a href="#donate" class="mobile-nav-link mt-2 text-coral">Donate now <span aria-hidden="true">→</span></a>
+  </nav>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero-bg relative grain overflow-hidden">
+  <!-- decorative bubbles -->
+  <svg class="absolute -top-10 -left-14 w-[260px] h-[260px] opacity-70 bob-slow" viewBox="0 0 200 200" aria-hidden="true">
+    <circle cx="100" cy="100" r="80" fill="none" stroke="#2CC6F0" stroke-width="1" opacity=".45"/>
+    <circle cx="100" cy="100" r="56" fill="none" stroke="#2CC6F0" stroke-width="1" opacity=".35"/>
+  </svg>
+  <svg class="absolute bottom-12 left-8 w-10 h-10 bob" viewBox="0 0 40 40" aria-hidden="true">
+    <circle cx="20" cy="20" r="18" fill="#D4EEFB" opacity=".9"/>
+    <circle cx="14" cy="14" r="4" fill="#fff" opacity=".7"/>
+  </svg>
+  <svg class="absolute top-[28%] right-[6%] w-6 h-6 bob-slow" viewBox="0 0 40 40" aria-hidden="true">
+    <circle cx="20" cy="20" r="18" fill="#F2B844" opacity=".5"/>
+  </svg>
+
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-32 md:pt-40 pb-24 md:pb-32 relative">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+      <!-- LEFT: Headline -->
+      <div class="lg:col-span-7 reveal">
+        <h1 class="headline text-[2.85rem] sm:text-[3.75rem] md:text-[5rem] lg:text-[5.6rem] text-ink">
+          <span class="italic font-light">Sudzy</span> <span class="wave-under">Studz</span><span class="text-coral">.</span>
+        </h1>
+
+        <p class="mt-7 text-[1.1rem] md:text-[1.22rem] max-w-[36ch] text-ink/80 font-light">
+          We detail cars. Kids get to play golf.
+        </p>
+        <p class="mt-5 text-[1.1rem] md:text-[1.22rem] max-w-[64ch] text-ink/80 font-light">
+          <span class="text-ink">Every dollar of profit</span> funds <strong><span style="white-space: nowrap;">Pro Kids, First Tee – San Diego</span></strong>: providing golf equipment for underprivileged kids.
+        </p>
+        <p class="mt-5 text-[1.1rem] md:text-[1.22rem] max-w-[36ch] text-ink/80 font-light">
+          First responders and military get details on us, always.
+        </p>
+
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a href="#donate" class="btn btn-coral">
+            Donate now
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </a>
+          <a href="mailto:bbglazer2027@ljcds.org,james.field@ljcds.org?subject=Book%20a%20detail" class="btn btn-primary">
+            Book a detail
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </a>
+          <a href="/pricing/" class="btn btn-ghost">
+            See pricing
+          </a>
+        </div>
+
+        <div class="mt-10 flex items-center gap-5 text-sm text-ink/60">
+          <div class="flex -space-x-2">
+            <span class="h-8 w-8 rounded-full bg-aqua border-2 border-paper"></span>
+            <span class="h-8 w-8 rounded-full bg-coral border-2 border-paper"></span>
+            <span class="h-8 w-8 rounded-full bg-sun border-2 border-paper"></span>
+            <span class="h-8 w-8 rounded-full bg-teal border-2 border-paper"></span>
+          </div>
+          <span>Joined by <span class="text-ink font-medium">126 donors</span> across San Diego</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: Donation tracker card -->
+      <div class="lg:col-span-5 reveal" style="transition-delay:.15s">
+        <div class="glass rounded-[26px] p-6 md:p-7 relative">
+          <div class="flex items-center justify-between">
+            <span class="eyebrow">Donation tracker</span>
+            <span class="text-xs px-2.5 py-1 rounded-full bg-coral/10 text-coral font-medium tracking-wide inline-flex items-center gap-1.5">
+              <span class="relative inline-flex h-1.5 w-1.5">
+                <span class="absolute inline-flex h-full w-full rounded-full bg-coral opacity-75 animate-ping"></span>
+                <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-coral"></span>
+              </span>
+              LIVE
+            </span>
+          </div>
+
+          <div class="mt-6">
+            <div class="flex items-baseline gap-2">
+              <span class="stat-num text-[3.2rem] md:text-[3.8rem] text-ink" id="donatedLabel">$0</span>
+              <span class="text-ink/55 text-sm pb-2">raised</span>
+            </div>
+            <div class="flex items-baseline gap-1.5 mt-1 text-sm text-ink/60">
+              <span>of</span>
+              <span class="font-display text-ink text-[1.05rem]" id="goalLabel">$10,000</span>
+              <span>goal</span>
+            </div>
+          </div>
+
+          <div class="progress-track mt-5" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="progressBar" aria-valuenow="0" aria-label="Fundraising progress">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+
+          <div class="mt-4 flex items-center justify-between text-sm">
+            <span class="text-ink/60">
+              <span id="remainingLabel" class="text-ink font-medium">$0</span> to goal
+            </span>
+            <span class="text-teal font-medium" id="percentLabel">0%</span>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-ink/10 grid grid-cols-2 gap-6 items-center">
+            <div class="text-center">
+              <div class="stat-num text-[1.4rem] text-ink" data-count="340">0</div>
+              <div class="text-[11px] tracking-wider uppercase text-ink/55 mt-2.5 leading-relaxed">Vehicles detailed</div>
+            </div>
+            <div class="text-center">
+              <div class="stat-num text-[1.4rem] text-ink" data-count="48">0</div>
+              <div class="text-[11px] tracking-wider uppercase text-ink/55 mt-2.5 leading-relaxed">First responders &amp; military<br>Vehicles detailed</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- caption chip -->
+        <div class="mt-4 flex items-center gap-2 text-xs text-ink/55 pl-1">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M10 1.8 12.5 7 18 7.8l-4 3.9.9 5.5L10 14.6 5.1 17.2 6 11.7 2 7.8 7.5 7 10 1.8Z" fill="#F2B844"/></svg>
+          <span id="lastUpdated">Last Updated April 20, 2026 at 10:42 PM PDT</span>
+        </div>
+      </div>
+
+
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="bg-cream-soft grain-soft relative">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 py-24 md:py-32">
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end mb-14 md:mb-20">
+      <div class="lg:col-span-7 reveal">
+        <span class="eyebrow">What we do</span>
+        <h2 class="headline text-[2.2rem] md:text-[3.4rem] lg:text-[4rem] mt-4 text-ink max-w-[16ch]">
+          A detail with a <span class="italic text-teal">purpose</span>.
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="reveal group relative rounded-[22px] p-7 md:p-8 bg-white/60 border border-ink/5 hover:-translate-y-1 transition-transform duration-500" style="transition-delay:.05s">
+        <div class="h-12 w-12 rounded-2xl bg-aqua/30 grid place-items-center mb-6">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 14h18l-2-6H5l-2 6Zm0 0v4h2l1-2h12l1 2h2v-4M7 10h10M8 14a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" stroke="#0C9FE4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-display text-[1.4rem] text-ink mb-2">We detail vehicles.</h3>
+        <p class="text-ink/70 text-[0.96rem]">Hand wash, wax and protect, streak-free glass, steam clean interior, carpet shampoo, done right. We come to you, anywhere in San Diego. Book anytime.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="reveal group relative rounded-[22px] p-7 md:p-8 bg-ink text-paper hover:-translate-y-1 transition-transform duration-500" style="transition-delay:.12s">
+        <div class="absolute inset-0 rounded-[22px] pointer-events-none opacity-40"
+             style="background: radial-gradient(ellipse 70% 60% at 20% 20%, rgba(44,198,240,.30), transparent 60%);"></div>
+        <div class="relative">
+          <div class="h-12 w-12 rounded-2xl bg-aqua/20 grid place-items-center mb-6">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 20.35 10.55 19.03C5.4 14.36 2 11.28 2 7.5 2 4.42 4.42 2 7.5 2c1.74 0 3.41.81 4.5 2.09C13.09 2.81 14.76 2 16.5 2 19.58 2 22 4.42 22 7.5c0 3.78-3.4 6.86-8.55 11.54L12 20.35Z" stroke="#2CC6F0" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="font-display text-[1.4rem] mb-2">100% to underprivileged golfers.</h3>
+          <p class="text-paper/75 text-[0.96rem]">Every dollar of profit is donated to <span style="white-space: nowrap;">Pro Kids, First Tee – San Diego</span>,the nonprofit that provides clubs, bags, coaching, and programs to kids in City Heights and Oceanside who can't afford to play. We share every receipt.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="reveal group relative rounded-[22px] p-7 md:p-8 bg-white/60 border border-ink/5 hover:-translate-y-1 transition-transform duration-500" style="transition-delay:.2s">
+        <div class="h-12 w-12 rounded-2xl bg-sun/20 grid place-items-center mb-6">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4Z" stroke="#F2B844" stroke-width="1.5" stroke-linejoin="round"/><path d="m8.5 12 2.5 2.5L16 10" stroke="#F2B844" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-display text-[1.4rem] text-ink mb-2">First responders &amp; military free.</h3>
+        <p class="text-ink/70 text-[0.96rem]">Firefighters, EMTs, police, active-duty and veterans, anyone who serves, the detail is on us. Show a badge or military ID, leave with a clean vehicle. No questions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUR STORY ============ -->
+<section id="story" class="bg-ink grain relative">
+  <div class="absolute inset-0 pointer-events-none opacity-60"
+       style="background:
+         radial-gradient(ellipse 60% 50% at 80% 10%, rgba(44,198,240,.30), transparent 60%),
+         radial-gradient(ellipse 55% 45% at 15% 95%, rgba(12,159,228,.25), transparent 60%);"></div>
+
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 py-20 md:py-28 relative">
+
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <!-- Left: intro -->
+      <div class="lg:col-span-4 reveal max-w-[62ch] lg:pr-6 lg:pb-6">
+        <span class="eyebrow text-aqua/90">Our story</span>
+        <h2 class="headline text-[2.2rem] md:text-[3.4rem] lg:text-[3.8rem] mt-4 text-paper">
+          Local roots. <span class="italic text-aqua">Lasting purpose.</span>
+        </h2>
+        <p class="mt-7 text-paper/80 text-[1.18rem] md:text-[1.2rem] leading-[1.95]">
+          We grew up playing golf with everything we needed to play, have fun, and get better at the game. Not every kid gets that. Every kid deserves that same shot.
+        </p>
+        <p class="mt-7 text-paper/80 text-[1.18rem] md:text-[1.2rem] leading-[1.95]">
+          Every dollar of profit goes to <span style="white-space: nowrap;">Pro Kids, First Tee – San Diego</span>, giving kids in City Heights and Oceanside access to equipment, coaching, and the game.
+        </p>
+        <p class="mt-7 text-paper/80 text-[1.18rem] md:text-[1.2rem] leading-[1.95]">
+          First responders and service members put everything on the line for us. The least we can do is keep their details free, always.
+        </p>
+      </div>
+
+      <!-- Right: founders in 2x2 grid -->
+      <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch team-members-grid">
+        <figure class="reveal team-member cofounder flex flex-col h-full px-3 py-4 md:px-5 md:py-6">
+          <div class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)]">
+            <img src="assets/brody1.png" alt="Portrait of Brody Glazer" loading="lazy"/>
+          </div>
+          <figcaption class="mt-4 md:mt-5 text-center md:text-left">
+            <a href="https://www.linkedin.com/in/brody-glazer-2b91663b8/" target="_blank" rel="noopener noreferrer" class="team-link" aria-label="View Brody Glazer's LinkedIn profile">
+              <span class="font-display text-[1.95rem] text-paper team-link__text">Brody Glazer</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="team-link__icon" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <div class="team-card__roles mx-auto md:mx-0">
+              <span class="cofounder-badge">Co-founder</span>
+              <div class="team-card__role-title text-aqua/90">Head of Operations</div>
+            </div>
+            <div class="team-card__bio">
+              <p class="text-base text-paper/80 leading-relaxed">
+                Co-founded Sudzy Studz in late 2024. Leads operations, scheduling, and finance. LJCDS '27, planning to study accounting.
+              </p>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="reveal team-member cofounder flex flex-col h-full px-3 py-4 md:px-5 md:py-6" style="transition-delay:.12s">
+          <div class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)]">
+            <img src="assets/james.jpeg" alt="Portrait of James Field" loading="lazy"/>
+          </div>
+          <figcaption class="mt-4 md:mt-5 text-center md:text-left">
+            <a href="https://www.linkedin.com/in/james-field-29b334403/" target="_blank" rel="noopener noreferrer" class="team-link" aria-label="View James Field's LinkedIn profile">
+              <span class="font-display text-[1.95rem] text-paper team-link__text">James Field</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="team-link__icon" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <div class="team-card__roles mx-auto md:mx-0">
+              <span class="cofounder-badge">Co-founder</span>
+              <div class="team-card__role-title text-aqua/90">Head of Growth</div>
+            </div>
+            <div class="team-card__bio">
+              <p class="text-base text-paper/80 leading-relaxed">
+                Co-founded Sudzy Studz in late 2024. Leads growth and marketing. LJCDS '27, planning to study business.
+              </p>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="reveal team-member flex flex-col h-full px-3 py-4 md:px-5 md:py-6" style="transition-delay:.24s">
+          <div class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)]">
+            <img src="assets/Owen.JPG" alt="Portrait of Owen Field" loading="lazy"/>
+          </div>
+          <figcaption class="mt-4 md:mt-5 text-center md:text-left">
+            <a href="https://www.linkedin.com/in/owen-field-26192537a/" target="_blank" rel="noopener noreferrer" class="team-link" aria-label="View Owen Field's LinkedIn profile">
+              <span class="font-display text-[1.95rem] text-paper team-link__text">Owen Field</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="team-link__icon" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <div class="team-card__roles mx-auto md:mx-0">
+              <span class="cofounder-badge">Chief Financial Officer</span>
+              <div class="team-card__role-title text-aqua/90">Finance &amp; Strategy</div>
+            </div>
+            <div class="team-card__bio">
+              <p class="text-base text-paper/80 leading-relaxed">
+                Joined the team in early 2025. Builds our financial models, tracks margins, and manages nonprofit compliance. TCU '29, studying Finance and Entrepreneurship.
+              </p>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="reveal team-member flex flex-col h-full px-3 py-4 md:px-5 md:py-6" style="transition-delay:.36s">
+          <div class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)]">
+            <img src="assets/daniel.png" alt="Portrait of Daniel Rianhard" loading="lazy"/>
+          </div>
+          <figcaption class="mt-4 md:mt-5 text-center md:text-left">
+            <a href="https://www.linkedin.com/in/daniel-rianhard-6911a83a8/" target="_blank" rel="noopener noreferrer" class="team-link" aria-label="View Daniel Rianhard's LinkedIn profile">
+              <span class="font-display text-[1.95rem] text-paper team-link__text">Daniel Rianhard</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="team-link__icon" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <div class="team-card__roles mx-auto md:mx-0">
+              <span class="team-badge">Sales Manager</span>
+              <div class="team-card__role-title text-aqua/90">Door to Door</div>
+            </div>
+            <div class="team-card__bio">
+              <p class="text-base text-paper/80 leading-relaxed">
+                Joined the team in early 2025. Runs detailing crew and drives new business through door-to-door sales. LJCDS '27, planning to study finance.
+              </p>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prokids" class="bg-cream-soft grain-soft relative">
+  <!-- subtle ambient gradient focused under the stats card -->
+  <div class="absolute inset-0 pointer-events-none opacity-50"
+       style="background:
+         radial-gradient(ellipse 70% 35% at 50% 70%, rgba(44,198,240,0.10), transparent 60%);"></div>
+
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 py-24 md:py-32 relative">
+    <div class="max-w-[820px] reveal">
+      <span class="eyebrow">Where the money goes</span>
+      <h2 class="headline text-[2.2rem] md:text-[3.4rem] lg:text-[4rem] mt-4 text-ink max-w-[20ch]">
+        Real kids. <span class="italic text-teal">Real impact</span>.
+      </h2>
+
+      <!-- In partnership with — Pro Kids text + flag mark (swap with official logo when available) -->
+      <div class="mt-6 flex items-center gap-3 flex-wrap">
+        <span class="text-[10px] tracking-[0.22em] uppercase text-ink/55 font-medium">In partnership with</span>
+        <span class="inline-flex items-center gap-2 text-ink/85">
+          <!-- Golf flag logomark placeholder -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 21V3" stroke="#0C9FE4" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M6 3l11 3.5L6 10V3z" fill="#F2B844" stroke="#F2B844" stroke-width="1" stroke-linejoin="round"/>
+            <circle cx="6" cy="21" r="1.4" fill="#0C9FE4"/>
+          </svg>
+          <span class="font-display text-[1rem] md:text-[1.05rem] font-medium tracking-tight"><span style="white-space: nowrap;">Pro Kids, First Tee – San Diego</span></span>
+        </span>
+      </div>
+
+      <p class="mt-4 text-ink/70 text-[1.05rem] leading-relaxed max-w-[60ch]">
+        Every dollar of profit goes to <span style="white-space: nowrap;">Pro Kids, First Tee, San Diego</span> — a 30-year-old nonprofit serving underserved youth across the county. Here are their 2025 results.
+      </p>
+    </div>
+
+    <!-- Stats card — elevated white surface containing all four numbers -->
+    <div class="reveal mt-24 md:mt-32 rounded-[22px] bg-white border border-ink/5" style="box-shadow: var(--shadow-md);">
+      <div class="grid grid-cols-2 lg:grid-cols-4">
+        <div class="text-center px-5 md:px-6 py-8 md:py-10">
+          <div class="stat-num text-[3.4rem] md:text-[4rem] lg:text-[4.4rem] text-ink" data-count="798" data-duration="1400">0</div>
+          <div class="mt-3 text-ink/65 text-[0.82rem] tracking-wide">Members served in 2025</div>
+        </div>
+        <div class="text-center px-5 md:px-6 py-8 md:py-10 lg:border-l lg:border-ink/10">
+          <div class="stat-num text-[3.4rem] md:text-[4rem] lg:text-[4.4rem] text-ink" data-count="2500" data-duration="1400">0</div>
+          <div class="mt-3 text-ink/65 text-[0.82rem] tracking-wide">Students reached through school outreach</div>
+        </div>
+        <div class="text-center px-5 md:px-6 py-8 md:py-10 border-t lg:border-t-0 lg:border-l border-ink/10">
+          <div class="stat-num text-[3.4rem] md:text-[4rem] lg:text-[4.4rem] text-ink" data-count="412" data-prefix="$" data-suffix="K" data-duration="1400">$0</div>
+          <div class="mt-3 text-ink/65 text-[0.82rem] tracking-wide">In financial assistance awarded</div>
+        </div>
+        <div class="text-center px-5 md:px-6 py-8 md:py-10 border-t lg:border-t-0 lg:border-l border-ink/10">
+          <div class="stat-num text-[3.4rem] md:text-[4rem] lg:text-[4.4rem] text-ink" data-count="75" data-suffix="%" data-duration="1400">0</div>
+          <div class="mt-3 text-ink/65 text-[0.82rem] tracking-wide">Of members receive financial aid</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Verification badge — interactive, links to source PDF -->
+    <div class="mt-10 reveal">
+      <a href="https://thefirstteesandiego.org/wp-content/uploads/sites/46/2026/03/V2-2025-PK-IMPACT-REPORT-FINAL.pdf"
+         target="_blank"
+         rel="noopener"
+         title="Opens PDF in new tab"
+         class="group inline-flex items-center gap-2.5 pl-2.5 pr-4 py-2 rounded-full border border-ink/15 bg-white/55 text-ink/75 text-sm hover:text-ink hover:border-ink/30 hover:bg-white hover:-translate-y-0.5 hover:shadow-[0_8px_18px_-10px_rgba(11,40,48,0.35)] transition-all duration-200">
+        <span class="h-6 w-6 rounded-full grid place-items-center bg-aqua/20 flex-shrink-0">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="m2 6 3 3 5-6" stroke="#2CC6F0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span>Verified by <span style="white-space: nowrap;">Pro Kids, First Tee, San Diego</span> 2025 Impact Report</span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="opacity-50 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0" aria-hidden="true">
+          <path d="M15 3h6v6"/>
+          <path d="m10 14 11-11"/>
+          <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DONATE ============ -->
+<section id="donate" class="relative overflow-hidden" style="background: linear-gradient(180deg, #F6F1E7 0%, #D4EEFB 100%);">
+  <div class="absolute inset-0 pointer-events-none opacity-50"
+       style="background:
+         radial-gradient(ellipse 50% 40% at 85% 10%, rgba(44,198,240,.38), transparent 60%),
+         radial-gradient(ellipse 45% 35% at 15% 90%, rgba(242,184,68,.25), transparent 60%);"></div>
+
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 py-24 md:py-32 relative">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start lg:items-center">
+
+      <!-- Left: pitch -->
+      <div class="lg:col-span-5 reveal">
+        <span class="eyebrow">Donate</span>
+        <h2 class="headline text-[2.2rem] md:text-[3.4rem] lg:text-[4rem] mt-4 text-ink max-w-[14ch]">
+          Chip in. <span class="italic text-teal">Equip a kid.</span>
+        </h2>
+        <div class="mt-6 space-y-4 text-ink/75 text-[1.05rem] leading-relaxed max-w-[44ch]">
+          <p><span class="text-teal font-semibold">$25</span> puts golf balls in a kid's bag.</p>
+          <p><span class="text-teal font-semibold">$50</span> covers a month of lessons.</p>
+          <p><span class="text-teal font-semibold">$100</span> gets one kid fully outfitted for the season.</p>
+          <p>Every dollar goes to <span style="white-space: nowrap;">Pro Kids, First Tee – San Diego</span>.</p>
+        </div>
+      </div>
+
+      <!-- Right: donate card -->
+      <div class="lg:col-span-7 reveal" style="transition-delay:.12s">
+        <div class="rounded-[28px] bg-paper border border-ink/8 p-7 md:p-10 lg:p-12 shadow-[0_30px_80px_-30px_rgba(12,63,78,.45)]">
+
+          <h3 class="font-display text-[1.6rem] md:text-[1.8rem] text-ink leading-tight">Give</h3>
+          <p class="text-ink/65 text-[0.98rem] mt-2 leading-relaxed">Pick an amount, pick how often. Every dollar moves through to Pro Kids.</p>
+
+          <!-- One-time / Monthly toggle -->
+          <div class="mt-6 inline-flex p-1 rounded-full bg-ink/5 border border-ink/10" role="tablist" aria-label="Donation frequency">
+            <button id="donate-mode-once" class="donate-mode-btn donate-mode-btn--active" role="tab" aria-selected="true">One-time</button>
+            <button id="donate-mode-monthly" class="donate-mode-btn" role="tab" aria-selected="false">Monthly</button>
+          </div>
+
+          <!-- Amount picker -->
+          <div class="mt-5 grid grid-cols-3 sm:grid-cols-5 gap-2.5" role="radiogroup" aria-label="Donation amount">
+            <button class="amount-pill text-center" data-amount="25" aria-pressed="false" role="radio">$25</button>
+            <button class="amount-pill text-center" data-amount="50" aria-pressed="true" role="radio">$50</button>
+            <button class="amount-pill text-center" data-amount="100" aria-pressed="false" role="radio">$100</button>
+            <button class="amount-pill text-center" data-amount="250" aria-pressed="false" role="radio">$250</button>
+            <button class="amount-pill text-center" data-amount="other" aria-pressed="false" role="radio">Other</button>
+          </div>
+
+          <!-- Custom amount input (revealed when "Other" selected) -->
+          <div id="customAmountWrap" class="mt-3 hidden">
+            <div class="relative">
+              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-ink/55 font-medium">$</span>
+              <input id="customAmount" type="number" min="1" placeholder="Custom amount"
+                     class="w-full pl-8 pr-4 py-3 rounded-xl border border-ink/15 bg-white/70 text-ink text-[1rem] focus:outline-none focus:border-coral focus:ring-2 focus:ring-coral/20 transition-colors"/>
+            </div>
+          </div>
+
+          <!-- Impact label -->
+          <p id="impactLabel" class="mt-4 text-[0.92rem] text-ink/70 italic">Funds a month of program fees.</p>
+
+          <!-- Monthly incentive (revealed when Monthly selected) -->
+          <p id="monthlyIncentive" class="mt-2 text-[0.88rem] text-teal italic hidden">
+            Monthly donors fund a kid's entire year of golf programming.
+          </p>
+
+          <!-- Pre-launch notice + email signup -->
+          <div class="mt-7 rounded-2xl border border-sun/45 bg-sun/10 p-4 md:p-5">
+            <div class="flex items-start gap-2.5">
+              <svg class="mt-0.5 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" stroke="#F2B844" stroke-width="1.8"/>
+                <path d="M12 8v5" stroke="#F2B844" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="12" cy="16.3" r="1" fill="#F2B844"/>
+              </svg>
+              <div class="text-sm text-ink/80 leading-relaxed">
+                <strong class="text-ink">Donations open soon.</strong> We're finalizing our 501(c)(3) and payment setup. Drop your email and we'll let you know the moment giving goes live.
+              </div>
+            </div>
+            <form id="notifyForm" class="mt-4 flex flex-col sm:flex-row gap-2">
+              <input type="email" required placeholder="you@example.com"
+                     class="flex-1 px-4 py-3 rounded-full border border-ink/15 bg-white text-ink text-[0.95rem] focus:outline-none focus:border-coral focus:ring-2 focus:ring-coral/20 transition-colors"
+                     aria-label="Email address"/>
+              <button type="submit" class="btn btn-coral justify-center !py-3 sm:flex-shrink-0">
+                Notify me
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </button>
+            </form>
+            <p id="notifyConfirm" class="mt-3 text-sm text-teal font-medium hidden">Thanks, we'll be in touch.</p>
+          </div>
+
+          <!-- Payment buttons (shown when launched — currently visually dimmed pending setup) -->
+          <div class="mt-5 grid sm:grid-cols-2 gap-3" id="paymentButtons">
+            <button id="stripeBtn" class="btn btn-coral w-full justify-center !py-4" type="button">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.6"/></svg>
+              Donate with card
+            </button>
+            <a id="paypalBtn" class="btn w-full justify-center !py-4 !bg-transparent !text-coral border-2 border-coral text-center" href="#" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M18 3c1.4 2.3 2 4.6 2 7.3 0 6-5.2 11.4-8.4 13.7H6L3 3.8 9.3 3l1.6 13c1.6-2.8 3.5-7.2 3.5-10.2 0-1.7-.3-2.8-.7-3.8L18 3Z" fill="currentColor"/>
+              </svg>
+              Donate with PayPal
+            </a>
+          </div>
+
+          <!-- Trust checkmarks — moved into the card -->
+          <ul class="mt-7 pt-6 border-t border-ink/10 space-y-3">
+            <li class="flex items-start gap-3 text-[0.92rem] text-ink/75">
+              <span class="h-5 w-5 rounded-full bg-ink text-paper grid place-items-center text-[10px] mt-0.5 shrink-0">✓</span>
+              <span>Secure checkout via Stripe</span>
+            </li>
+            <li class="flex items-start gap-3 text-[0.92rem] text-ink/75">
+              <span class="h-5 w-5 rounded-full bg-ink text-paper grid place-items-center text-[10px] mt-0.5 shrink-0">✓</span>
+              <span>Receipts emailed within 24 hours <span class="text-ink/55">(tax-deductibility pending 501(c)(3) confirmation)</span></span>
+            </li>
+            <li class="flex items-start gap-3 text-[0.92rem] text-ink/75">
+              <span class="h-5 w-5 rounded-full bg-ink text-paper grid place-items-center text-[10px] mt-0.5 shrink-0">✓</span>
+              <span>Track exactly where your donation lands</span>
+            </li>
+          </ul>
+
+          <!-- Elevated Stripe security badge -->
+          <div class="mt-5 flex items-center gap-2.5 text-sm font-medium text-ink/85">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10V7a6 6 0 0 1 12 0v3M5 10h14v11H5V10Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Secured by <span style="color:#635BFF;" class="font-semibold">Stripe</span></span>
+            <span class="text-ink/50 font-normal">· Card details never touch our servers.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ OUR WORK ============ -->
+<section id="our-work" class="bg-paper grain-soft relative">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 py-20 md:py-24">
+    <div class="reveal flex flex-col gap-5 mb-10">
+      <div>
+        <span class="eyebrow">Our work</span>
+        <h2 class="headline text-[2rem] md:text-[2.8rem] lg:text-[3.2rem] mt-3 text-ink max-w-[20ch]">
+          Real detailing work, shown in images.
+        </h2>
+      </div>
+      <p class="text-base text-ink/75 max-w-[55ch]">
+        A visual showcase for the cars, crews, and on-site jobs that define Sudzy Studz.
+      </p>
+    </div>
+
+    <div class="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="overflow-hidden rounded-[28px] bg-ink/5 aspect-[4/5]">
+        <img src="https://placehold.co/720x900/0B2830/FBF8F1?text=Work+Photo+1" alt="Detailing work photo 1" class="h-full w-full object-cover" />
+      </div>
+      <div class="overflow-hidden rounded-[28px] bg-ink/5 aspect-[4/5]">
+        <img src="https://placehold.co/720x900/0C3F4E/F6F1E7?text=Work+Photo+2" alt="Detailing work photo 2" class="h-full w-full object-cover" />
+      </div>
+      <div class="overflow-hidden rounded-[28px] bg-ink/5 aspect-[4/5]">
+        <img src="https://placehold.co/720x900/2CC6F0/0B2830?text=Work+Photo+3" alt="Detailing work photo 3" class="h-full w-full object-cover" />
+      </div>
+      <div class="overflow-hidden rounded-[28px] bg-ink/5 aspect-[4/5]">
+        <img src="https://placehold.co/720x900/F2B844/0C3F4E?text=Work+Photo+4" alt="Detailing work photo 4" class="h-full w-full object-cover" />
+      </div>
+    </div>
+
+    <p class="reveal mt-6 text-xs text-ink/45 italic">
+      Image gallery placeholder — swap in real Sudzy Studz detail photos once the work is ready.
+    </p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-paper border-t border-ink/10">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 py-14">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-5">
+        <a href="#top" class="inline-flex">
+          <img src="brand_assets/logo.png" alt="Sudzy Studz" class="logo-img h-14 w-auto" />
+        </a>
+        <p class="mt-5 text-ink/65 text-[0.98rem] max-w-[44ch]">
+          A student-founded nonprofit in San Diego. Every detail helps put a club in a kid's hands, through <span style="white-space: nowrap;">Pro Kids, First Tee – San Diego</span>.
+        </p>
+      </div>
+
+      <div class="md:col-span-3">
+        <div class="text-xs tracking-widest uppercase text-ink/50 mb-4">Site</div>
+        <ul class="space-y-2 text-ink/80 text-[0.98rem]">
+          <li><a href="#about" class="hover:text-coral transition-colors">About</a></li>
+          <li><a href="#prokids" class="hover:text-coral transition-colors">Impact</a></li>
+          <li><a href="/pricing/" class="hover:text-coral transition-colors">Pricing</a></li>
+          <li><a href="#story" class="hover:text-coral transition-colors">Our Story</a></li>
+          <li><a href="#donate" class="hover:text-coral transition-colors">Donate</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4">
+        <div class="text-xs tracking-widest uppercase text-ink/50 mb-4">Contact</div>
+        <div class="flex flex-col gap-1.5">
+          <a href="mailto:bbglazer2027@ljcds.org" class="text-ink hover:text-coral transition-colors font-display text-[1.1rem]">bbglazer2027@ljcds.org</a>
+          <a href="mailto:james.field@ljcds.org" class="text-ink hover:text-coral transition-colors font-display text-[1.1rem]">james.field@ljcds.org</a>
+        </div>
+        <div class="mt-5 flex items-center gap-3">
+          <a href="https://instagram.com/sudzystudz" target="_blank" rel="noopener" aria-label="Instagram" class="h-10 w-10 rounded-full border border-ink/15 grid place-items-center text-ink/70 hover:text-coral hover:border-coral transition">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="mailto:bbglazer2027@ljcds.org,james.field@ljcds.org" aria-label="Email" class="h-10 w-10 rounded-full border border-ink/15 grid place-items-center text-ink/70 hover:text-coral hover:border-coral transition">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-ink/10 flex flex-wrap justify-between items-center gap-3 text-xs text-ink/50">
+      <div>© 2026 Sudzy Studz, Built with a bucket in La Jolla, CA.</div>
+      <div>All donations tax-deductible. EIN pending.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ DONATION CONFIRMATION MODAL ============ -->
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card">
+    <div class="flex items-start justify-between">
+      <div class="h-12 w-12 rounded-2xl bg-coral/15 grid place-items-center">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-7 11-7 11H12Z" stroke="#0C9FE4" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </div>
+      <button id="modalClose" aria-label="Close" class="text-ink/55 hover:text-ink transition -m-2 p-2">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <h3 id="modalTitle" class="font-display text-[1.5rem] text-ink mt-5">Thanks for donating.</h3>
+    <p class="mt-2 text-ink/70 text-[0.96rem] leading-relaxed">
+      In production, this would redirect to Stripe Checkout where you'd enter your amount and card details. A receipt would be emailed to you within 24 hours.
+    </p>
+    <button id="modalOk" class="btn btn-primary w-full justify-center mt-6">Close</button>
+  </div>
+</div>
+
+<!-- ============ SCRIPT ============ -->
+<script>
+  // ---- Editable configuration ----
+  const CONFIG = {
+    donationAmount: 4250,                 // total raised so far
+    donationGoal:   10000,                // target goal
+    payPalUrl: 'https://www.paypal.com/donate?hosted_button_id=YOUR_BUTTON_ID',
+    venmoUrl: 'https://venmo.com/YourUsername',
+    liveDataUrl: '/donation.json',
+    // *** EDIT HERE when you change any tracker number ***
+    // Update this timestamp every time you change donationAmount above, or
+    // the "Vehicles detailed" (data-count="340") and "First responders & military"
+    // (data-count="48") values in the hero card. One place to edit, no digging.
+    // Format: 'YYYY-MM-DDTHH:MM:SS-OFFSET' where OFFSET is -07:00 for PDT (Mar–Nov)
+    // or -08:00 for PST (Nov–Mar). Example: new Date('2026-04-20T22:42:00-07:00').
+    // TODO: wire this to a real data source when the project gets a backend.
+    lastUpdated: new Date('2026-04-20T22:42:00-07:00'),
+  };
+
+  // ---- Formatters ----
+  const fmtMoney = (n, opts={}) => new Intl.NumberFormat('en-US', { style:'currency', currency:'USD', maximumFractionDigits:0, ...opts }).format(n);
+  const fmtNum   = (n) => new Intl.NumberFormat('en-US').format(n);
+
+  async function loadDonationData() {
+    if (!CONFIG.liveDataUrl) return null;
+    try {
+      const response = await fetch(CONFIG.liveDataUrl, { cache: 'no-store' });
+      if (!response.ok) throw new Error('Failed to load donation data');
+      const json = await response.json();
+      return {
+        donationAmount: Number(json.donationAmount) || CONFIG.donationAmount,
+        donationGoal: Number(json.donationGoal) || CONFIG.donationGoal,
+        lastUpdated: new Date(json.lastUpdated || CONFIG.lastUpdated),
+      };
+    } catch (error) {
+      console.warn('Donation data load failed:', error);
+      return null;
+    }
+  }
+
+  // ---- Donation tracker, populate + animate ----
+  (async function initTracker() {
+    const data = await loadDonationData();
+    if (data) {
+      CONFIG.donationAmount = data.donationAmount;
+      CONFIG.donationGoal = data.donationGoal;
+      CONFIG.lastUpdated = data.lastUpdated;
+    }
+
+    const pct = Math.min(100, Math.round((CONFIG.donationAmount / CONFIG.donationGoal) * 100));
+    const remaining = Math.max(0, CONFIG.donationGoal - CONFIG.donationAmount);
+
+    document.getElementById('donatedLabel').textContent   = fmtMoney(CONFIG.donationAmount);
+    document.getElementById('goalLabel').textContent      = fmtMoney(CONFIG.donationGoal);
+    document.getElementById('remainingLabel').textContent = fmtMoney(remaining);
+
+    const bar  = document.getElementById('progressBar');
+    const fill = document.getElementById('progressFill');
+    const pctLabel = document.getElementById('percentLabel');
+
+    // animate after paint
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        fill.style.width = pct + '%';
+        bar.setAttribute('aria-valuenow', String(pct));
+
+        // count up the percent label
+        const start = performance.now();
+        const dur = 1600;
+        (function tick(t) {
+          const k = Math.min(1, (t - start) / dur);
+          const eased = 1 - Math.pow(1 - k, 3);
+          pctLabel.textContent = Math.round(eased * pct) + '%';
+          if (k < 1) requestAnimationFrame(tick);
+        })(start);
+      }, 250);
+    });
+
+    // venmo link (guarded — element may be absent in pre-launch state)
+    const venmoBtn = document.getElementById('venmoBtn');
+    if (venmoBtn) venmoBtn.href = CONFIG.venmoUrl;
+  })();
+
+  // ---- Force top-of-page on load, disable browser scroll restoration so reload always lands at the hero ----
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+
+  // ---- Last-updated timestamp ----
+  // Renders CONFIG.lastUpdated in the viewer's local timezone — a visitor in
+  // San Diego sees PDT/PST, a visitor in NYC sees EDT/EST, etc. The Intl API
+  // auto-resolves DST based on the actual date stored on CONFIG.lastUpdated.
+  (function initLastUpdated() {
+    const el = document.getElementById('lastUpdated');
+    if (!el || !(CONFIG.lastUpdated instanceof Date) || isNaN(CONFIG.lastUpdated)) return;
+    const dateStr = CONFIG.lastUpdated.toLocaleDateString('en-US', {
+      month: 'long', day: 'numeric', year: 'numeric',
+    });
+    const timeStr = CONFIG.lastUpdated.toLocaleTimeString('en-US', {
+      hour: 'numeric', minute: '2-digit', hour12: true,
+    });
+    // Pull the short tz abbreviation (PDT/PST/EDT/etc.) from the formatted string
+    const tzAbbr = CONFIG.lastUpdated.toLocaleString('en-US', {
+      timeZoneName: 'short',
+    }).split(' ').pop();
+    el.textContent = `Last Updated ${dateStr} at ${timeStr} ${tzAbbr}`;
+  })();
+
+  // ---- Count-up stats ----
+  const countUpEls = document.querySelectorAll('[data-count]');
+  const animateCount = (el) => {
+    const target = parseInt(el.dataset.count, 10);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const dur = parseInt(el.dataset.duration, 10) || 1200;
+    const start = performance.now();
+    (function tick(t) {
+      const k = Math.min(1, (t - start) / dur);
+      const eased = 1 - Math.pow(1 - k, 3);
+      const val = Math.floor(eased * target);
+      el.textContent = prefix + fmtNum(val) + suffix;
+      if (k < 1) requestAnimationFrame(tick);
+    })(start);
+  };
+
+  // ---- Reveal on scroll + trigger count-ups ----
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        e.target.querySelectorAll('[data-count]').forEach((el) => {
+          if (!el.dataset.done) { animateCount(el); el.dataset.done = '1'; }
+        });
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Count-ups inside the donation card should fire as soon as it's visible too
+  document.querySelectorAll('#progressBar ~ * [data-count], .glass [data-count]').forEach((el) => {
+    if (!el.dataset.done) { animateCount(el); el.dataset.done = '1'; }
+  });
+
+  // ---- Mobile nav ----
+  const mobileNavToggle = document.getElementById('mobileNavToggle');
+  const mobileNavPanel = document.getElementById('mobileNavPanel');
+  const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+  const mobileNavClose = document.getElementById('mobileNavClose');
+
+  const setMobileNavOpen = (open) => {
+    if (!mobileNavToggle || !mobileNavPanel || !mobileNavBackdrop) return;
+    mobileNavToggle.setAttribute('aria-expanded', String(open));
+    mobileNavPanel.hidden = !open;
+    mobileNavPanel.classList.toggle('is-open', open);
+    mobileNavBackdrop.classList.toggle('is-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+
+  if (mobileNavToggle && mobileNavPanel && mobileNavBackdrop) {
+    mobileNavToggle.addEventListener('click', () => {
+      const isOpen = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+      setMobileNavOpen(!isOpen);
+    });
+    mobileNavBackdrop.addEventListener('click', () => setMobileNavOpen(false));
+    mobileNavClose?.addEventListener('click', () => setMobileNavOpen(false));
+    mobileNavPanel.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMobileNavOpen(false));
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setMobileNavOpen(false);
+    });
+  }
+
+  // ---- Nav scroll state ----
+  const nav = document.getElementById('navInner');
+  const onScroll = () => {
+    if (window.scrollY > 20) {
+      nav.classList.add('glass');
+      nav.style.backgroundColor = 'rgba(251,248,241,.75)';
+    } else {
+      nav.classList.remove('glass');
+      nav.style.backgroundColor = '';
+    }
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ---- Scroll progress bar (thin top indicator) ----
+  const progressBar = document.getElementById('scrollProgressBar');
+  const updateProgress = () => {
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docH > 0 ? Math.min(1, Math.max(0, window.scrollY / docH)) : 0;
+    progressBar.style.transform = `scaleX(${pct})`;
+  };
+  updateProgress();
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress, { passive: true });
+
+  // ---- Sticky donation bar — fades in after hero, hides on donate section or top ----
+  (function initDonateBar() {
+    const bar = document.getElementById('donateBar');
+    if (!bar) return;
+    const close = document.getElementById('donateBarClose');
+    const raisedEl = document.getElementById('donateBarRaised');
+    const goalEl   = document.getElementById('donateBarGoal');
+    const fillEl   = document.getElementById('donateBarFill');
+
+    raisedEl.textContent = fmtMoney(CONFIG.donationAmount);
+    goalEl.textContent   = fmtMoney(CONFIG.donationGoal);
+    const pct = Math.min(100, Math.round((CONFIG.donationAmount / CONFIG.donationGoal) * 100));
+    requestAnimationFrame(() => { fillEl.style.width = pct + '%'; });
+
+    let dismissed = sessionStorage.getItem('sz-donate-bar-dismissed') === '1';
+    const hero = document.querySelector('.hero-bg');
+    const donateSection = document.getElementById('donate');
+
+    const update = () => {
+      if (dismissed) { bar.classList.remove('is-visible'); return; }
+      const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+      const donateTop  = donateSection ? donateSection.getBoundingClientRect().top : Infinity;
+      const past = heroBottom < 0;
+      const reached = donateTop < window.innerHeight * 0.85;
+      bar.classList.toggle('is-visible', past && !reached);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+
+    close.addEventListener('click', () => {
+      dismissed = true;
+      sessionStorage.setItem('sz-donate-bar-dismissed', '1');
+      bar.classList.remove('is-visible');
+    });
+  })();
+
+  // ---- Stripe simulated checkout (guarded — buttons disabled in pre-launch state) ----
+  const payPalBtn = document.getElementById('paypalBtn');
+  if (payPalBtn) {
+    payPalBtn.href = CONFIG.payPalUrl;
+  }
+
+  // ---- Donate card UI (frequency toggle, amount picker, custom input, notify form) ----
+  (function initDonateUI() {
+    const modeOnce    = document.getElementById('donate-mode-once');
+    const modeMonthly = document.getElementById('donate-mode-monthly');
+    if (!modeOnce || !modeMonthly) return;
+
+    const amountBtns       = document.querySelectorAll('.amount-pill[data-amount]');
+    const customWrap       = document.getElementById('customAmountWrap');
+    const impactLabel      = document.getElementById('impactLabel');
+    const monthlyIncentive = document.getElementById('monthlyIncentive');
+
+    // Impact copy — TODO: confirm $/impact figures with Pro Kids before launch
+    const IMPACT = {
+      once: {
+        '25':    'Covers a set of golf balls for one kid.',
+        '50':    'Funds a month of program fees.',
+        '100':   'Buys a starter equipment set.',
+        '250':   'Sponsors a youth member for a season.',
+        'other': 'Choose any amount that feels right.'
+      },
+      monthly: {
+        '25':    '$25/mo keeps one kid in golf balls and range time, ongoing.',
+        '50':    '$50/mo covers a kid\'s monthly program fees, every month.',
+        '100':   '$100/mo sustains starter gear access for one kid.',
+        '250':   '$250/mo sponsors a youth member for the full season, every season.',
+        'other': 'Choose any amount, billed monthly.'
+      }
+    };
+
+    let mode   = 'once';
+    let amount = '50';
+
+    function updateImpact() {
+      impactLabel.textContent = IMPACT[mode][amount] || '';
+    }
+
+    function setMode(next) {
+      mode = next;
+      const isMonthly = mode === 'monthly';
+      modeOnce.classList.toggle('donate-mode-btn--active', !isMonthly);
+      modeMonthly.classList.toggle('donate-mode-btn--active', isMonthly);
+      modeOnce.setAttribute('aria-selected', String(!isMonthly));
+      modeMonthly.setAttribute('aria-selected', String(isMonthly));
+      monthlyIncentive.classList.toggle('hidden', !isMonthly);
+      updateImpact();
+    }
+
+    function setAmount(next) {
+      amount = next;
+      amountBtns.forEach(b => b.setAttribute('aria-pressed', b.dataset.amount === amount ? 'true' : 'false'));
+      customWrap.classList.toggle('hidden', amount !== 'other');
+      updateImpact();
+    }
+
+    modeOnce.addEventListener('click', () => setMode('once'));
+    modeMonthly.addEventListener('click', () => setMode('monthly'));
+    amountBtns.forEach(b => b.addEventListener('click', () => setAmount(b.dataset.amount)));
+
+    setMode('once');
+    setAmount('50');
+  })();
+
+  // ---- Stripe checkout behavior ----
+  (function initStripeCheckout() {
+    const stripeBtn = document.getElementById('stripeBtn');
+    const modeOnce = document.getElementById('donate-mode-once');
+    const modeMonthly = document.getElementById('donate-mode-monthly');
+    const amountBtns = document.querySelectorAll('.amount-pill[data-amount]');
+    const customAmount = document.getElementById('customAmount');
+
+    if (!stripeBtn || !modeOnce || !modeMonthly || !amountBtns.length) return;
+
+    function buildAmount() {
+      const selected = Array.from(amountBtns).find((btn) => btn.getAttribute('aria-pressed') === 'true');
+      if (!selected) return 50;
+      const choice = selected.dataset.amount;
+      if (choice === 'other') {
+        const customValue = Number(customAmount?.value || 0);
+        return customValue > 0 ? customValue : 50;
+      }
+      return Number(choice);
+    }
+
+    function buildFrequency() {
+      return modeMonthly.classList.contains('donate-mode-btn--active') ? 'monthly' : 'once';
+    }
+
+    stripeBtn.addEventListener('click', async () => {
+      const amount = buildAmount();
+      const frequency = buildFrequency();
+
+      try {
+        const response = await fetch('/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ amount, frequency }),
+        });
+
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || 'Stripe checkout failed');
+        window.location.href = result.url;
+      } catch (error) {
+        console.error('Stripe checkout error', error);
+        alert('Unable to start checkout. Please try again later.');
+      }
+    });
+  })();
+</script>
+</body>
+</html>

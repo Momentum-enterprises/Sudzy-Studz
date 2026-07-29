@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Offline Donation Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..800,30..100;1,9..144,300..800,30..100&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#0B2830; --teal:#0C9FE4; --paper:#FBF8F1; --coral:#0C9FE4; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'DM Sans',sans-serif;background:#F6F1E7;color:var(--ink);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem;}
+    .panel{width:100%;max-width:620px;background:#fff;border-radius:28px;box-shadow:0 24px 80px rgba(11,40,48,.12);padding:2rem;}
+    .eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:.76rem;font-weight:700;color:var(--teal);}
+    h1{font-family:'Fraunces',serif;font-size:2.35rem;line-height:1.05;margin:.9rem 0 0;color:var(--ink);}
+    p{margin:.9rem 0 1.3rem;line-height:1.75;color:rgba(11,40,48,.78);}
+    .stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;}
+    .stat{background:#FBF8F1;border:1px solid rgba(11,40,48,.08);border-radius:18px;padding:1rem;}
+    .stat strong{display:block;font-size:1.8rem;margin-bottom:.4rem;}
+    .form-group{margin-bottom:1rem;}
+    label{display:block;font-size:.94rem;margin-bottom:.4rem;font-weight:700;color:var(--ink);}
+    input,textarea{width:100%;padding:.95rem 1rem;border:1px solid rgba(11,40,48,.16);border-radius:16px;font-size:1rem;color:var(--ink);background:#fff;}
+    input:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(12,159,228,.08);}
+    button{border:none;padding:1rem 1.2rem;border-radius:999px;background:var(--ink);color:#fff;font-size:1rem;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;}
+    button:hover{transform:translateY(-1px);box-shadow:0 14px 30px rgba(11,40,48,.18);}
+    .message{margin-top:1rem;padding:1rem 1.1rem;border-radius:16px;font-size:.95rem;}
+    .message.success{background:#D4EEFB;color:var(--ink);border:1px solid rgba(12,159,228,.25);}
+    .message.error{background:#FDEDEE;color:#7A231F;border:1px solid rgba(242,92,92,.25);}
+    .small-note{font-size:.88rem;color:rgba(11,40,48,.65);margin-top:1.2rem;}
+    .hidden{display:none;}
+  </style>
+</head>
+<body>
+  <article class="panel">
+    <span class="eyebrow">Admin only</span>
+    <h1>Record offline donations</h1>
+    <p>Use this page to log car wash payments or cash donations that arrive outside Stripe. The tracker amount will update instantly and stay in sync with your online donations.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <strong id="currentTotal">$0</strong>
+        Total raised
+      </div>
+      <div class="stat">
+        <strong id="lastUpdated">—</strong>
+        Last updated
+      </div>
+    </div>
+
+    <form id="offlineForm">
+      <div class="form-group">
+        <label for="offlineAmount">Offline amount</label>
+        <input id="offlineAmount" type="number" min="1" step="0.01" placeholder="50.00" required />
+      </div>
+      <div class="form-group">
+        <label for="offlineNote">Note (optional)</label>
+        <textarea id="offlineNote" rows="3" placeholder="Customer name, wash type, or note"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="adminPassword">Admin password</label>
+        <input id="adminPassword" type="password" placeholder="Enter admin password" required />
+      </div>
+      <button type="submit">Record donation</button>
+    </form>
+
+    <div id="formMessage" class="message hidden"></div>
+    <p class="small-note">This page is intended for recording offline proceeds from car washes and other manual donations. It does not collect payment itself.</p>
+  </article>
+
+  <script>
+    const totalEl = document.getElementById('currentTotal');
+    const updatedEl = document.getElementById('lastUpdated');
+    const form = document.getElementById('offlineForm');
+    const message = document.getElementById('formMessage');
+
+    async function loadTotal() {
+      try {
+        const res = await fetch('/donation.json', { cache: 'no-store' });
+        const data = await res.json();
+        totalEl.textContent = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.donationAmount || 0);
+        updatedEl.textContent = new Date(data.lastUpdated).toLocaleString('en-US', { month:'short', day:'numeric', year:'numeric', hour:'numeric', minute:'2-digit' });
+      } catch (err) {
+        totalEl.textContent = '$0';
+        updatedEl.textContent = 'Unable to load';
+      }
+    }
+
+    function showMessage(text, type='success') {
+      message.textContent = text;
+      message.className = `message ${type}`;
+      message.classList.remove('hidden');
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const amount = Number(document.getElementById('offlineAmount').value);
+      const note = document.getElementById('offlineNote').value.trim();
+      const password = document.getElementById('adminPassword').value;
+      if (!amount || amount <= 0) {
+        showMessage('Enter a valid amount above $0.00.', 'error');
+        return;
+      }
+
+      try {
+        const resp = await fetch('/record-offline-donation', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ amount, note, password }),
+        });
+        const result = await resp.json();
+        if (!resp.ok) throw new Error(result.error || 'Failed to record donation');
+        showMessage(`Recorded $${amount.toFixed(2)} successfully. Total is now ${new Intl.NumberFormat('en-US', { style:'currency', currency:'USD' }).format(result.donationAmount)}.`);
+        form.reset();
+        loadTotal();
+      } catch (err) {
+        showMessage(err.message, 'error');
+      }
+    });
+
+    loadTotal();
+  </script>
+</body>
+</html>
