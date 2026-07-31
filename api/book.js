@@ -110,8 +110,8 @@ function validatePayload(payload) {
   if (!normalized.vehicle.makeModel) errors.push('Vehicle make and model is required.');
   if (!Object.prototype.hasOwnProperty.call(VEHICLE_LABELS, normalized.vehicle.type)) errors.push('Vehicle type is required.');
   if (!Object.prototype.hasOwnProperty.call(PACKAGE_LABELS, normalized.booking.package)) errors.push('Package selection is required.');
-  if (normalized.booking.preferredTimes.length !== 3 || normalized.booking.preferredTimes.some((value) => !value)) {
-    errors.push('Three preferred date and time options are required.');
+  if (!normalized.booking.preferredTimes[0]) {
+    errors.push('At least one preferred date and time option is required.');
   }
 
   const includedSet = getIncludedAddOnSet(normalized.booking.package);
@@ -147,6 +147,20 @@ function buildAddOnLines(addOns) {
 function buildIncludedAddOnLines(addOns) {
   if (!addOns.length) return 'None';
   return addOns.map((key) => ADD_ONS[key].label).join(', ');
+}
+
+function formatPreferredOption(value) {
+  const normalized = normalizeString(value);
+  if (!normalized) return 'Not provided';
+  return formatPreferredTime(normalized);
+}
+
+function buildPreferredTimesSummary(preferredTimes) {
+  const list = preferredTimes
+    .map((value) => normalizeString(value))
+    .filter(Boolean)
+    .map((value) => formatPreferredTime(value));
+  return list.length ? list.join('; ') : 'Not provided';
 }
 
 function formatPreferredTime(value) {
@@ -195,9 +209,9 @@ function buildAdminEmail(data) {
       `Included: ${buildIncludedAddOnLines(data.includedAddOns)}`,
       '',
       'PREFERRED TIMES',
-      `Option 1: ${formatPreferredTime(data.booking.preferredTimes[0])}`,
-      `Option 2: ${formatPreferredTime(data.booking.preferredTimes[1])}`,
-      `Option 3: ${formatPreferredTime(data.booking.preferredTimes[2])}`,
+      `Option 1: ${formatPreferredOption(data.booking.preferredTimes[0])}`,
+      `Option 2: ${formatPreferredOption(data.booking.preferredTimes[1])}`,
+      `Option 3: ${formatPreferredOption(data.booking.preferredTimes[2])}`,
       '',
       'NOTES',
       data.booking.notes || 'None',
@@ -227,7 +241,7 @@ function buildCustomerEmail(data) {
       `- ${PACKAGE_LABELS[data.booking.package]} for your ${VEHICLE_LABELS[data.vehicle.type]}`,
       `- Paid add-ons: ${paidAddOnLine}`,
       `- Included add-ons: ${includedAddOnLine}`,
-      `- Preferred times: ${data.booking.preferredTimes.map(formatPreferredTime).join('; ')}`,
+      `- Preferred times: ${buildPreferredTimesSummary(data.booking.preferredTimes)}`,
       `- Total: ${totalLine}`,
       '',
       'If anything needs to change, just reply to this email.',
@@ -333,9 +347,9 @@ function buildCalendarDescription(data) {
     `Paid add-ons: ${buildAddOnLines(data.paidAddOns)}`,
     `Included add-ons: ${buildIncludedAddOnLines(data.includedAddOns)}`,
     '',
-    `Preferred option 1: ${formatPreferredTime(data.booking.preferredTimes[0])}`,
-    `Preferred option 2: ${formatPreferredTime(data.booking.preferredTimes[1])}`,
-    `Preferred option 3: ${formatPreferredTime(data.booking.preferredTimes[2])}`,
+    `Preferred option 1: ${formatPreferredOption(data.booking.preferredTimes[0])}`,
+    `Preferred option 2: ${formatPreferredOption(data.booking.preferredTimes[1])}`,
+    `Preferred option 3: ${formatPreferredOption(data.booking.preferredTimes[2])}`,
     '',
     `First responder / military: ${data.booking.firstResponder ? 'Yes' : 'No'}`,
     `Total: ${totalLine}`,

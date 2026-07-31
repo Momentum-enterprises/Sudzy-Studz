@@ -719,7 +719,7 @@ tailwind.config = {
               <section class="form-section">
                 <div class="section-heading">Scheduling</div>
                 <div class="mt-4">
-                  <label class="field-label" for="preferredTime1">Preferred date and time (pick 3 options that work for you)</label>
+                  <label class="field-label" for="preferredTime1">Preferred date and time (pick up to 3 options that work for you)</label>
                   <div class="field-grid mt-3">
                     <div>
                       <input class="field-input" id="preferredTime1" name="preferredTime1" type="datetime-local" required />
@@ -727,12 +727,12 @@ tailwind.config = {
                       <div class="field-error" data-error-for="preferredTime1"></div>
                     </div>
                     <div>
-                      <input class="field-input" id="preferredTime2" name="preferredTime2" type="datetime-local" required />
+                      <input class="field-input" id="preferredTime2" name="preferredTime2" type="datetime-local" />
                       <div class="field-help">Option 2</div>
                       <div class="field-error" data-error-for="preferredTime2"></div>
                     </div>
                     <div>
-                      <input class="field-input" id="preferredTime3" name="preferredTime3" type="datetime-local" required />
+                      <input class="field-input" id="preferredTime3" name="preferredTime3" type="datetime-local" />
                       <div class="field-help">Option 3</div>
                       <div class="field-error" data-error-for="preferredTime3"></div>
                     </div>
@@ -1136,11 +1136,15 @@ tailwind.config = {
         break;
       }
       case 'preferredTime1':
-      case 'preferredTime2':
-      case 'preferredTime3': {
         const value = getValue(name);
         invalid = !value;
-        message = invalid ? 'Please enter a preferred date and time option.' : '';
+        message = invalid ? 'Please enter at least one preferred date and time.' : '';
+        break;
+      }
+      case 'preferredTime2':
+      case 'preferredTime3': {
+        invalid = false;
+        message = '';
         break;
       }
       default:
