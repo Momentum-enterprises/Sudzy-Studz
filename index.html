@@ -808,8 +808,10 @@ tailwind.config = {
 
       </div>
 
-      <!-- RIGHT: Donation tracker card -->
-      <div class="lg:col-span-5 reveal" style="transition-delay:.15s">
+      <!-- RIGHT: Donation tracker card + Activity card -->
+      <div class="lg:col-span-5 reveal flex flex-col gap-5" style="transition-delay:.15s">
+
+        <!-- Card 1: Donation Impact -->
         <div class="glass rounded-[26px] p-6 md:p-7 relative">
           <div class="flex items-center justify-between">
             <span class="eyebrow">Donation impact</span>
@@ -840,15 +842,20 @@ tailwind.config = {
             </span>
             <span class="text-teal font-medium" id="percentLabel">0%</span>
           </div>
+        </div>
 
-          <div class="mt-6 pt-5 border-t border-ink/10 grid grid-cols-2 gap-6 items-center">
+        <!-- Card 2: In the Field -->
+        <div class="glass rounded-[26px] p-6 md:p-7 relative">
+          <span class="eyebrow">In the field</span>
+          <div class="mt-5 grid grid-cols-2 gap-6 items-start">
             <div class="text-center">
-              <div class="stat-num text-[1.4rem] text-ink" data-count="97">0</div>
-              <div class="text-[11px] tracking-wider uppercase text-ink/55 mt-2.5 leading-relaxed">Vehicles detailed</div>
+              <div class="stat-num text-[2.6rem] md:text-[3rem] text-ink" data-count="97">0</div>
+              <div class="text-[11px] tracking-wider uppercase text-ink/55 mt-2.5 leading-relaxed">Vehicles<br>Detailed</div>
             </div>
-            <div class="text-center">
-              <div class="stat-num text-[1.4rem] text-ink" data-count="2">0</div>
-              <div class="text-[11px] tracking-wider uppercase text-ink/55 mt-2.5 leading-relaxed">Firefighter<br>Vehicles detailed</div>
+            <div class="relative text-center">
+              <div class="absolute left-0 inset-y-0 w-px bg-ink/10"></div>
+              <div class="stat-num text-[2.6rem] md:text-[3rem] text-ink" data-count="2">0</div>
+              <div class="text-[11px] tracking-wider uppercase text-ink/55 mt-2.5 leading-relaxed">First Responder<br>&amp; Military<br>Vehicles Detailed</div>
             </div>
           </div>
         </div>
