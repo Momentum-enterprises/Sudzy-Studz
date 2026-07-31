@@ -379,7 +379,11 @@ tailwind.config = {
         </div>
       </div>
       <div class="embed-shell px-5 md:px-8">
-        <div style="width:100%;min-height:700px;overflow:scroll" id="my-cal-inline-quick-studz"></div>
+        <div id="cal-loading-qs" class="flex items-center justify-center h-[500px] gap-3 text-ink/40 text-[0.9rem]">
+          <svg class="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-dasharray="31.4" stroke-dashoffset="10"/></svg>
+          Loading calendar…
+        </div>
+        <div style="width:100%;min-height:700px;overflow:scroll" id="my-cal-inline-quick-studz" class="hidden"></div>
       </div>
     </div>
 
@@ -390,6 +394,9 @@ tailwind.config = {
         Change add-ons
       </button>
     </div>
+
+    <script>
+    function proceedToBookQS() {
       const cbs = document.querySelectorAll('.addon-cb:checked');
       const items = [...cbs].map(cb => cb.dataset.name + ' (+$' + cb.dataset.price + ')');
       const notes = items.length > 0 ? 'Add-ons requested: ' + items.join(', ') : '';
@@ -415,6 +422,15 @@ tailwind.config = {
         calLink: 'sudzystudz/quick-studz',
       });
       Cal.ns['quick-studz']('ui', {cssVarsPerTheme:{light:{'cal-brand':'#2196F3'}}, hideEventTypeDetails:true, layout:'month_view'});
+      Cal.ns['quick-studz']('on', {action:'linkReady', callback: function() {
+        document.getElementById('cal-loading-qs').style.display = 'none';
+        document.getElementById('my-cal-inline-quick-studz').classList.remove('hidden');
+      }});
+      // Fallback: show after 4s if linkReady doesn't fire
+      setTimeout(function() {
+        document.getElementById('cal-loading-qs').style.display = 'none';
+        document.getElementById('my-cal-inline-quick-studz').classList.remove('hidden');
+      }, 4000);
 
       calSection.scrollIntoView({behavior:'smooth', block:'start'});
     }

@@ -266,7 +266,11 @@ tailwind.config = {
     </div>
     <div class="max-w-[1240px] mx-auto px-5 md:px-8">
       <div class="calendar-shell glass p-3 md:p-4" style="min-height:700px">
-        <div id="my-cal-inline-showroomdetail" class="w-full h-full overflow-hidden" style="min-height:680px"></div>
+        <div id="cal-loading-sr" class="flex items-center justify-center h-[680px] gap-3 text-ink/40 text-[0.9rem]">
+          <svg class="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-dasharray="31.4" stroke-dashoffset="10"/></svg>
+          Loading calendar…
+        </div>
+        <div id="my-cal-inline-showroomdetail" class="w-full h-full overflow-hidden hidden" style="min-height:680px"></div>
       </div>
       <p class="mission-line mt-3 text-center text-sm text-ink/65">100% of profits go to Pro Kids, First Tee - San Diego.</p>
     </div>
@@ -309,6 +313,14 @@ tailwind.config = {
       hideEventTypeDetails: true,
       layout: 'month_view',
     });
+    Cal.ns.showroomdetail('on', {action:'linkReady', callback: function() {
+      document.getElementById('cal-loading-sr').style.display = 'none';
+      document.getElementById('my-cal-inline-showroomdetail').classList.remove('hidden');
+    }});
+    setTimeout(function() {
+      document.getElementById('cal-loading-sr').style.display = 'none';
+      document.getElementById('my-cal-inline-showroomdetail').classList.remove('hidden');
+    }, 4000);
     calSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
