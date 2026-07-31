@@ -210,7 +210,30 @@ tailwind.config = {
     border-radius: 24px;
     border: 1px solid rgba(11,40,48,.08);
     background: rgba(255,255,255,.78);
-    box-shadow: 0 18px 48px -32px rgba(11,40,48,.22);
+    box-shadow: 0 22px 58px -34px rgba(11,40,48,.24);
+  }
+
+  .form-section {
+    position: relative;
+    padding-top: 1.6rem;
+  }
+
+  .form-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(11,40,48,.09), rgba(11,40,48,.02));
+  }
+
+  .form-section:first-child {
+    padding-top: 0;
+  }
+
+  .form-section:first-child::before {
+    display: none;
   }
 
   .section-heading {
@@ -393,7 +416,28 @@ tailwind.config = {
     border-radius: 20px;
     border: 1px solid rgba(31,157,98,.18);
     background: linear-gradient(135deg, rgba(31,157,98,.12), rgba(255,255,255,.92) 58%);
-    padding: 1rem 1rem 1rem 1rem;
+    padding: 1.15rem 1.1rem;
+    box-shadow: 0 16px 34px -24px rgba(31,157,98,.32);
+  }
+
+  .summary-breakdown {
+    margin-top: .9rem;
+    padding-top: .8rem;
+    border-top: 1px solid rgba(11,40,48,.08);
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem .8rem;
+    font-size: .82rem;
+    color: rgba(11,40,48,.58);
+  }
+
+  .summary-pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    border: 1px solid rgba(11,40,48,.08);
+    background: rgba(255,255,255,.62);
+    padding: .35rem .65rem;
   }
 
   .error-banner {
@@ -507,7 +551,7 @@ tailwind.config = {
             <div id="formErrorBanner" class="error-banner hidden mb-6" role="alert"></div>
 
             <div class="space-y-8">
-              <section>
+              <section class="form-section">
                 <div class="section-heading">Customer info</div>
                 <div class="field-grid two-col mt-4">
                   <div>
@@ -534,7 +578,7 @@ tailwind.config = {
                 </div>
               </section>
 
-              <section>
+              <section class="form-section">
                 <div class="section-heading">Vehicle info</div>
                 <div class="field-grid two-col mt-4">
                   <div>
@@ -569,7 +613,7 @@ tailwind.config = {
                 </div>
               </section>
 
-              <section>
+              <section class="form-section">
                 <div class="section-heading">Package selection</div>
                 <div class="choice-grid packages mt-4">
                   <label>
@@ -606,7 +650,7 @@ tailwind.config = {
                 <div class="field-error" data-error-for="package"></div>
               </section>
 
-              <section>
+              <section class="form-section">
                 <div class="section-heading">Add-ons</div>
                 <div class="addon-grid mt-4">
                   <label>
@@ -654,7 +698,7 @@ tailwind.config = {
                 </div>
               </section>
 
-              <section>
+              <section class="form-section">
                 <div class="section-heading">Scheduling</div>
                 <div class="mt-4">
                   <label class="field-label" for="preferredTime1">Preferred date and time (pick 3 options that work for you)</label>
@@ -678,7 +722,7 @@ tailwind.config = {
                 </div>
               </section>
 
-              <section>
+              <section class="form-section">
                 <div class="section-heading">Notes</div>
                 <div class="mt-4">
                   <label class="field-label" for="notes">Anything else we should know?</label>
@@ -687,7 +731,7 @@ tailwind.config = {
                 </div>
               </section>
 
-              <section>
+              <section class="form-section">
                 <div class="section-heading">Appreciation detail</div>
                 <div class="mt-4">
                   <label>
@@ -708,6 +752,7 @@ tailwind.config = {
                     <div class="section-heading text-success/70">Total price</div>
                     <div id="totalPrice" class="summary-total mt-2">$0.00</div>
                     <div id="totalNote" class="summary-note mt-2">Select your vehicle type and package to see your total.</div>
+                    <div id="summaryBreakdown" class="summary-breakdown hidden"></div>
                   </div>
                   <div class="text-sm text-ink/58">Updates in real time</div>
                 </div>
@@ -837,6 +882,7 @@ tailwind.config = {
   const submitSpinner = document.getElementById('submitSpinner');
   const totalPriceEl = document.getElementById('totalPrice');
   const totalNoteEl = document.getElementById('totalNote');
+  const summaryBreakdownEl = document.getElementById('summaryBreakdown');
   const formErrorBanner = document.getElementById('formErrorBanner');
   const successHeadline = document.getElementById('successHeadline');
   const successBody = document.getElementById('successBody');
@@ -891,10 +937,17 @@ tailwind.config = {
 
   function updateTotal() {
     const summary = calculateSummary();
+    const breakdownPills = [];
+
     if (summary.firstResponder) {
       totalPriceEl.textContent = '$0.00';
       totalNoteEl.className = 'summary-special mt-2';
       totalNoteEl.textContent = '$0.00 - First responder / military appreciation detail';
+      if (summary.selectedPackage) breakdownPills.push(`<span class="summary-pill">${PACKAGE_LABELS[summary.selectedPackage]}</span>`);
+      if (summary.vehicleType) breakdownPills.push(`<span class="summary-pill">${VEHICLE_LABELS[summary.vehicleType]}</span>`);
+      breakdownPills.push('<span class="summary-pill">Appreciation detail applied</span>');
+      summaryBreakdownEl.innerHTML = breakdownPills.join('');
+      summaryBreakdownEl.classList.toggle('hidden', !breakdownPills.length);
       return;
     }
 
@@ -903,11 +956,28 @@ tailwind.config = {
 
     if (!summary.vehicleType || !summary.selectedPackage) {
       totalNoteEl.textContent = 'Select your vehicle type and package to see your total.';
+      summaryBreakdownEl.innerHTML = '';
+      summaryBreakdownEl.classList.add('hidden');
       return;
     }
 
     const addOnText = summary.addOns.length ? `${summary.addOns.length} add-on${summary.addOns.length === 1 ? '' : 's'} selected` : 'No add-ons selected';
     totalNoteEl.textContent = `${PACKAGE_LABELS[summary.selectedPackage]} for your ${VEHICLE_LABELS[summary.vehicleType]}. ${addOnText}.`;
+    breakdownPills.push(`<span class="summary-pill">Base ${fmtMoney(summary.basePrice)}</span>`);
+    if (summary.addOnTotal) breakdownPills.push(`<span class="summary-pill">Add-ons ${fmtMoney(summary.addOnTotal)}</span>`);
+    if (!summary.addOnTotal) breakdownPills.push('<span class="summary-pill">No add-ons</span>');
+    summaryBreakdownEl.innerHTML = breakdownPills.join('');
+    summaryBreakdownEl.classList.remove('hidden');
+  }
+
+  function applyPreselectionFromQuery() {
+    const params = new URLSearchParams(window.location.search);
+    const requestedPackage = params.get('package');
+    if (!requestedPackage || !PACKAGE_LABELS[requestedPackage]) return;
+    const target = form.querySelector(`input[name="package"][value="${requestedPackage}"]`);
+    if (!target) return;
+    target.checked = true;
+    touched.add('package');
   }
 
   function validatePhone(value) {
@@ -1121,6 +1191,7 @@ tailwind.config = {
     }
   });
 
+  applyPreselectionFromQuery();
   updatePackagePrices();
   updateTotal();
   validateForm(false);
