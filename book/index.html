@@ -459,6 +459,57 @@ tailwind.config = {
     padding: .35rem .65rem;
   }
 
+  .availability-shell {
+    border: 1px solid rgba(11,40,48,.1);
+    border-radius: 16px;
+    padding: .95rem;
+    background: rgba(255,255,255,.84);
+  }
+
+  .availability-date-grid,
+  .availability-time-grid {
+    display: grid;
+    gap: .55rem;
+  }
+
+  .availability-date-grid {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    margin-top: .75rem;
+  }
+
+  .availability-time-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    margin-top: .75rem;
+  }
+
+  .availability-chip {
+    border-radius: 12px;
+    border: 1px solid rgba(11,40,48,.16);
+    background: #fff;
+    color: var(--deep);
+    font-size: .92rem;
+    font-weight: 500;
+    padding: .58rem .62rem;
+    text-align: center;
+    transition: transform .2s var(--ease-spring), border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+  }
+
+  .availability-chip:hover {
+    transform: translateY(-1px);
+    border-color: rgba(12,159,228,.35);
+  }
+
+  .availability-chip.is-active {
+    border-color: rgba(12,159,228,.48);
+    background: linear-gradient(135deg, rgba(12,159,228,.16), rgba(255,255,255,.96) 62%);
+    box-shadow: 0 12px 24px -18px rgba(12,159,228,.55);
+  }
+
+  .availability-status {
+    font-size: .9rem;
+    color: rgba(11,40,48,.62);
+  }
+
   .error-banner {
     border-radius: 18px;
     border: 1px solid rgba(190,75,108,.18);
@@ -719,24 +770,21 @@ tailwind.config = {
               <section class="form-section">
                 <div class="section-heading">Scheduling</div>
                 <div class="mt-4">
-                  <label class="field-label" for="preferredTime1">Preferred date and time (pick up to 3 options that work for you)</label>
-                  <div class="field-grid mt-3">
-                    <div>
-                      <input class="field-input" id="preferredTime1" name="preferredTime1" type="datetime-local" required />
-                      <div class="field-help">Option 1</div>
-                      <div class="field-error" data-error-for="preferredTime1"></div>
+                  <label class="field-label" for="preferredTime1">Choose an available day and time</label>
+                  <div class="availability-shell mt-3">
+                    <div class="flex items-center justify-between gap-3">
+                      <div id="availabilityMeta" class="availability-status">Loading available time slots...</div>
+                      <button id="refreshAvailability" type="button" class="text-[0.82rem] font-medium text-teal hover:text-deep transition-colors">Refresh</button>
                     </div>
-                    <div>
-                      <input class="field-input" id="preferredTime2" name="preferredTime2" type="datetime-local" />
-                      <div class="field-help">Option 2</div>
-                      <div class="field-error" data-error-for="preferredTime2"></div>
-                    </div>
-                    <div>
-                      <input class="field-input" id="preferredTime3" name="preferredTime3" type="datetime-local" />
-                      <div class="field-help">Option 3</div>
-                      <div class="field-error" data-error-for="preferredTime3"></div>
-                    </div>
+                    <div id="availabilityStatus" class="availability-status mt-2">Fetching calendar availability...</div>
+                    <div id="availabilityDates" class="availability-date-grid"></div>
+                    <div id="availabilityTimes" class="availability-time-grid"></div>
                   </div>
+                  <input id="preferredTime1" name="preferredTime1" type="hidden" required />
+                  <input id="preferredTime2" name="preferredTime2" type="hidden" />
+                  <input id="preferredTime3" name="preferredTime3" type="hidden" />
+                  <div id="selectedSlotLabel" class="field-help mt-2">No time selected yet.</div>
+                  <div class="field-error" data-error-for="preferredTime1"></div>
                 </div>
               </section>
 
@@ -914,7 +962,20 @@ tailwind.config = {
   const formErrorBanner = document.getElementById('formErrorBanner');
   const successHeadline = document.getElementById('successHeadline');
   const successBody = document.getElementById('successBody');
+  const availabilityMetaEl = document.getElementById('availabilityMeta');
+  const availabilityStatusEl = document.getElementById('availabilityStatus');
+  const availabilityDatesEl = document.getElementById('availabilityDates');
+  const availabilityTimesEl = document.getElementById('availabilityTimes');
+  const selectedSlotLabelEl = document.getElementById('selectedSlotLabel');
+  const refreshAvailabilityBtn = document.getElementById('refreshAvailability');
   const touched = new Set();
+
+  const availabilityState = {
+    timeZone: 'America/Los_Angeles',
+    dates: [],
+    selectedDate: '',
+    selectedStartIso: '',
+  };
 
   const fmtMoney = (value) => new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -936,6 +997,119 @@ tailwind.config = {
   const getSelectedAddOns = () => Array.from(form.querySelectorAll('input[name="addOns"]:checked')).map((input) => input.value);
   const getErrorEl = (name) => form.querySelector(`[data-error-for="${name}"]`);
   const getIncludedAddOnSet = (packageKey) => new Set(PACKAGE_INCLUDED_ADD_ONS[packageKey] || []);
+
+  function toDateTimeLocalInTimeZone(isoValue, timeZone) {
+    const date = new Date(isoValue);
+    if (Number.isNaN(date.getTime())) return '';
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23',
+    }).formatToParts(date);
+    const map = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    return `${map.year}-${map.month}-${map.day}T${map.hour}:${map.minute}`;
+  }
+
+  function setSelectedSlot(startIso, labelText) {
+    availabilityState.selectedStartIso = startIso;
+    form.elements.preferredTime1.value = toDateTimeLocalInTimeZone(startIso, availabilityState.timeZone);
+    form.elements.preferredTime2.value = '';
+    form.elements.preferredTime3.value = '';
+    selectedSlotLabelEl.textContent = `Selected: ${labelText}`;
+    touched.add('preferredTime1');
+    validateField('preferredTime1', true);
+    submitButton.disabled = !validateForm(false) || submitButton.dataset.loading === 'true';
+  }
+
+  function renderAvailabilityTimes() {
+    availabilityTimesEl.innerHTML = '';
+    const selectedDate = availabilityState.dates.find((item) => item.date === availabilityState.selectedDate);
+    if (!selectedDate) {
+      availabilityStatusEl.textContent = 'Pick a day to see available times.';
+      return;
+    }
+
+    availabilityStatusEl.textContent = `${selectedDate.slots.length} open time slots on ${selectedDate.label}.`;
+
+    selectedDate.slots.forEach((slot) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `availability-chip${availabilityState.selectedStartIso === slot.start ? ' is-active' : ''}`;
+      button.textContent = slot.label;
+      button.addEventListener('click', () => {
+        setSelectedSlot(slot.start, `${selectedDate.label} at ${slot.label}`);
+        renderAvailabilityTimes();
+      });
+      availabilityTimesEl.appendChild(button);
+    });
+  }
+
+  function renderAvailabilityDates() {
+    availabilityDatesEl.innerHTML = '';
+    availabilityTimesEl.innerHTML = '';
+
+    if (!availabilityState.dates.length) {
+      availabilityStatusEl.textContent = 'No availability found in the next two weeks. Please refresh or contact us.';
+      availabilityMetaEl.textContent = 'No open slots right now.';
+      return;
+    }
+
+    if (!availabilityState.selectedDate) {
+      availabilityState.selectedDate = availabilityState.dates[0].date;
+    }
+
+    availabilityState.dates.forEach((day) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `availability-chip${availabilityState.selectedDate === day.date ? ' is-active' : ''}`;
+      button.textContent = day.label;
+      button.addEventListener('click', () => {
+        availabilityState.selectedDate = day.date;
+        renderAvailabilityDates();
+      });
+      availabilityDatesEl.appendChild(button);
+    });
+
+    renderAvailabilityTimes();
+  }
+
+  async function loadAvailability() {
+    availabilityMetaEl.textContent = 'Loading available time slots...';
+    availabilityStatusEl.textContent = 'Fetching calendar availability...';
+    refreshAvailabilityBtn.disabled = true;
+
+    try {
+      const response = await fetch('/api/availability?days=21');
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data?.ok) {
+        throw new Error(data.error || 'Unable to load calendar availability.');
+      }
+
+      availabilityState.timeZone = data.timeZone || 'America/Los_Angeles';
+      availabilityState.dates = Array.isArray(data.dates) ? data.dates : [];
+      availabilityState.selectedDate = '';
+      availabilityState.selectedStartIso = '';
+      form.elements.preferredTime1.value = '';
+      selectedSlotLabelEl.textContent = 'No time selected yet.';
+      availabilityMetaEl.textContent = `Showing open slots (${availabilityState.timeZone})`;
+      renderAvailabilityDates();
+    } catch (error) {
+      availabilityState.dates = [];
+      availabilityState.selectedDate = '';
+      availabilityState.selectedStartIso = '';
+      availabilityDatesEl.innerHTML = '';
+      availabilityTimesEl.innerHTML = '';
+      availabilityMetaEl.textContent = 'Calendar unavailable';
+      availabilityStatusEl.textContent = error.message || 'Unable to load availability.';
+    } finally {
+      refreshAvailabilityBtn.disabled = false;
+      submitButton.disabled = !validateForm(false) || submitButton.dataset.loading === 'true';
+    }
+  }
 
   function updatePackagePrices() {
     const vehicleType = getCheckedValue('vehicleType') || 'sedan';
@@ -1047,20 +1221,6 @@ tailwind.config = {
     if (!target) return;
     target.checked = true;
     touched.add('package');
-  }
-
-  function setDateTimeMinimums() {
-    const now = new Date();
-    const minutes = Math.ceil(now.getMinutes() / 5) * 5;
-    now.setMinutes(minutes);
-    now.setSeconds(0, 0);
-    const minValue = now.toISOString().slice(0, 16);
-    ['preferredTime1', 'preferredTime2', 'preferredTime3'].forEach((name) => {
-      const input = form.elements[name];
-      if (input && input.type === 'datetime-local') {
-        input.min = minValue;
-      }
-    });
   }
 
   function validatePhone(value) {
@@ -1283,10 +1443,14 @@ tailwind.config = {
     }
   });
 
+  refreshAvailabilityBtn.addEventListener('click', () => {
+    loadAvailability();
+  });
+
   applyPreselectionFromQuery();
-  setDateTimeMinimums();
   updatePackagePrices();
   syncIncludedAddOns();
+  loadAvailability();
   updateTotal();
   validateForm(false);
 </script>
