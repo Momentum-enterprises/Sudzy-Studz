@@ -1,3 +1,5 @@
+import crypto from 'node:crypto';
+
 const PACKAGE_LABELS = {
   quick: 'Quick Studz',
   full: 'Full Studz',
@@ -26,8 +28,18 @@ const ADD_ONS = {
   'odor-treatment': { label: 'Odor Treatment', price: 25 },
 };
 
+const PACKAGE_INCLUDED_ADD_ONS = {
+  quick: [],
+  full: [],
+  showroom: ['steam-clean-interior', 'pet-hair-removal', 'carpet-shampoo'],
+};
+
 const BOOKING_TO_EMAIL = process.env.BOOKING_TO_EMAIL || 'contact@sudzystudz.com';
 const BOOKING_REPLY_TO = 'contact@sudzystudz.com';
+const BOOKING_TIMEZONE = process.env.BOOKING_TIMEZONE || 'America/Los_Angeles';
+const GOOGLE_CALENDAR_ID = process.env.GOOGLE_CALENDAR_ID;
+const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+const GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY;
 
 function formatMoney(value) {
   return new Intl.NumberFormat('en-US', {
@@ -40,6 +52,14 @@ function formatMoney(value) {
 
 function normalizeString(value) {
   return typeof value === 'string' ? value.trim() : '';
+}
+
+function normalizeMultilineSecret(value) {
+  return normalizeString(value).replace(/\\n/g, '\n');
+}
+
+function getIncludedAddOnSet(packageKey) {
+  return new Set(PACKAGE_INCLUDED_ADD_ONS[packageKey] || []);
 }
 
 function isValidEmail(value) {
@@ -94,10 +114,14 @@ function validatePayload(payload) {
     errors.push('Three preferred date and time options are required.');
   }
 
+  const includedSet = getIncludedAddOnSet(normalized.booking.package);
+  const includedAddOns = normalized.booking.addOns.filter((key) => includedSet.has(key));
+  const paidAddOns = normalized.booking.addOns.filter((key) => !includedSet.has(key));
+
   const basePrice = normalized.vehicle.type && normalized.booking.package
     ? PRICES[normalized.booking.package][normalized.vehicle.type]
     : 0;
-  const addOnTotal = normalized.booking.addOns.reduce((sum, key) => sum + ADD_ONS[key].price, 0);
+  const addOnTotal = paidAddOns.reduce((sum, key) => sum + ADD_ONS[key].price, 0);
   const total = normalized.booking.firstResponder ? 0 : basePrice + addOnTotal;
 
   return {
@@ -109,6 +133,8 @@ function validatePayload(payload) {
         addOnTotal,
         total,
       },
+      includedAddOns,
+      paidAddOns,
     },
   };
 }
@@ -116,6 +142,28 @@ function validatePayload(payload) {
 function buildAddOnLines(addOns) {
   if (!addOns.length) return 'None';
   return addOns.map((key) => `${ADD_ONS[key].label} (${formatMoney(ADD_ONS[key].price)})`).join(', ');
+}
+
+function buildIncludedAddOnLines(addOns) {
+  if (!addOns.length) return 'None';
+  return addOns.map((key) => ADD_ONS[key].label).join(', ');
+}
+
+function formatPreferredTime(value) {
+  const normalized = normalizeString(value);
+  const match = normalized.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/);
+  if (!match) return normalized;
+
+  const date = new Date(`${normalized}:00`);
+  if (Number.isNaN(date.getTime())) return normalized;
+
+  return date.toLocaleString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+  });
 }
 
 function buildAdminEmail(data) {
@@ -143,12 +191,13 @@ function buildAdminEmail(data) {
       packageLine,
       '',
       'ADD-ONS',
-      buildAddOnLines(data.booking.addOns),
+      `Paid: ${buildAddOnLines(data.paidAddOns)}`,
+      `Included: ${buildIncludedAddOnLines(data.includedAddOns)}`,
       '',
       'PREFERRED TIMES',
-      `Option 1: ${data.booking.preferredTimes[0]}`,
-      `Option 2: ${data.booking.preferredTimes[1]}`,
-      `Option 3: ${data.booking.preferredTimes[2]}`,
+      `Option 1: ${formatPreferredTime(data.booking.preferredTimes[0])}`,
+      `Option 2: ${formatPreferredTime(data.booking.preferredTimes[1])}`,
+      `Option 3: ${formatPreferredTime(data.booking.preferredTimes[2])}`,
       '',
       'NOTES',
       data.booking.notes || 'None',
@@ -164,7 +213,8 @@ function buildCustomerEmail(data) {
   const totalLine = data.booking.firstResponder
     ? '$0.00 - First responder / military appreciation detail'
     : formatMoney(data.pricing.total);
-  const addOnLine = data.booking.addOns.length ? buildAddOnLines(data.booking.addOns) : 'None';
+  const paidAddOnLine = data.paidAddOns.length ? buildAddOnLines(data.paidAddOns) : 'None';
+  const includedAddOnLine = data.includedAddOns.length ? buildIncludedAddOnLines(data.includedAddOns) : 'None';
 
   return {
     subject: 'We got your booking request - Sudzy Studz',
@@ -175,8 +225,9 @@ function buildCustomerEmail(data) {
       '',
       'Here is what you booked:',
       `- ${PACKAGE_LABELS[data.booking.package]} for your ${VEHICLE_LABELS[data.vehicle.type]}`,
-      `- Add-ons: ${addOnLine}`,
-      `- Preferred times: ${data.booking.preferredTimes.join('; ')}`,
+      `- Paid add-ons: ${paidAddOnLine}`,
+      `- Included add-ons: ${includedAddOnLine}`,
+      `- Preferred times: ${data.booking.preferredTimes.map(formatPreferredTime).join('; ')}`,
       `- Total: ${totalLine}`,
       '',
       'If anything needs to change, just reply to this email.',
@@ -185,6 +236,169 @@ function buildCustomerEmail(data) {
       'The Sudzy Studz Team',
       'contact@sudzystudz.com',
     ].join('\n'),
+  };
+}
+
+function hasCalendarConfig() {
+  return Boolean(
+    GOOGLE_CALENDAR_ID
+    && GOOGLE_SERVICE_ACCOUNT_EMAIL
+    && normalizeMultilineSecret(GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY),
+  );
+}
+
+function base64UrlEncode(input) {
+  return Buffer.from(input)
+    .toString('base64')
+    .replace(/=/g, '')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_');
+}
+
+function createServiceAccountJwt() {
+  const privateKey = normalizeMultilineSecret(GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY);
+  const now = Math.floor(Date.now() / 1000);
+  const header = { alg: 'RS256', typ: 'JWT' };
+  const payload = {
+    iss: GOOGLE_SERVICE_ACCOUNT_EMAIL,
+    scope: 'https://www.googleapis.com/auth/calendar.events',
+    aud: 'https://oauth2.googleapis.com/token',
+    iat: now,
+    exp: now + 3600,
+  };
+
+  const encodedHeader = base64UrlEncode(JSON.stringify(header));
+  const encodedPayload = base64UrlEncode(JSON.stringify(payload));
+  const unsignedToken = `${encodedHeader}.${encodedPayload}`;
+
+  const signer = crypto.createSign('RSA-SHA256');
+  signer.update(unsignedToken);
+  signer.end();
+  const signature = signer.sign(privateKey);
+
+  return `${unsignedToken}.${base64UrlEncode(signature)}`;
+}
+
+async function getGoogleAccessToken() {
+  const assertion = createServiceAccountJwt();
+  const body = new URLSearchParams({
+    grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+    assertion,
+  });
+
+  const response = await fetch('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body,
+  });
+
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok || !result.access_token) {
+    throw new Error(result.error_description || result.error || 'Failed to get Google access token.');
+  }
+
+  return result.access_token;
+}
+
+function addMinutesToLocalDateTime(localDateTime, minutesToAdd) {
+  const parsed = localDateTime.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/);
+  if (!parsed) return null;
+  const [, year, month, day, hour, minute] = parsed;
+  const date = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day), Number(hour), Number(minute), 0));
+  date.setUTCMinutes(date.getUTCMinutes() + minutesToAdd);
+
+  const two = (n) => String(n).padStart(2, '0');
+  return `${date.getUTCFullYear()}-${two(date.getUTCMonth() + 1)}-${two(date.getUTCDate())}T${two(date.getUTCHours())}:${two(date.getUTCMinutes())}:00`;
+}
+
+function buildCalendarDescription(data) {
+  const totalLine = data.booking.firstResponder
+    ? '$0.00 - First responder / military appreciation detail'
+    : formatMoney(data.pricing.total);
+
+  return [
+    'New booking request from Sudzy Studz website',
+    '',
+    'Status: Pending confirmation',
+    '',
+    `Customer: ${data.customer.fullName}`,
+    `Phone: ${data.customer.phone}`,
+    `Email: ${data.customer.email}`,
+    `Address: ${data.customer.address}`,
+    '',
+    `Vehicle: ${VEHICLE_LABELS[data.vehicle.type]} - ${data.vehicle.makeModel}`,
+    `Package: ${PACKAGE_LABELS[data.booking.package]} (${formatMoney(data.pricing.basePrice)})`,
+    `Paid add-ons: ${buildAddOnLines(data.paidAddOns)}`,
+    `Included add-ons: ${buildIncludedAddOnLines(data.includedAddOns)}`,
+    '',
+    `Preferred option 1: ${formatPreferredTime(data.booking.preferredTimes[0])}`,
+    `Preferred option 2: ${formatPreferredTime(data.booking.preferredTimes[1])}`,
+    `Preferred option 3: ${formatPreferredTime(data.booking.preferredTimes[2])}`,
+    '',
+    `First responder / military: ${data.booking.firstResponder ? 'Yes' : 'No'}`,
+    `Total: ${totalLine}`,
+    '',
+    `Notes: ${data.booking.notes || 'None'}`,
+  ].join('\n');
+}
+
+async function createCalendarEvent(data) {
+  if (!hasCalendarConfig()) {
+    return { created: false, skipped: true, reason: 'calendar-not-configured' };
+  }
+
+  const firstPreferredTime = data.booking.preferredTimes[0];
+  const startDateTime = `${firstPreferredTime}:00`;
+  const endDateTime = addMinutesToLocalDateTime(firstPreferredTime, 120);
+  if (!endDateTime) {
+    return { created: false, skipped: true, reason: 'invalid-preferred-time' };
+  }
+
+  const accessToken = await getGoogleAccessToken();
+  const response = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(GOOGLE_CALENDAR_ID)}/events`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      summary: `Booking request - ${data.customer.fullName}`,
+      location: data.customer.address,
+      description: buildCalendarDescription(data),
+      start: {
+        dateTime: startDateTime,
+        timeZone: BOOKING_TIMEZONE,
+      },
+      end: {
+        dateTime: endDateTime,
+        timeZone: BOOKING_TIMEZONE,
+      },
+      attendees: [
+        { email: data.customer.email },
+      ],
+      reminders: {
+        useDefault: true,
+      },
+      extendedProperties: {
+        private: {
+          source: 'sudzy-studz-booking-form',
+          status: 'pending-confirmation',
+        },
+      },
+    }),
+  });
+
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(result?.error?.message || 'Failed to create Google Calendar event.');
+  }
+
+  return {
+    created: true,
+    eventId: result.id,
+    eventLink: result.htmlLink,
   };
 }
 
@@ -256,11 +470,24 @@ export default async function handler(req, res) {
       replyTo: BOOKING_REPLY_TO,
     });
 
+    let calendar = { created: false, skipped: true, reason: 'calendar-not-configured' };
+    try {
+      calendar = await createCalendarEvent(data);
+    } catch (calendarError) {
+      console.error('Calendar event creation failed:', calendarError);
+      calendar = {
+        created: false,
+        skipped: false,
+        reason: calendarError instanceof Error ? calendarError.message : 'calendar-error',
+      };
+    }
+
     return res.status(200).json({
       ok: true,
       name: data.customer.fullName,
       email: data.customer.email,
       phone: data.customer.phone,
+      calendar,
     });
   } catch (error) {
     return res.status(500).json({

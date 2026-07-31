@@ -1193,7 +1193,10 @@ tailwind.config = {
     form.hidden = true;
     successPanel.classList.remove('hidden');
     successHeadline.innerHTML = `Thanks, ${escapeHtml(data.name)}. We got your request.`;
-    successBody.textContent = `We will be in touch at ${data.email} or ${data.phone} within 24 hours to confirm your appointment and answer any questions.`;
+    const calendarNote = data?.calendar?.created
+      ? ' We also added your first preferred option to our Google Calendar as a pending appointment.'
+      : '';
+    successBody.textContent = `We will be in touch at ${data.email} or ${data.phone} within 24 hours to confirm your appointment and answer any questions.${calendarNote}`;
     successPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
