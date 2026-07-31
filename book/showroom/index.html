@@ -258,12 +258,6 @@ tailwind.config = {
 
   <!-- Calendar -->
   <div id="cal-section-sr" class="hidden pb-16">
-    <div class="max-w-[1240px] mx-auto px-5 md:px-8 mb-3">
-      <button onclick="document.getElementById('cal-section-sr').classList.add('hidden');document.getElementById('addon-step-sr').style.display='';window.scrollTo({top:document.getElementById('addon-step-sr').offsetTop-100,behavior:'smooth'})" class="inline-flex items-center gap-2 text-[0.88rem] text-ink/55 hover:text-ink transition-colors">
-        <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M15 10H5m0 0 4-4m-4 4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        Back to add-ons
-      </button>
-    </div>
     <div id="addon-reminder-sr" class="hidden max-w-[1240px] mx-auto px-5 md:px-8 mb-4">
       <div class="rounded-[16px] bg-[#0B2830] px-5 py-3.5 flex items-center gap-3 text-[0.9rem] text-white">
         <svg width="16" height="16" viewBox="0 0 20 20" fill="none" class="shrink-0"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 4v4m0 4h.01" stroke="#2CC6F0" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -287,6 +281,7 @@ tailwind.config = {
     document.getElementById('addon-step-sr').style.display = 'none';
     const calSection = document.getElementById('cal-section-sr');
     calSection.classList.remove('hidden');
+    document.getElementById('back-bar-sr').classList.remove('hidden');
     if (items.length > 0) {
       document.getElementById('addon-reminder-sr').classList.remove('hidden');
       document.getElementById('addon-reminder-text-sr').textContent = items.join(', ');
