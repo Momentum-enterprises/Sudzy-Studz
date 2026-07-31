@@ -256,8 +256,16 @@ tailwind.config = {
     </div>
   </div>
 
-  <!-- Calendar (always rendered, scrolled to on Continue) -->
-  <div id="cal-section-sr" class="pb-16">
+  <!-- Fixed back bar -->
+  <div id="back-bar-sr" class="hidden fixed bottom-0 inset-x-0 z-40 flex justify-center pb-5 pointer-events-none">
+    <button onclick="goBackToAddOnsSR()" class="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-[#0B2830] text-white px-6 py-3 text-[0.88rem] font-semibold shadow-[0_8px_32px_-8px_rgba(11,40,48,0.55)] hover:-translate-y-0.5 hover:shadow-[0_14px_36px_-10px_rgba(11,40,48,0.65)] transition">
+      <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M15 10H5m0 0 4-4m-4 4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      Change add-ons
+    </button>
+  </div>
+
+  <!-- Calendar (hidden until add-on step is complete) -->
+  <div id="cal-section-sr" class="pb-16 hidden">
     <div id="addon-reminder-sr" class="hidden max-w-[1240px] mx-auto px-5 md:px-8 mb-4">
       <div class="rounded-[16px] bg-[#0B2830] px-5 py-3.5 flex items-center gap-3 text-[0.9rem] text-white">
         <svg width="16" height="16" viewBox="0 0 20 20" fill="none" class="shrink-0"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 4v4m0 4h.01" stroke="#2CC6F0" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -277,13 +285,21 @@ tailwind.config = {
   function proceedToBookSR() {
     const cbs = document.querySelectorAll('.addon-cb-sr:checked');
     const items = [...cbs].map(cb => cb.dataset.name + ' (+$' + cb.dataset.price + ')');
-    document.getElementById('addon-step-sr').style.display = 'none';
+    document.getElementById('addon-step-sr').classList.add('hidden');
+    document.getElementById('cal-section-sr').classList.remove('hidden');
     document.getElementById('back-bar-sr').classList.remove('hidden');
     if (items.length > 0) {
       document.getElementById('addon-reminder-sr').classList.remove('hidden');
       document.getElementById('addon-reminder-text-sr').textContent = items.join(', ');
     }
-    document.getElementById('cal-section-sr').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.scrollTo({top: document.getElementById('cal-section-sr').offsetTop - 80, behavior: 'smooth'});
+  }
+  
+  function goBackToAddOnsSR() {
+    document.getElementById('addon-step-sr').classList.remove('hidden');
+    document.getElementById('cal-section-sr').classList.add('hidden');
+    document.getElementById('back-bar-sr').classList.add('hidden');
+    window.scrollTo({top: document.getElementById('addon-step-sr').offsetTop - 100, behavior: 'smooth'});
   }
 
   document.querySelectorAll('.addon-cb-sr').forEach(cb => {
