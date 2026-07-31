@@ -15,7 +15,10 @@ export default {
         cream: '#F6F1E7',
         paper: '#FBF8F1',
         coral: '#0C9FE4',
-        sun: '#F2B844'
+        sun: '#F2B844',
+        card: '#171717',
+        'card-foreground': '#ffffff',
+        'muted-foreground': '#a3a3a3'
       }
     }
   },

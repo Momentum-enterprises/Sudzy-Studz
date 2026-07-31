@@ -5,6 +5,13 @@
 :root {
   color-scheme: light;
   font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --gradient-color: #8350e8;
+  --sparkles-color: #8350e8;
+}
+
+.dark {
+  --gradient-color: #8350e8;
+  --sparkles-color: #ffffff;
 }
 
 body {

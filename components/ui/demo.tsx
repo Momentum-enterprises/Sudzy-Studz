@@ -1,10 +1,6 @@
-// This is file with demos of your component
-// Each export is one usecase for your component
+import React from 'react';
+import PricingSection4 from '@/components/ui/pricing-section-4';
 
-import { Component } from "@/components/ui/image-auto-slider";
-
-const DemoOne = () => {
-  return <Component />;
-};
-
-export { DemoOne };
+export default function Page() {
+	return <PricingSection4 />;
+}

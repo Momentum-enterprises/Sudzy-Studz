@@ -364,7 +364,7 @@ tailwind.config = {
     box-shadow: var(--shadow-md);
     isolation: isolate;
   }
-  .portrait img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out-soft); }
+  .portrait img { display: block; width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; transition: transform 1.2s var(--ease-out-soft); }
   .portrait:hover img { transform: scale(1.04); }
   .portrait::after {
     content: ""; position: absolute; inset: 0;
@@ -380,6 +380,7 @@ tailwind.config = {
   }
 
   /* Selection */
+  ::-moz-selection { background: var(--coral); color: #fff; }
   ::selection { background: var(--coral); color: #fff; }
 
   /* Logo image, transparent PNG, just a subtle saturation bump */
@@ -389,6 +390,7 @@ tailwind.config = {
   .marquee {
     display: flex; gap: 3.5rem;
     animation: marquee 40s linear infinite;
+    width: -moz-max-content;
     width: max-content;
   }
   @keyframes marquee {
@@ -597,7 +599,8 @@ tailwind.config = {
   .team-member .portrait img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     border-radius: 18px;
   }
   .team-member figcaption {
@@ -708,7 +711,7 @@ tailwind.config = {
   <div class="max-w-[1240px] mx-auto px-5 md:px-8">
     <div id="navInner" class="mt-3 md:mt-4 flex items-center justify-between rounded-full pl-5 pr-2 py-2 transition-all duration-500">
       <a href="#top" class="flex items-center group">
-        <img src="brand_assets/logo.png" alt="Sudzy Studz" class="logo-img h-14 md:h-16 w-auto transition-transform duration-500 group-hover:scale-[1.03]" />
+        <img src="/assets/logo-BIttpzlB.png" alt="Sudzy Studz" class="logo-img h-14 md:h-16 w-auto transition-transform duration-500 group-hover:scale-[1.03]" />
       </a>
 
       <div class="hidden md:flex items-center gap-7 text-[0.92rem]">
@@ -921,9 +924,7 @@ tailwind.config = {
          radial-gradient(ellipse 55% 45% at 15% 95%, rgba(12,159,228,.25), transparent 60%);"></div>
 
   <div class="max-w-[1240px] mx-auto px-5 md:px-8 py-20 md:py-28 relative">
-
     <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-      <!-- Left: intro -->
       <div class="lg:col-span-4 reveal max-w-[62ch] lg:pr-6 lg:pb-6">
         <span class="eyebrow text-aqua/90">Our story</span>
         <h2 class="headline text-[2.2rem] md:text-[3.4rem] lg:text-[3.8rem] mt-4 text-paper">
@@ -940,11 +941,10 @@ tailwind.config = {
         </p>
       </div>
 
-      <!-- Right: founders in 2x2 grid -->
       <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch team-members-grid">
         <figure class="reveal team-member cofounder flex flex-col h-full px-3 py-4 md:px-5 md:py-6">
           <div class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)]">
-            <img src="assets/brody1.png" alt="Portrait of Brody Glazer" loading="lazy"/>
+            <img src="/assets/brody1-D7ddi-lw.png" alt="Portrait of Brody Glazer" loading="lazy"/>
           </div>
           <figcaption class="mt-4 md:mt-5 text-center md:text-left">
             <a href="https://www.linkedin.com/in/brody-glazer-2b91663b8/" target="_blank" rel="noopener noreferrer" class="team-link" aria-label="View Brody Glazer's LinkedIn profile">
@@ -953,7 +953,7 @@ tailwind.config = {
             </a>
             <div class="team-card__roles mx-auto md:mx-0">
               <span class="cofounder-badge">Co-founder</span>
-              <div class="team-card__role-title text-aqua/90">Head of Operations</div>
+              <div class="team-card__role-title text-aqua/90">Co-President &amp; COO</div>
             </div>
             <div class="team-card__bio">
               <p class="text-base text-paper/80 leading-relaxed">
@@ -965,7 +965,7 @@ tailwind.config = {
 
         <figure class="reveal team-member cofounder flex flex-col h-full px-3 py-4 md:px-5 md:py-6" style="transition-delay:.12s">
           <div class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)]">
-            <img src="assets/james.jpeg" alt="Portrait of James Field" loading="lazy"/>
+            <img src="/assets/james-wAki9KB-.jpeg" alt="Portrait of James Field" loading="lazy"/>
           </div>
           <figcaption class="mt-4 md:mt-5 text-center md:text-left">
             <a href="https://www.linkedin.com/in/james-field-29b334403/" target="_blank" rel="noopener noreferrer" class="team-link" aria-label="View James Field's LinkedIn profile">
@@ -974,7 +974,7 @@ tailwind.config = {
             </a>
             <div class="team-card__roles mx-auto md:mx-0">
               <span class="cofounder-badge">Co-founder</span>
-              <div class="team-card__role-title text-aqua/90">Head of Growth</div>
+              <div class="team-card__role-title text-aqua/90">Co-President &amp; CMO</div>
             </div>
             <div class="team-card__bio">
               <p class="text-base text-paper/80 leading-relaxed">
@@ -986,7 +986,7 @@ tailwind.config = {
 
         <figure class="reveal team-member flex flex-col h-full px-3 py-4 md:px-5 md:py-6" style="transition-delay:.24s">
           <div class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)]">
-            <img src="assets/Owen.JPG" alt="Portrait of Owen Field" loading="lazy"/>
+            <img src="/assets/Owen-BUiQY6r3.JPG" alt="Portrait of Owen Field" loading="lazy"/>
           </div>
           <figcaption class="mt-4 md:mt-5 text-center md:text-left">
             <a href="https://www.linkedin.com/in/owen-field-26192537a/" target="_blank" rel="noopener noreferrer" class="team-link" aria-label="View Owen Field's LinkedIn profile">
@@ -1007,7 +1007,7 @@ tailwind.config = {
 
         <figure class="reveal team-member flex flex-col h-full px-3 py-4 md:px-5 md:py-6" style="transition-delay:.36s">
           <div class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)]">
-            <img src="assets/daniel.png" alt="Portrait of Daniel Rianhard" loading="lazy"/>
+            <img src="/assets/daniel-4r6eHm5A.png" alt="Portrait of Daniel Rianhard" loading="lazy"/>
           </div>
           <figcaption class="mt-4 md:mt-5 text-center md:text-left">
             <a href="https://www.linkedin.com/in/daniel-rianhard-6911a83a8/" target="_blank" rel="noopener noreferrer" class="team-link" aria-label="View Daniel Rianhard's LinkedIn profile">
@@ -1015,8 +1015,8 @@ tailwind.config = {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="team-link__icon" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
             <div class="team-card__roles mx-auto md:mx-0">
-              <span class="team-badge">Sales Manager</span>
-              <div class="team-card__role-title text-aqua/90">Door to Door</div>
+              <span class="team-badge">Chief Technology Officer</span>
+              <div class="team-card__role-title text-aqua/90">Technology &amp; AI Systems</div>
             </div>
             <div class="team-card__bio">
               <p class="text-base text-paper/80 leading-relaxed">
@@ -1030,7 +1030,7 @@ tailwind.config = {
   </div>
 </section>
 
-<section id="prokids" class="bg-cream-soft grain-soft relative">
+  <section id="prokids" class="bg-cream-soft grain-soft relative">
   <!-- subtle ambient gradient focused under the stats card -->
   <div class="absolute inset-0 pointer-events-none opacity-50"
        style="background:
@@ -1144,7 +1144,6 @@ tailwind.config = {
             <p class="text-[0.82rem] tracking-[0.08em] uppercase text-ink/55">Donated on the Pro Kids site?</p>
             <p class="text-[0.8rem] text-ink/55 leading-relaxed mt-2">Email <a href="mailto:contact@sudzystudz.com" class="text-teal font-medium underline decoration-teal/40 underline-offset-2 hover:decoration-teal/70 transition-colors">contact@sudzystudz.com</a> with your donation amount and we will add it to our public total. We only use the amount, not your personal info.</p>
           </div>
-
         </div>
       </div>
 
@@ -1172,7 +1171,7 @@ tailwind.config = {
     <div class="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       <figure class="group relative overflow-hidden rounded-[28px] border border-ink/10 bg-white aspect-[4/5] shadow-[0_16px_38px_-20px_rgba(11,40,48,0.35)]">
         <a href="assets/bmw%20side.jpg" data-work-photo="BMW Exterior" aria-label="Open BMW exterior photo" class="block h-full w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
-          <img src="assets/bmw%20side.jpg" alt="BMW exterior side detail" class="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.05]" />
+          <img src="/assets/bmw%20side-9zt6Xcsw.jpg" alt="BMW exterior side detail" class="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.05]" />
           <div class="pointer-events-none absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
             <figcaption class="text-[0.78rem] tracking-[0.08em] uppercase text-white/90">BMW Exterior</figcaption>
           </div>
@@ -1181,7 +1180,7 @@ tailwind.config = {
 
       <figure class="group relative overflow-hidden rounded-[28px] border border-ink/10 bg-white aspect-[4/5] shadow-[0_16px_38px_-20px_rgba(11,40,48,0.35)]">
         <a href="assets/bmw%20interior.webp" data-work-photo="BMW Interior" aria-label="Open BMW interior photo" class="block h-full w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
-          <img src="assets/bmw%20interior.webp" alt="BMW interior detail" class="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.05]" />
+          <img src="/assets/bmw%20interior-DUYNTmq9.webp" alt="BMW interior detail" class="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.05]" />
           <div class="pointer-events-none absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
             <figcaption class="text-[0.78rem] tracking-[0.08em] uppercase text-white/90">BMW Interior</figcaption>
           </div>
@@ -1190,7 +1189,7 @@ tailwind.config = {
 
       <figure class="group relative overflow-hidden rounded-[28px] border border-ink/10 bg-white aspect-[4/5] shadow-[0_16px_38px_-20px_rgba(11,40,48,0.35)]">
         <a href="assets/lexus%20side.jpeg" data-work-photo="Lexus Exterior" aria-label="Open Lexus exterior photo" class="block h-full w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
-          <img src="assets/lexus%20side.jpeg" alt="Lexus exterior side detail" class="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.05]" />
+          <img src="/assets/lexus%20side-HkP-T1qU.jpeg" alt="Lexus exterior side detail" class="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.05]" />
           <div class="pointer-events-none absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
             <figcaption class="text-[0.78rem] tracking-[0.08em] uppercase text-white/90">Lexus Exterior</figcaption>
           </div>
@@ -1199,7 +1198,7 @@ tailwind.config = {
 
       <figure class="group relative overflow-hidden rounded-[28px] border border-ink/10 bg-white aspect-[4/5] shadow-[0_16px_38px_-20px_rgba(11,40,48,0.35)]">
         <a href="assets/lexus%20interior.jpeg" data-work-photo="Lexus Interior" aria-label="Open Lexus interior photo" class="block h-full w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
-          <img src="assets/lexus%20interior.jpeg" alt="Lexus interior detail" class="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.05]" />
+          <img src="/assets/lexus%20interior-Bj1AbJfO.jpeg" alt="Lexus interior detail" class="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.05]" />
           <div class="pointer-events-none absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
             <figcaption class="text-[0.78rem] tracking-[0.08em] uppercase text-white/90">Lexus Interior</figcaption>
           </div>
@@ -1219,7 +1218,7 @@ tailwind.config = {
     <div class="grid md:grid-cols-12 gap-10">
       <div class="md:col-span-4">
         <a href="#top" class="inline-flex">
-          <img src="brand_assets/logo.png" alt="Sudzy Studz" class="logo-img h-14 w-auto" />
+          <img src="/assets/logo-BIttpzlB.png" alt="Sudzy Studz" class="logo-img h-14 w-auto" />
         </a>
         <p class="mt-5 text-ink/65 text-[0.98rem] max-w-[44ch]">
           A student-founded business in San Diego. Sudzy Studz LLC donates 100% of detailing profits to <span style="white-space: nowrap;">Pro Kids, First Tee – San Diego</span>.
