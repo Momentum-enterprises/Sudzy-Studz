@@ -18,7 +18,7 @@ const PRICES = {
 
 const ADD_ONS = {
   'steam-clean-interior': { label: 'Steam Clean Interior', price: 45 },
-  'wax-protection': { label: 'Wax & Protection', price: 45 },
+  'wax-protection': { label: 'Wax & Protection', price: 99 },
   'pet-hair-removal': { label: 'Pet Hair Removal', price: 45 },
   'carpet-shampoo': { label: 'Carpet Shampoo', price: 40 },
   'headlight-restoration': { label: 'Headlight Restoration', price: 40 },
