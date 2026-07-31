@@ -211,6 +211,7 @@ tailwind.config = {
     position: relative;
     display: flex;
     flex-direction: column;
+    height: 100%;
     border-radius: 24px;
     border: 1px solid rgba(11,40,48,.08);
     background: rgba(255,255,255,.78);
@@ -231,26 +232,29 @@ tailwind.config = {
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding: 1.75rem;
+    padding: 2rem 1.75rem 1.75rem;
   }
 
   .book-card__badge {
     position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translate(-50%, -50%);
+    left: 1.25rem;
+    top: 1.25rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 999px;
-    padding: .42rem .8rem;
-    font-size: .68rem;
-    font-weight: 700;
-    letter-spacing: .22em;
+    padding: .46rem .85rem;
+    font-size: .66rem;
+    font-weight: 800;
+    letter-spacing: .18em;
     text-transform: uppercase;
-    background: var(--sun);
-    color: var(--ink);
-    box-shadow: 0 10px 24px -10px rgba(242,184,68,.55);
+    background: #2196F3;
+    color: #fff;
+    box-shadow: 0 12px 24px -12px rgba(33,150,243,.58);
+  }
+
+  .book-card--featured .book-card__inner {
+    padding-top: 3.1rem;
   }
 
   .price-row {
@@ -263,6 +267,93 @@ tailwind.config = {
   }
   .price-row:last-child { border-bottom: 0; }
   .price-row.on-dark { border-bottom-color: rgba(255,255,255,.12); }
+
+  .price-row__label {
+    color: rgba(11,40,48,.62);
+    font-size: .9rem;
+    letter-spacing: .01em;
+  }
+
+  .price-row__label.on-dark {
+    color: rgba(255,255,255,.72);
+  }
+
+  .price-row__value {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'opsz' 144, 'SOFT' 92;
+    font-weight: 500;
+    font-size: 1.35rem;
+    letter-spacing: -0.03em;
+    color: var(--deep);
+  }
+
+  .price-row__value.on-dark {
+    color: #fff;
+  }
+
+  .book-card__duration {
+    margin-top: .25rem;
+    color: rgba(11,40,48,.54);
+    font-size: .84rem;
+    font-weight: 500;
+  }
+
+  .book-card__duration.on-dark {
+    color: rgba(255,255,255,.58);
+  }
+
+  .book-card__price-note {
+    margin-top: 1.15rem;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'opsz' 144, 'SOFT' 92;
+    font-size: 1.55rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--deep);
+  }
+
+  .book-card__price-note.on-dark {
+    color: #fff;
+  }
+
+  .book-card__button {
+    transition: transform .28s var(--ease-spring), box-shadow .28s var(--ease-out-soft), filter .28s ease, background-color .28s ease, color .28s ease;
+  }
+
+  .book-card__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 36px -18px rgba(11,40,48,.42);
+  }
+
+  .book-card__button:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
+  }
+
+  .book-card__button--dark {
+    background: #fff;
+    color: var(--ink);
+    box-shadow: 0 14px 30px -14px rgba(255,255,255,.22);
+  }
+
+  .book-card__button--dark:hover {
+    background: #f8fbff;
+    box-shadow: 0 22px 34px -18px rgba(255,255,255,.20);
+  }
+
+  .book-card__button--primary:hover {
+    background: #1f89df;
+  }
+
+  .book-collection {
+    position: relative;
+    margin-top: 3rem;
+    padding: 1.25rem;
+    border-radius: 32px;
+    background: rgba(255,255,255,.42);
+    border: 1px solid rgba(11,40,48,.06);
+    box-shadow: 0 20px 42px -30px rgba(11,40,48,.22);
+  }
 
   .stat-num {
     font-family: 'Fraunces', serif;
@@ -326,10 +417,10 @@ tailwind.config = {
       <circle cx="14" cy="14" r="4" fill="#fff" opacity=".7"/>
     </svg>
 
-    <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-32 md:pt-40 pb-20 md:pb-24 relative">
+    <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-32 md:pt-40 pb-16 md:pb-20 relative">
       <div class="max-w-[760px]">
         <span class="eyebrow">BOOK</span>
-        <h1 class="headline text-[2.35rem] sm:text-[3.1rem] md:text-[4rem] lg:text-[4.5rem] text-ink mt-4">
+        <h1 class="headline text-[2.05rem] sm:text-[2.75rem] md:text-[3.45rem] lg:text-[3.85rem] text-ink mt-4">
           Pick your <span class="italic text-coral">detail</span>.
         </h1>
         <p class="mt-7 text-[1.1rem] md:text-[1.22rem] text-ink/80 font-light max-w-[42ch]">
@@ -337,21 +428,22 @@ tailwind.config = {
         </p>
       </div>
 
-      <div class="mt-12 md:mt-16 grid gap-5 md:grid-cols-3 items-stretch">
+      <div class="book-collection">
+      <div class="grid gap-5 md:grid-cols-3 items-stretch">
         <article class="book-card">
           <div class="book-card__inner">
             <div class="flex items-start justify-between gap-4">
               <div>
                 <h2 class="headline text-[1.95rem] text-ink">Quick Studz</h2>
-                <p class="mt-2 text-ink/62 text-sm">60 minutes</p>
+                <p class="book-card__duration">60 minutes</p>
               </div>
             </div>
-            <div class="mt-6 text-[1.1rem] font-medium text-deep">From $49</div>
+            <div class="book-card__price-note">From $49</div>
             <p class="mt-4 text-[0.98rem] text-ink/74 flex-1">
               Exterior pressure wash, hand dry, wheel and rim clean, tires dressed, and windows. Perfect for weekly maintenance.
             </p>
             <div class="mt-7">
-              <a href="/book/quick-studz" class="btn btn-coral w-full justify-center">
+              <a href="/book/quick-studz" class="btn btn-coral book-card__button book-card__button--primary w-full justify-center">
                 Book Quick Studz
                 <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
               </a>
@@ -364,15 +456,15 @@ tailwind.config = {
             <div class="flex items-start justify-between gap-4">
               <div>
                 <h2 class="headline text-[1.95rem] text-ink">Full Studz</h2>
-                <p class="mt-2 text-ink/62 text-sm">2 hours</p>
+                <p class="book-card__duration">2 hours</p>
               </div>
             </div>
-            <div class="mt-6 text-[1.1rem] font-medium text-deep">From $99</div>
+            <div class="book-card__price-note">From $99</div>
             <p class="mt-4 text-[0.98rem] text-ink/74 flex-1">
               Everything in Quick Studz plus full interior vacuum, air blowout, dash and console wipe, door jambs, and air freshener.
             </p>
             <div class="mt-7">
-              <a href="/book/full-studz" class="btn btn-coral w-full justify-center">
+              <a href="/book/full-studz" class="btn btn-coral book-card__button book-card__button--primary w-full justify-center">
                 Book Full Studz
                 <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
               </a>
@@ -380,27 +472,28 @@ tailwind.config = {
           </div>
         </article>
 
-        <article class="book-card book-card--dark">
+        <article class="book-card book-card--dark book-card--featured">
           <span class="book-card__badge">Most Popular</span>
-          <div class="book-card__inner pt-9">
+          <div class="book-card__inner">
             <div class="flex items-start justify-between gap-4">
               <div>
                 <h2 class="headline text-[1.95rem] text-paper">Showroom</h2>
-                <p class="mt-2 text-paper/62 text-sm">3 hours</p>
+                <p class="book-card__duration on-dark">3 hours</p>
               </div>
             </div>
-            <div class="mt-6 text-[1.1rem] font-medium text-aqua">From $169</div>
+            <div class="book-card__price-note on-dark">From $169</div>
             <p class="mt-4 text-[0.98rem] text-paper/82 flex-1">
               Our deep clean. Everything in Full Studz plus wax and paint protection, steam clean interior, carpet and upholstery shampoo, streak-free glass, and free pet hair removal.
             </p>
             <div class="mt-7">
-              <a href="/book/showroom" class="btn btn-coral w-full justify-center !bg-aqua !text-ink" style="box-shadow: 0 14px 30px -12px rgba(44,198,240,.55), inset 0 1px 0 rgba(255,255,255,.35);">
+              <a href="/book/showroom" class="btn btn-coral book-card__button book-card__button--dark w-full justify-center">
                 Book Showroom
                 <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
               </a>
             </div>
           </div>
         </article>
+      </div>
       </div>
 
       <p class="mission-line mt-10 md:mt-12">100% of profits go to Pro Kids, First Tee - San Diego.</p>
