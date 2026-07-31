@@ -851,11 +851,6 @@ tailwind.config = {
           </div>
         </div>
 
-        <!-- caption chip -->
-        <div class="mt-4 flex items-center gap-2 text-xs text-ink/55 pl-1">
-          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M10 1.8 12.5 7 18 7.8l-4 3.9.9 5.5L10 14.6 5.1 17.2 6 11.7 2 7.8 7.5 7 10 1.8Z" fill="#F2B844"/></svg>
-          <span id="lastUpdated">Last Updated July 30, 2026 at 12:00 PM PDT</span>
-        </div>
       </div>
 
 
@@ -1398,29 +1393,14 @@ tailwind.config = {
     window.scrollTo(0, 0);
   }
 
-  // ---- Last-updated timestamp ----
-  // Renders CONFIG.lastUpdated in the viewer's local timezone — a visitor in
-  // San Diego sees PDT/PST, a visitor in NYC sees EDT/EST, etc. The Intl API
-  // auto-resolves DST based on the actual date stored on CONFIG.lastUpdated.
+  // ---- Last-updated badge ----
   (function initLastUpdated() {
-    const el = document.getElementById('lastUpdated');
     const badgeEl = document.getElementById('liveUpdatedBadge');
-    if (!el || !(CONFIG.lastUpdated instanceof Date) || isNaN(CONFIG.lastUpdated)) return;
-    const dateStr = CONFIG.lastUpdated.toLocaleDateString('en-US', {
-      month: 'long', day: 'numeric', year: 'numeric',
-    });
+    if (!badgeEl || !(CONFIG.lastUpdated instanceof Date) || isNaN(CONFIG.lastUpdated)) return;
     const shortDateStr = CONFIG.lastUpdated.toLocaleDateString('en-US', {
       month: 'short', day: 'numeric', year: 'numeric',
     });
-    const timeStr = CONFIG.lastUpdated.toLocaleTimeString('en-US', {
-      hour: 'numeric', minute: '2-digit', hour12: true,
-    });
-    // Pull the short tz abbreviation (PDT/PST/EDT/etc.) from the formatted string
-    const tzAbbr = CONFIG.lastUpdated.toLocaleString('en-US', {
-      timeZoneName: 'short',
-    }).split(' ').pop();
-    el.textContent = `Last Updated ${dateStr} at ${timeStr} ${tzAbbr}`;
-    if (badgeEl) badgeEl.textContent = `Updated ${shortDateStr}`;
+    badgeEl.textContent = `Updated ${shortDateStr}`;
   })();
 
   // ---- Count-up stats ----
