@@ -306,8 +306,9 @@ tailwind.config = {
     document.body.style.overflow = 'hidden';
   }
 
-    cb.addEventListener('change', () => {
-      const total = [...document.querySelectorAll('.addon-cb-sr:checked')].reduce((s,c) => s + Number(c.dataset.price), 0);
+  document.querySelectorAll('.addon-cb-sr').forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      const total = [...document.querySelectorAll('.addon-cb-sr:checked')].reduce(function(s,c) { return s + Number(c.dataset.price); }, 0);
       const el = document.getElementById('addon-total-sr');
       document.getElementById('addon-total-price-sr').textContent = '$' + total;
       total > 0 ? el.classList.remove('hidden') : el.classList.add('hidden');
