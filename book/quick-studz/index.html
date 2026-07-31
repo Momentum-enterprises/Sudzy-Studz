@@ -371,7 +371,7 @@ tailwind.config = {
     </div>
 
     <!-- Calendar (hidden until add-on step is complete) -->
-    <div id="cal-section" class="pb-16 hidden max-w-[1240px] mx-auto w-full px-5 md:px-8">
+    <div id="cal-section" class="hidden max-w-[1240px] mx-auto w-full px-5 md:px-8">
       <div id="addon-reminder" class="hidden mb-4">
         <div class="rounded-[16px] bg-[#0B2830] px-5 py-3.5 flex items-center gap-3 text-[0.9rem] text-white">
           <svg width="16" height="16" viewBox="0 0 20 20" fill="none" class="shrink-0"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 4v4m0 4h.01" stroke="#2CC6F0" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -379,7 +379,7 @@ tailwind.config = {
         </div>
       </div>
       <div class="embed-shell">
-        <div style="width:100%;min-height:700px;overflow:scroll" id="my-cal-inline-quick-studz"></div>
+        <div style="width:100%;height:700px;overflow:hidden" id="my-cal-inline-quick-studz"></div>
       </div>
     </div>
 
@@ -402,14 +402,15 @@ tailwind.config = {
         document.getElementById('addon-reminder').classList.remove('hidden');
         document.getElementById('addon-reminder-text').textContent = items.join(', ');
       }
-      window.scrollTo({top: document.getElementById('cal-section').offsetTop - 80, behavior: 'smooth'});
+      window.scrollTo({top: 0});
+      document.body.style.overflow = 'hidden';
     }
     
     function goBackToAddOnsQS() {
       document.getElementById('addon-step').classList.remove('hidden');
       document.getElementById('cal-section').classList.add('hidden');
       document.getElementById('back-bar').classList.add('hidden');
-      window.scrollTo({top: document.getElementById('addon-step').offsetTop - 100, behavior: 'smooth'});
+      document.body.style.overflow = '';
     }
 
     document.querySelectorAll('.addon-cb').forEach(cb => {
