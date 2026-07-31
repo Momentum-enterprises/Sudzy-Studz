@@ -393,6 +393,14 @@ tailwind.config = {
     white-space: nowrap;
   }
 
+  .choice-grid.packages .choice-title {
+    align-items: center;
+  }
+
+  .choice-grid.packages .choice-title > span:first-child {
+    white-space: nowrap;
+  }
+
   .summary-total {
     font-family: 'Fraunces', serif;
     font-size: clamp(2rem, 4vw, 2.8rem);
@@ -487,7 +495,9 @@ tailwind.config = {
   }
 
   @media (max-width: 767px) {
-    .choice-title { flex-direction: column; align-items: flex-start; gap: .25rem; }
+    .addon-card .choice-title { flex-direction: column; align-items: flex-start; gap: .25rem; }
+    .choice-grid.packages .choice-card { padding-right: .9rem; }
+    .choice-grid.packages .choice-price { font-size: 1rem; }
   }
 
   ::selection { background: var(--coral); color: #fff; }
