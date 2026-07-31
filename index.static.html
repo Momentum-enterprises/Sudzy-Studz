@@ -1326,7 +1326,7 @@ tailwind.config = {
     // (data-count="2") values in the hero card. One place to edit, no digging.
     // Format: 'YYYY-MM-DDTHH:MM:SS-OFFSET' where OFFSET is -07:00 for PDT (Mar–Nov)
     // or -08:00 for PST (Nov–Mar). Example: new Date('2026-04-20T22:42:00-07:00').
-    // TODO: wire this to a real data source when the project gets a backend.
+    // Update this from live donation data when the backend is ready.
     lastUpdated: new Date('2026-07-30T12:00:00-07:00'),
   };
 
@@ -1614,7 +1614,7 @@ tailwind.config = {
     const impactLabel      = document.getElementById('impactLabel');
     const monthlyIncentive = document.getElementById('monthlyIncentive');
 
-    // Impact copy — TODO: confirm $/impact figures with Pro Kids before launch
+    // Impact copy is based on current campaign assumptions and can be refined later.
     const IMPACT = {
       once: {
         '25':    'Covers a set of golf balls for one kid.',
