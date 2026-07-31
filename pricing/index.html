@@ -85,9 +85,9 @@ tailwind.config = {
   }
   .hero-bg {
     background:
-      radial-gradient(ellipse 60% 45% at 15% 18%, rgba(44,198,240,.28), transparent 60%),
-      radial-gradient(ellipse 55% 40% at 92% 10%, rgba(242,184,68,.18), transparent 55%),
-      radial-gradient(ellipse 70% 55% at 85% 95%, rgba(12,159,228,.18), transparent 60%),
+      radial-gradient(ellipse 60% 45% at 14% 18%, rgba(44,198,240,.30), transparent 58%),
+      radial-gradient(ellipse 52% 36% at 90% 10%, rgba(242,184,68,.20), transparent 54%),
+      radial-gradient(ellipse 68% 52% at 84% 96%, rgba(12,159,228,.18), transparent 60%),
       linear-gradient(180deg, #FBF8F1 0%, #F6F1E7 100%);
   }
   .grain::before {
@@ -104,6 +104,11 @@ tailwind.config = {
     -webkit-backdrop-filter: blur(18px) saturate(1.15);
     border: 1px solid rgba(255,255,255,0.75);
     box-shadow: var(--shadow-lg);
+  }
+  .surface {
+    background: rgba(255,255,255,0.74);
+    border: 1px solid rgba(11,40,48,0.08);
+    box-shadow: 0 20px 50px -30px rgba(11,40,48,0.24);
   }
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
@@ -151,7 +156,7 @@ tailwind.config = {
 </nav>
 
 <main class="hero-bg grain">
-  <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-20 md:pt-26 pb-12 md:pb-16 flex flex-col gap-6">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-20 md:pt-26 pb-14 md:pb-16 flex flex-col gap-6">
     <div class="grid gap-5 lg:grid-cols-[1.1fr_.9fr] items-end">
       <div class="max-w-[760px]">
         <span class="eyebrow">Pricing</span>
@@ -165,21 +170,21 @@ tailwind.config = {
 
       <div class="glass rounded-[26px] border border-ink/8 p-5 md:p-6 shadow-[0_18px_40px_-22px_rgba(11,40,48,0.22)]">
         <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-          <div class="flex items-center justify-between rounded-[18px] bg-white/60 px-4 py-3 border border-white/70">
+          <div class="flex items-center justify-between rounded-[18px] bg-white/70 px-4 py-3 border border-white/75">
             <div>
               <div class="text-[10px] tracking-[0.22em] uppercase text-ink/48">Mobile</div>
               <div class="mt-1 text-sm font-medium text-ink">We come to you</div>
             </div>
             <span class="h-10 w-10 rounded-full bg-[#e6f7ff] grid place-items-center text-teal font-semibold">1</span>
           </div>
-          <div class="flex items-center justify-between rounded-[18px] bg-white/60 px-4 py-3 border border-white/70">
+          <div class="flex items-center justify-between rounded-[18px] bg-white/70 px-4 py-3 border border-white/75">
             <div>
               <div class="text-[10px] tracking-[0.22em] uppercase text-ink/48">Mission</div>
               <div class="mt-1 text-sm font-medium text-ink">100% of profit donated</div>
             </div>
             <span class="h-10 w-10 rounded-full bg-[#eef7ee] grid place-items-center text-[#4a8b63] font-semibold">2</span>
           </div>
-          <div class="flex items-center justify-between rounded-[18px] bg-white/60 px-4 py-3 border border-white/70">
+          <div class="flex items-center justify-between rounded-[18px] bg-white/70 px-4 py-3 border border-white/75">
             <div>
               <div class="text-[10px] tracking-[0.22em] uppercase text-ink/48">Priority</div>
               <div class="mt-1 text-sm font-medium text-ink">First responders get free details</div>
@@ -191,9 +196,9 @@ tailwind.config = {
     </div>
 
     <section class="md:mt-1">
-      <div class="glass rounded-[30px] border border-ink/8 p-4 md:p-5 h-full">
-        <div class="grid gap-4 lg:gap-5 md:grid-cols-3 h-full">
-          <article class="rounded-[22px] border border-[#cfe8f5] bg-[#f4fbff] p-5 md:p-6 flex flex-col shadow-[0_12px_30px_-24px_rgba(12,159,228,0.35)]">
+      <div class="surface rounded-[34px] p-4 md:p-5">
+        <div class="grid gap-4 lg:gap-5 md:grid-cols-3 items-stretch">
+          <article class="rounded-[24px] border border-[#cfe8f5] bg-[#f4fbff] p-5 md:p-6 flex flex-col min-h-[26rem] shadow-[0_18px_40px_-28px_rgba(12,159,228,0.28)]">
             <div class="flex items-start justify-between gap-4">
               <div>
                 <div class="text-[11px] tracking-[0.2em] uppercase text-teal/75">Quick Studz</div>
@@ -201,7 +206,7 @@ tailwind.config = {
               </div>
               <span class="rounded-full bg-[#d8f0fb] px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-teal/85">Exterior reset</span>
             </div>
-            <p class="mt-4 text-sm text-ink/72">Best for maintenance washes and a quick refresh between full details.</p>
+            <p class="mt-4 text-sm text-ink/72 max-w-[24ch]">Best for maintenance washes and a quick refresh between full details.</p>
             <ul class="mt-5 space-y-2.5 text-[0.94rem] text-ink/84">
               <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-teal shrink-0"></span><span>Hand wash and dry</span></li>
               <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-teal shrink-0"></span><span>Wheels, tires, and door jambs</span></li>
@@ -210,7 +215,8 @@ tailwind.config = {
             <a href="/book/quick-studz" class="btn btn-coral mt-auto mt-8 w-full">Book Quick Studz</a>
           </article>
 
-          <article class="rounded-[22px] border border-[#d7ecd8] bg-[#f4fbf4] p-5 md:p-6 flex flex-col shadow-[0_12px_30px_-24px_rgba(74,139,99,0.28)]">
+          <article class="rounded-[24px] border border-[#d7ecd8] bg-[#f4fbf4] p-5 md:p-6 flex flex-col min-h-[26rem] shadow-[0_18px_40px_-28px_rgba(74,139,99,0.24)] relative overflow-hidden">
+            <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#4a8b63] via-[#89b99a] to-[#d7ecd8]"></div>
             <div class="flex items-start justify-between gap-4">
               <div>
                 <div class="text-[11px] tracking-[0.2em] uppercase text-[#4a8b63]">Full Studz</div>
@@ -218,7 +224,7 @@ tailwind.config = {
               </div>
               <span class="rounded-full bg-[#e5f3e6] px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-[#4a8b63]">Most balanced</span>
             </div>
-            <p class="mt-4 text-sm text-ink/72">The clean daily-driver package with more interior attention and a better finish.</p>
+            <p class="mt-4 text-sm text-ink/72 max-w-[24ch]">The clean daily-driver package with more interior attention and a better finish.</p>
             <ul class="mt-5 space-y-2.5 text-[0.94rem] text-ink/84">
               <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[#4a8b63] shrink-0"></span><span>Everything in Quick Studz</span></li>
               <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[#4a8b63] shrink-0"></span><span>Interior vacuum and blowout</span></li>
@@ -227,7 +233,7 @@ tailwind.config = {
             <a href="/book/full-studz" class="btn btn-coral mt-auto mt-8 w-full">Book Full Studz</a>
           </article>
 
-          <article class="rounded-[22px] border border-[#f2d7be] bg-[#fff8f1] p-5 md:p-6 flex flex-col shadow-[0_18px_40px_-24px_rgba(242,184,68,0.25)] relative overflow-hidden">
+          <article class="rounded-[24px] border border-[#f2d7be] bg-[#fff8f1] p-5 md:p-6 flex flex-col min-h-[26rem] shadow-[0_18px_40px_-24px_rgba(242,184,68,0.25)] relative overflow-hidden">
             <div class="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#f2b844] via-[#f6d796] to-[#0c9fe4]"></div>
             <div class="flex items-start justify-between gap-4">
               <div>
@@ -236,7 +242,7 @@ tailwind.config = {
               </div>
               <span class="rounded-full bg-[#f7e8cf] px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-[#8b5b22]">Deep clean</span>
             </div>
-            <p class="mt-4 text-sm text-ink/72">The most complete detail, with steam, shampoo, and a showroom-level finish.</p>
+            <p class="mt-4 text-sm text-ink/72 max-w-[24ch]">The most complete detail, with steam, shampoo, and a showroom-level finish.</p>
             <ul class="mt-5 space-y-2.5 text-[0.94rem] text-ink/84">
               <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[#ad6b2d] shrink-0"></span><span>Everything in Full Studz</span></li>
               <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[#ad6b2d] shrink-0"></span><span>Steam clean interior surfaces</span></li>
@@ -244,6 +250,20 @@ tailwind.config = {
             </ul>
             <a href="/book/showroom" class="btn btn-coral mt-auto mt-8 w-full">Book Showroom</a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="surface rounded-[30px] px-5 py-4 md:px-6 md:py-5">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <div class="text-[10px] tracking-[0.22em] uppercase text-ink/50">Included with every visit</div>
+          <p class="mt-1 text-[0.98rem] text-ink/72">Mobile service, transparent pricing, and the same mission on every package.</p>
+        </div>
+        <div class="flex flex-wrap gap-2.5">
+          <span class="rounded-full bg-[#eef7ee] px-3 py-1 text-[0.8rem] text-[#4a8b63]">First responders free</span>
+          <span class="rounded-full bg-[#e6f7ff] px-3 py-1 text-[0.8rem] text-teal">Book from your phone</span>
+          <span class="rounded-full bg-[#fff4df] px-3 py-1 text-[0.8rem] text-[#ad6b2d]">100% donated</span>
         </div>
       </div>
     </section>
