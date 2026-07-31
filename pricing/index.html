@@ -58,14 +58,18 @@ tailwind.config = {
     --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
     --shadow-lg: 0 18px 40px -16px rgba(12,63,78,.28), 0 40px 80px -32px rgba(12,63,78,.18);
   }
-  html, body { min-height: 100%; }
+  html {
+    min-height: 100%;
+    overflow-y: auto !important;
+  }
   body {
     font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
     background: var(--paper);
     color: var(--ink);
     line-height: 1.7;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    min-height: 100%;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
