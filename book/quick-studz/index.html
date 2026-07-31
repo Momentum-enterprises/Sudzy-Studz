@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Book a detail, Sudzy Studz Mobile Detailing</title>
-<meta name="description" content="Pick a Sudzy Studz package and book your detail directly on our site." />
+<title>Book Quick Studz, Sudzy Studz Mobile Detailing</title>
+<meta name="description" content="Book a Quick Studz detail on Sudzy Studz Mobile Detailing." />
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Sudzy Studz Mobile Detailing" />
-<meta property="og:title" content="Book a detail, Sudzy Studz Mobile Detailing" />
-<meta property="og:description" content="Pick a Sudzy Studz package and book your detail directly on our site." />
-<meta property="og:image" content="../brand_assets/logo.png" />
+<meta property="og:title" content="Book Quick Studz, Sudzy Studz Mobile Detailing" />
+<meta property="og:description" content="Book a Quick Studz detail on Sudzy Studz Mobile Detailing." />
+<meta property="og:image" content="../../brand_assets/logo.png" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Book a detail, Sudzy Studz Mobile Detailing" />
-<meta name="twitter:description" content="Pick a Sudzy Studz package and book your detail directly on our site." />
-<meta name="twitter:image" content="../brand_assets/logo.png" />
+<meta name="twitter:title" content="Book Quick Studz, Sudzy Studz Mobile Detailing" />
+<meta name="twitter:description" content="Book a Quick Studz detail on Sudzy Studz Mobile Detailing." />
+<meta name="twitter:image" content="../../brand_assets/logo.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -207,69 +207,15 @@ tailwind.config = {
   }
   .mobile-nav-panel.is-open { opacity: 1; transform: none; pointer-events: auto; }
 
-  .book-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    border-radius: 24px;
-    border: 1px solid rgba(11,40,48,.08);
-    background: rgba(255,255,255,.78);
-    box-shadow: var(--shadow-md);
-    overflow: hidden;
+  .embed-shell {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 0 40px;
   }
 
-  .book-card--dark {
-    color: var(--paper);
-    background: var(--ink);
-    border-color: rgba(255,255,255,.08);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .book-card__inner {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    padding: 1.75rem;
-  }
-
-  .book-card__badge {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translate(-50%, -50%);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    padding: .42rem .8rem;
-    font-size: .68rem;
-    font-weight: 700;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    background: var(--sun);
-    color: var(--ink);
-    box-shadow: 0 10px 24px -10px rgba(242,184,68,.55);
-  }
-
-  .price-row {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: .55rem 0;
-    border-bottom: 1px solid rgba(11,40,48,.08);
-  }
-  .price-row:last-child { border-bottom: 0; }
-  .price-row.on-dark { border-bottom-color: rgba(255,255,255,.12); }
-
-  .stat-num {
-    font-family: 'Fraunces', serif;
-    font-variation-settings: 'opsz' 144, 'SOFT' 100;
-    font-weight: 350;
-    letter-spacing: -0.04em;
-    line-height: 0.9;
+  @media (min-width: 768px) {
+    .embed-shell { padding: 60px 0; }
   }
 
   .mission-line {
@@ -288,7 +234,7 @@ tailwind.config = {
   <div class="max-w-[1240px] mx-auto px-5 md:px-8">
     <div id="navInner" class="mt-3 md:mt-4 flex items-center justify-between rounded-full pl-5 pr-2 py-2 transition-all duration-500 glass">
       <a href="/" class="flex items-center group">
-        <img src="../brand_assets/logo.png" alt="Sudzy Studz" class="logo-img h-14 md:h-16 w-auto transition-transform duration-500 group-hover:scale-[1.03]" />
+        <img src="../../brand_assets/logo.png" alt="Sudzy Studz" class="logo-img h-14 md:h-16 w-auto transition-transform duration-500 group-hover:scale-[1.03]" />
       </a>
 
       <div class="hidden md:flex items-center gap-7 text-[0.92rem]">
@@ -315,6 +261,24 @@ tailwind.config = {
   </div>
 </nav>
 
+<div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+<div class="mobile-nav-panel" id="mobileNavPanel" aria-label="Mobile navigation" hidden>
+  <div class="flex items-center justify-between mb-3">
+    <div class="text-[0.72rem] tracking-[0.22em] uppercase text-ink/50">Navigate</div>
+    <button id="mobileNavClose" class="h-9 w-9 rounded-full border border-ink/10 text-ink/70 transition hover:text-ink" aria-label="Close menu">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col gap-1">
+    <a href="/#about" class="mobile-nav-link">About <span aria-hidden="true">→</span></a>
+    <a href="/#prokids" class="mobile-nav-link">Impact <span aria-hidden="true">→</span></a>
+    <a href="/#story" class="mobile-nav-link">Our Story <span aria-hidden="true">→</span></a>
+    <a href="/pricing/" class="mobile-nav-link">Pricing <span aria-hidden="true">→</span></a>
+    <a href="/book" class="mobile-nav-link">Book <span aria-hidden="true">→</span></a>
+    <a href="/#donate" class="mobile-nav-link mt-2 text-coral">Give directly <span aria-hidden="true">→</span></a>
+  </nav>
+</div>
+
 <main id="top">
   <section class="hero-bg relative grain overflow-hidden">
     <svg class="absolute -top-10 -left-14 w-[260px] h-[260px] opacity-70" viewBox="0 0 200 200" aria-hidden="true">
@@ -326,85 +290,37 @@ tailwind.config = {
       <circle cx="14" cy="14" r="4" fill="#fff" opacity=".7"/>
     </svg>
 
-    <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-32 md:pt-40 pb-20 md:pb-24 relative">
+    <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-32 md:pt-40 pb-8 md:pb-10 relative">
       <div class="max-w-[760px]">
         <span class="eyebrow">BOOK</span>
         <h1 class="headline text-[2.35rem] sm:text-[3.1rem] md:text-[4rem] lg:text-[4.5rem] text-ink mt-4">
-          Pick your <span class="italic text-coral">detail</span>.
+          Book a Quick Studz <span class="italic text-coral">detail</span>.
         </h1>
-        <p class="mt-7 text-[1.1rem] md:text-[1.22rem] text-ink/80 font-light max-w-[42ch]">
-          Choose a package to see available times.
+        <p class="mt-7 text-[1.1rem] md:text-[1.22rem] text-ink/80 font-light max-w-[48ch]">
+          Pick a time that works for you. We will confirm within 24 hours.
         </p>
       </div>
-
-      <div class="mt-12 md:mt-16 grid gap-5 md:grid-cols-3 items-stretch">
-        <article class="book-card">
-          <div class="book-card__inner">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h2 class="headline text-[1.95rem] text-ink">Quick Studz</h2>
-                <p class="mt-2 text-ink/62 text-sm">60 minutes</p>
-              </div>
-            </div>
-            <div class="mt-6 text-[1.1rem] font-medium text-deep">From $49</div>
-            <p class="mt-4 text-[0.98rem] text-ink/74 flex-1">
-              Exterior pressure wash, hand dry, wheel and rim clean, tires dressed, and windows. Perfect for weekly maintenance.
-            </p>
-            <div class="mt-7">
-              <a href="/book/quick-studz" class="btn btn-coral w-full justify-center">
-                Book Quick Studz
-                <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="book-card">
-          <div class="book-card__inner">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h2 class="headline text-[1.95rem] text-ink">Full Studz</h2>
-                <p class="mt-2 text-ink/62 text-sm">2 hours</p>
-              </div>
-            </div>
-            <div class="mt-6 text-[1.1rem] font-medium text-deep">From $99</div>
-            <p class="mt-4 text-[0.98rem] text-ink/74 flex-1">
-              Everything in Quick Studz plus full interior vacuum, air blowout, dash and console wipe, door jambs, and air freshener.
-            </p>
-            <div class="mt-7">
-              <a href="/book/full-studz" class="btn btn-coral w-full justify-center">
-                Book Full Studz
-                <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="book-card book-card--dark">
-          <span class="book-card__badge">Most Popular</span>
-          <div class="book-card__inner pt-9">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h2 class="headline text-[1.95rem] text-paper">Showroom</h2>
-                <p class="mt-2 text-paper/62 text-sm">3 hours</p>
-              </div>
-            </div>
-            <div class="mt-6 text-[1.1rem] font-medium text-aqua">From $169</div>
-            <p class="mt-4 text-[0.98rem] text-paper/82 flex-1">
-              Our deep clean. Everything in Full Studz plus wax and paint protection, steam clean interior, carpet and upholstery shampoo, streak-free glass, and free pet hair removal.
-            </p>
-            <div class="mt-7">
-              <a href="/book/showroom" class="btn btn-coral w-full justify-center !bg-aqua !text-ink" style="box-shadow: 0 14px 30px -12px rgba(44,198,240,.55), inset 0 1px 0 rgba(255,255,255,.35);">
-                Book Showroom
-                <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <p class="mission-line mt-10 md:mt-12">100% of profits go to Pro Kids, First Tee - San Diego.</p>
     </div>
+
+    <div class="embed-shell px-5 md:px-8">
+      <!-- Cal inline embed code begins -->
+      <div style="width:100%;min-height:700px;overflow:scroll" id="my-cal-inline-quick-studz"></div>
+      <script type="text/javascript">
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "quick-studz", {origin:"https://app.cal.com"});
+      Cal.config = Cal.config || {};
+      Cal.config.forwardQueryParams = true;
+        Cal.ns["quick-studz"]("inline", {
+          elementOrSelector:"#my-cal-inline-quick-studz",
+          config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+          calLink: "sudzystudz/quick-studz",
+        });
+        Cal.ns["quick-studz"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#2196F3"}},"hideEventTypeDetails":true,"layout":"month_view"});
+        </script>
+      <!-- Cal inline embed code ends -->
+    </div>
+
+    <p class="mission-line mt-2 md:mt-4 pb-12 md:pb-16">100% of profits go to Pro Kids, First Tee - San Diego.</p>
   </section>
 </main>
 
@@ -413,7 +329,7 @@ tailwind.config = {
     <div class="grid md:grid-cols-12 gap-10">
       <div class="md:col-span-4">
         <a href="/" class="inline-flex">
-          <img src="../brand_assets/logo.png" alt="Sudzy Studz" class="logo-img h-14 w-auto" />
+          <img src="../../brand_assets/logo.png" alt="Sudzy Studz" class="logo-img h-14 w-auto" />
         </a>
         <p class="mt-5 text-ink/65 text-[0.98rem] max-w-[44ch]">
           A student-founded business in San Diego. Sudzy Studz LLC donates 100% of detailing profits to <span style="white-space: nowrap;">Pro Kids, First Tee - San Diego</span>.
