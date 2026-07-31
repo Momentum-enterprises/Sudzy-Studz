@@ -1,7 +1,7 @@
 import crypto from 'node:crypto';
 
 const PACKAGE_LABELS = {
-  quick: 'Quick Studz',
+  quick: 'Essentials Studz',
   full: 'Full Studz',
   showroom: 'Showroom',
 };
