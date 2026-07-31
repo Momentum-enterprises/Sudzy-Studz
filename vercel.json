@@ -1,0 +1,24 @@
+{
+  "redirects": [
+    {
+      "source": "/pricing/",
+      "destination": "/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy/",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/refund-policy/",
+      "destination": "/refund-policy",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-service/",
+      "destination": "/terms-of-service",
+      "permanent": true
+    }
+  ]
+}
