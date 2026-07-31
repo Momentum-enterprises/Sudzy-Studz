@@ -393,6 +393,17 @@ tailwind.config = {
     white-space: nowrap;
   }
 
+  .addon-price.is-included {
+    font-size: .88rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--success);
+  }
+
+  .addon-input:disabled + .addon-card {
+    cursor: default;
+  }
+
   .choice-grid.packages .choice-title {
     align-items: center;
   }
@@ -663,43 +674,43 @@ tailwind.config = {
                   <label>
                     <input class="addon-input" type="checkbox" name="addOns" value="steam-clean-interior" />
                     <span class="addon-card">
-                      <span class="choice-title"><span>Steam Clean Interior</span><span class="addon-price">$45</span></span>
+                      <span class="choice-title"><span>Steam Clean Interior</span><span class="addon-price" data-addon-price="steam-clean-interior">$45</span></span>
                     </span>
                   </label>
                   <label>
                     <input class="addon-input" type="checkbox" name="addOns" value="wax-protection" />
                     <span class="addon-card">
-                      <span class="choice-title"><span>Wax &amp; Protection</span><span class="addon-price">$99</span></span>
+                      <span class="choice-title"><span>Wax &amp; Protection</span><span class="addon-price" data-addon-price="wax-protection">$99</span></span>
                     </span>
                   </label>
                   <label>
                     <input class="addon-input" type="checkbox" name="addOns" value="pet-hair-removal" />
                     <span class="addon-card">
-                      <span class="choice-title"><span>Pet Hair Removal</span><span class="addon-price">$45</span></span>
+                      <span class="choice-title"><span>Pet Hair Removal</span><span class="addon-price" data-addon-price="pet-hair-removal">$45</span></span>
                     </span>
                   </label>
                   <label>
                     <input class="addon-input" type="checkbox" name="addOns" value="carpet-shampoo" />
                     <span class="addon-card">
-                      <span class="choice-title"><span>Carpet Shampoo</span><span class="addon-price">$40</span></span>
+                      <span class="choice-title"><span>Carpet Shampoo</span><span class="addon-price" data-addon-price="carpet-shampoo">$40</span></span>
                     </span>
                   </label>
                   <label>
                     <input class="addon-input" type="checkbox" name="addOns" value="headlight-restoration" />
                     <span class="addon-card">
-                      <span class="choice-title"><span>Headlight Restoration</span><span class="addon-price">$40</span></span>
+                      <span class="choice-title"><span>Headlight Restoration</span><span class="addon-price" data-addon-price="headlight-restoration">$40</span></span>
                     </span>
                   </label>
                   <label>
                     <input class="addon-input" type="checkbox" name="addOns" value="plastic-correction" />
                     <span class="addon-card">
-                      <span class="choice-title"><span>Plastic Correction</span><span class="addon-price">$25</span></span>
+                      <span class="choice-title"><span>Plastic Correction</span><span class="addon-price" data-addon-price="plastic-correction">$25</span></span>
                     </span>
                   </label>
                   <label>
                     <input class="addon-input" type="checkbox" name="addOns" value="odor-treatment" />
                     <span class="addon-card">
-                      <span class="choice-title"><span>Odor Treatment</span><span class="addon-price">$25</span></span>
+                      <span class="choice-title"><span>Odor Treatment</span><span class="addon-price" data-addon-price="odor-treatment">$25</span></span>
                     </span>
                   </label>
                 </div>
@@ -886,6 +897,12 @@ tailwind.config = {
     'odor-treatment': { label: 'Odor Treatment', price: 25 },
   };
 
+  const PACKAGE_INCLUDED_ADD_ONS = {
+    quick: [],
+    full: [],
+    showroom: ['steam-clean-interior', 'pet-hair-removal', 'carpet-shampoo'],
+  };
+
   const form = document.getElementById('bookingForm');
   const successPanel = document.getElementById('successPanel');
   const submitButton = document.getElementById('submitButton');
@@ -918,6 +935,7 @@ tailwind.config = {
   const getCheckedValue = (name) => form.querySelector(`input[name="${name}"]:checked`)?.value || '';
   const getSelectedAddOns = () => Array.from(form.querySelectorAll('input[name="addOns"]:checked')).map((input) => input.value);
   const getErrorEl = (name) => form.querySelector(`[data-error-for="${name}"]`);
+  const getIncludedAddOnSet = (packageKey) => new Set(PACKAGE_INCLUDED_ADD_ONS[packageKey] || []);
 
   function updatePackagePrices() {
     const vehicleType = getCheckedValue('vehicleType') || 'sedan';
@@ -927,18 +945,56 @@ tailwind.config = {
     });
   }
 
+  function syncIncludedAddOns() {
+    const selectedPackage = getCheckedValue('package');
+    const includedSet = getIncludedAddOnSet(selectedPackage);
+
+    Array.from(form.querySelectorAll('input[name="addOns"]')).forEach((input) => {
+      const key = input.value;
+      const priceEl = form.querySelector(`[data-addon-price="${key}"]`);
+      const isIncluded = includedSet.has(key);
+
+      if (isIncluded) {
+        input.checked = true;
+        input.disabled = true;
+        input.dataset.autoIncluded = 'true';
+        if (priceEl) {
+          priceEl.textContent = 'Included';
+          priceEl.classList.add('is-included');
+        }
+        return;
+      }
+
+      if (input.dataset.autoIncluded === 'true') {
+        input.checked = false;
+      }
+      input.disabled = false;
+      delete input.dataset.autoIncluded;
+
+      if (priceEl) {
+        priceEl.textContent = fmtMoney(ADD_ONS[key].price);
+        priceEl.classList.remove('is-included');
+      }
+    });
+  }
+
   function calculateSummary() {
     const vehicleType = getCheckedValue('vehicleType');
     const selectedPackage = getCheckedValue('package');
     const addOns = getSelectedAddOns();
+    const includedSet = getIncludedAddOnSet(selectedPackage);
+    const includedAddOns = addOns.filter((key) => includedSet.has(key));
+    const paidAddOns = addOns.filter((key) => !includedSet.has(key));
     const firstResponder = form.elements.firstResponder.checked;
     const basePrice = vehicleType && selectedPackage ? PRICES[selectedPackage][vehicleType] : 0;
-    const addOnTotal = addOns.reduce((sum, key) => sum + ADD_ONS[key].price, 0);
+    const addOnTotal = paidAddOns.reduce((sum, key) => sum + ADD_ONS[key].price, 0);
     const total = firstResponder ? 0 : basePrice + addOnTotal;
     return {
       vehicleType,
       selectedPackage,
       addOns,
+      paidAddOns,
+      includedAddOns,
       firstResponder,
       basePrice,
       addOnTotal,
@@ -972,11 +1028,13 @@ tailwind.config = {
       return;
     }
 
-    const addOnText = summary.addOns.length ? `${summary.addOns.length} add-on${summary.addOns.length === 1 ? '' : 's'} selected` : 'No add-ons selected';
-    totalNoteEl.textContent = `${PACKAGE_LABELS[summary.selectedPackage]} for your ${VEHICLE_LABELS[summary.vehicleType]}. ${addOnText}.`;
+    const paidText = summary.paidAddOns.length ? `${summary.paidAddOns.length} paid add-on${summary.paidAddOns.length === 1 ? '' : 's'} selected` : 'No paid add-ons selected';
+    const includedText = summary.includedAddOns.length ? ` ${summary.includedAddOns.length} included.` : '';
+    totalNoteEl.textContent = `${PACKAGE_LABELS[summary.selectedPackage]} for your ${VEHICLE_LABELS[summary.vehicleType]}. ${paidText}.${includedText}`;
     breakdownPills.push(`<span class="summary-pill">Base ${fmtMoney(summary.basePrice)}</span>`);
     if (summary.addOnTotal) breakdownPills.push(`<span class="summary-pill">Add-ons ${fmtMoney(summary.addOnTotal)}</span>`);
     if (!summary.addOnTotal) breakdownPills.push('<span class="summary-pill">No add-ons</span>');
+    if (summary.includedAddOns.length) breakdownPills.push(`<span class="summary-pill">Included ${summary.includedAddOns.length}</span>`);
     summaryBreakdownEl.innerHTML = breakdownPills.join('');
     summaryBreakdownEl.classList.remove('hidden');
   }
@@ -1171,6 +1229,7 @@ tailwind.config = {
       touched.add(name);
       validateField(name, true);
       updatePackagePrices();
+      syncIncludedAddOns();
       updateTotal();
       clearFormError();
       submitButton.disabled = !validateForm(false) || submitButton.dataset.loading === 'true';
@@ -1208,6 +1267,7 @@ tailwind.config = {
       showSuccess(data);
       form.reset();
       updatePackagePrices();
+      syncIncludedAddOns();
       updateTotal();
     } catch (error) {
       showFormError(error.message || 'We could not send your booking request. Please try again.');
@@ -1219,6 +1279,7 @@ tailwind.config = {
   applyPreselectionFromQuery();
   setDateTimeMinimums();
   updatePackagePrices();
+  syncIncludedAddOns();
   updateTotal();
   validateForm(false);
 </script>
