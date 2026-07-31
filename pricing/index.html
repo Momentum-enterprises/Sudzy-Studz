@@ -149,46 +149,99 @@ tailwind.config = {
 </nav>
 
 <main class="h-full hero-bg grain overflow-hidden">
-  <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-28 md:pt-32 h-full flex flex-col">
-    <div class="max-w-[760px]">
-      <span class="eyebrow">Pricing</span>
-      <h1 class="headline text-[2.1rem] sm:text-[2.6rem] md:text-[3.1rem] lg:text-[3.45rem] text-ink mt-4">
-        Simple pricing. <span class="italic text-teal">Easy booking.</span>
-      </h1>
-      <p class="mt-5 text-[1.02rem] md:text-[1.1rem] text-ink/72 font-light max-w-[40ch]">
-        Pick a package and book in one tap.
-      </p>
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-24 md:pt-28 h-full flex flex-col">
+    <div class="grid gap-5 lg:grid-cols-[1.1fr_.9fr] items-end">
+      <div class="max-w-[760px]">
+        <span class="eyebrow">Pricing</span>
+        <h1 class="headline text-[2.1rem] sm:text-[2.6rem] md:text-[3.1rem] lg:text-[3.45rem] text-ink mt-4">
+          Simple pricing. <span class="italic text-teal">Easy booking.</span>
+        </h1>
+        <p class="mt-5 text-[1.02rem] md:text-[1.1rem] text-ink/72 font-light max-w-[45ch]">
+          Choose the package that fits your vehicle, then book directly on our calendar.
+        </p>
+      </div>
+
+      <div class="glass rounded-[26px] border border-ink/8 p-5 md:p-6 shadow-[0_18px_40px_-22px_rgba(11,40,48,0.22)]">
+        <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+          <div class="flex items-center justify-between rounded-[18px] bg-white/60 px-4 py-3 border border-white/70">
+            <div>
+              <div class="text-[10px] tracking-[0.22em] uppercase text-ink/48">Mobile</div>
+              <div class="mt-1 text-sm font-medium text-ink">We come to you</div>
+            </div>
+            <span class="h-10 w-10 rounded-full bg-[#e6f7ff] grid place-items-center text-teal font-semibold">1</span>
+          </div>
+          <div class="flex items-center justify-between rounded-[18px] bg-white/60 px-4 py-3 border border-white/70">
+            <div>
+              <div class="text-[10px] tracking-[0.22em] uppercase text-ink/48">Mission</div>
+              <div class="mt-1 text-sm font-medium text-ink">100% of profit donated</div>
+            </div>
+            <span class="h-10 w-10 rounded-full bg-[#eef7ee] grid place-items-center text-[#4a8b63] font-semibold">2</span>
+          </div>
+          <div class="flex items-center justify-between rounded-[18px] bg-white/60 px-4 py-3 border border-white/70">
+            <div>
+              <div class="text-[10px] tracking-[0.22em] uppercase text-ink/48">Priority</div>
+              <div class="mt-1 text-sm font-medium text-ink">First responders get free details</div>
+            </div>
+            <span class="h-10 w-10 rounded-full bg-[#fff4df] grid place-items-center text-[#ad6b2d] font-semibold">3</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <section class="mt-6 md:mt-8 flex-1 min-h-0">
+    <section class="mt-5 md:mt-6 flex-1 min-h-0">
       <div class="glass rounded-[30px] border border-ink/8 p-4 md:p-5 h-full">
         <div class="grid gap-4 lg:gap-5 md:grid-cols-3 h-full">
-          <div class="rounded-[22px] border border-[#cfe8f5] bg-[#f4fbff] p-5 md:p-6 flex flex-col justify-between">
-            <div>
-              <div class="text-[11px] tracking-[0.2em] uppercase text-teal/75">Quick Studz</div>
-              <div class="mt-4 font-display text-[2.2rem] md:text-[2.7rem] text-ink">$49</div>
-            </div>
-            <a href="/book/quick-studz" class="btn btn-coral mt-8 w-full">Book Quick Studz</a>
-          </div>
-
-          <div class="rounded-[22px] border border-[#d7ecd8] bg-[#f4fbf4] p-5 md:p-6 flex flex-col justify-between">
-            <div>
-              <div class="text-[11px] tracking-[0.2em] uppercase text-[#4a8b63]">Full Studz</div>
-              <div class="mt-4 font-display text-[2.2rem] md:text-[2.7rem] text-ink">$99</div>
-            </div>
-            <a href="/book/full-studz" class="btn btn-coral mt-8 w-full">Book Full Studz</a>
-          </div>
-
-          <div class="rounded-[22px] border border-[#f2d7be] bg-[#fff8f1] p-5 md:p-6 flex flex-col justify-between shadow-[0_18px_40px_-24px_rgba(242,184,68,0.22)]">
-            <div>
-              <div class="flex items-center justify-between gap-3">
-                <div class="text-[11px] tracking-[0.2em] uppercase text-[#ad6b2d]">Showroom</div>
-                <span class="rounded-full bg-[#f7e8cf] px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-[#8b5b22]">Most popular</span>
+          <article class="rounded-[22px] border border-[#cfe8f5] bg-[#f4fbff] p-5 md:p-6 flex flex-col shadow-[0_12px_30px_-24px_rgba(12,159,228,0.35)]">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="text-[11px] tracking-[0.2em] uppercase text-teal/75">Quick Studz</div>
+                <div class="mt-3 font-display text-[2.2rem] md:text-[2.7rem] text-ink">$49</div>
               </div>
-              <div class="mt-4 font-display text-[2.2rem] md:text-[2.7rem] text-ink">$169</div>
+              <span class="rounded-full bg-[#d8f0fb] px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-teal/85">Exterior reset</span>
             </div>
-            <a href="/book/showroom" class="btn btn-coral mt-8 w-full">Book Showroom</a>
-          </div>
+            <p class="mt-4 text-sm text-ink/72">Best for maintenance washes and a quick refresh between full details.</p>
+            <ul class="mt-5 space-y-2.5 text-[0.94rem] text-ink/84">
+              <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-teal shrink-0"></span><span>Hand wash and dry</span></li>
+              <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-teal shrink-0"></span><span>Wheels, tires, and door jambs</span></li>
+              <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-teal shrink-0"></span><span>Glass cleaned inside and out</span></li>
+            </ul>
+            <a href="/book/quick-studz" class="btn btn-coral mt-auto mt-8 w-full">Book Quick Studz</a>
+          </article>
+
+          <article class="rounded-[22px] border border-[#d7ecd8] bg-[#f4fbf4] p-5 md:p-6 flex flex-col shadow-[0_12px_30px_-24px_rgba(74,139,99,0.28)]">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="text-[11px] tracking-[0.2em] uppercase text-[#4a8b63]">Full Studz</div>
+                <div class="mt-3 font-display text-[2.2rem] md:text-[2.7rem] text-ink">$99</div>
+              </div>
+              <span class="rounded-full bg-[#e5f3e6] px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-[#4a8b63]">Most balanced</span>
+            </div>
+            <p class="mt-4 text-sm text-ink/72">The clean daily-driver package with more interior attention and a better finish.</p>
+            <ul class="mt-5 space-y-2.5 text-[0.94rem] text-ink/84">
+              <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[#4a8b63] shrink-0"></span><span>Everything in Quick Studz</span></li>
+              <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[#4a8b63] shrink-0"></span><span>Interior vacuum and blowout</span></li>
+              <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[#4a8b63] shrink-0"></span><span>Dash, console, and door wipe-down</span></li>
+            </ul>
+            <a href="/book/full-studz" class="btn btn-coral mt-auto mt-8 w-full">Book Full Studz</a>
+          </article>
+
+          <article class="rounded-[22px] border border-[#f2d7be] bg-[#fff8f1] p-5 md:p-6 flex flex-col shadow-[0_18px_40px_-24px_rgba(242,184,68,0.25)] relative overflow-hidden">
+            <div class="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#f2b844] via-[#f6d796] to-[#0c9fe4]"></div>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="text-[11px] tracking-[0.2em] uppercase text-[#ad6b2d]">Showroom</div>
+                <div class="mt-3 font-display text-[2.2rem] md:text-[2.7rem] text-ink">$169</div>
+              </div>
+              <span class="rounded-full bg-[#f7e8cf] px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-[#8b5b22]">Deep clean</span>
+            </div>
+            <p class="mt-4 text-sm text-ink/72">The most complete detail, with steam, shampoo, and a showroom-level finish.</p>
+            <ul class="mt-5 space-y-2.5 text-[0.94rem] text-ink/84">
+              <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[#ad6b2d] shrink-0"></span><span>Everything in Full Studz</span></li>
+              <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[#ad6b2d] shrink-0"></span><span>Steam clean interior surfaces</span></li>
+              <li class="flex items-start gap-2.5"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[#ad6b2d] shrink-0"></span><span>Carpet and upholstery shampoo</span></li>
+            </ul>
+            <a href="/book/showroom" class="btn btn-coral mt-auto mt-8 w-full">Book Showroom</a>
+          </article>
         </div>
       </div>
     </section>
