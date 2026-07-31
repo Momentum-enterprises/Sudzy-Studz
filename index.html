@@ -811,12 +811,8 @@ tailwind.config = {
         <div class="glass rounded-[26px] p-6 md:p-7 relative">
           <div class="flex items-center justify-between">
             <span class="eyebrow">Donation impact</span>
-            <span class="text-xs px-2.5 py-1 rounded-full bg-coral/10 text-coral font-medium tracking-wide inline-flex items-center gap-1.5">
-              <span class="relative inline-flex h-1.5 w-1.5">
-                <span class="absolute inline-flex h-full w-full rounded-full bg-coral opacity-75 animate-ping"></span>
-                <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-coral"></span>
-              </span>
-              LIVE
+            <span id="liveUpdatedBadge" class="text-[11px] px-2.5 py-1 rounded-full bg-ink/5 text-ink/70 font-medium tracking-wide">
+              Last Updated
             </span>
           </div>
 
@@ -1404,9 +1400,13 @@ tailwind.config = {
   // auto-resolves DST based on the actual date stored on CONFIG.lastUpdated.
   (function initLastUpdated() {
     const el = document.getElementById('lastUpdated');
+    const badgeEl = document.getElementById('liveUpdatedBadge');
     if (!el || !(CONFIG.lastUpdated instanceof Date) || isNaN(CONFIG.lastUpdated)) return;
     const dateStr = CONFIG.lastUpdated.toLocaleDateString('en-US', {
       month: 'long', day: 'numeric', year: 'numeric',
+    });
+    const shortDateStr = CONFIG.lastUpdated.toLocaleDateString('en-US', {
+      month: 'short', day: 'numeric', year: 'numeric',
     });
     const timeStr = CONFIG.lastUpdated.toLocaleTimeString('en-US', {
       hour: 'numeric', minute: '2-digit', hour12: true,
@@ -1416,6 +1416,7 @@ tailwind.config = {
       timeZoneName: 'short',
     }).split(' ').pop();
     el.textContent = `Last Updated ${dateStr} at ${timeStr} ${tzAbbr}`;
+    if (badgeEl) badgeEl.textContent = `Updated ${shortDateStr}`;
   })();
 
   // ---- Count-up stats ----
