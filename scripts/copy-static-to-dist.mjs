@@ -6,6 +6,7 @@ const projectRoot = process.cwd();
 const distDir = path.join(projectRoot, 'dist');
 
 const directoriesToCopy = [
+  'assets',
   'book',
   'pricing',
   'privacy-policy',
