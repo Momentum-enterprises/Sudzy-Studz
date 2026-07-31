@@ -622,7 +622,6 @@ tailwind.config = {
                       <span class="choice-title">
                         <span>Quick Studz</span>
                       </span>
-                      <span class="choice-subtitle">Sedan $49, SUV / Truck $69, XL Vehicle $79</span>
                     </span>
                   </label>
                   <label>
@@ -631,7 +630,6 @@ tailwind.config = {
                       <span class="choice-title">
                         <span>Full Studz</span>
                       </span>
-                      <span class="choice-subtitle">Sedan $99, SUV / Truck $119, XL Vehicle $139</span>
                     </span>
                   </label>
                   <label>
@@ -640,7 +638,6 @@ tailwind.config = {
                       <span class="choice-title">
                         <span>Showroom</span>
                       </span>
-                      <span class="choice-subtitle">Sedan $169, SUV / Truck $189, XL Vehicle $209</span>
                     </span>
                   </label>
                 </div>
@@ -909,14 +906,6 @@ tailwind.config = {
   const getSelectedAddOns = () => Array.from(form.querySelectorAll('input[name="addOns"]:checked')).map((input) => input.value);
   const getErrorEl = (name) => form.querySelector(`[data-error-for="${name}"]`);
 
-  function updatePackagePrices() {
-    const vehicleType = getCheckedValue('vehicleType') || 'sedan';
-    document.querySelectorAll('[data-package-price]').forEach((el) => {
-      const pkg = el.dataset.packagePrice;
-      el.textContent = fmtMoney(PRICES[pkg][vehicleType]);
-    });
-  }
-
   function calculateSummary() {
     const vehicleType = getCheckedValue('vehicleType');
     const selectedPackage = getCheckedValue('package');
@@ -1160,7 +1149,6 @@ tailwind.config = {
     field.addEventListener('change', () => {
       touched.add(name);
       validateField(name, true);
-      updatePackagePrices();
       updateTotal();
       clearFormError();
       submitButton.disabled = !validateForm(false) || submitButton.dataset.loading === 'true';
@@ -1197,7 +1185,6 @@ tailwind.config = {
 
       showSuccess(data);
       form.reset();
-      updatePackagePrices();
       updateTotal();
     } catch (error) {
       showFormError(error.message || 'We could not send your booking request. Please try again.');
@@ -1208,7 +1195,6 @@ tailwind.config = {
 
   applyPreselectionFromQuery();
   setDateTimeMinimums();
-  updatePackagePrices();
   updateTotal();
   validateForm(false);
 </script>
