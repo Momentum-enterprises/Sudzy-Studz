@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/book/",
+      "destination": "/book",
+      "permanent": true
+    },
+    {
       "source": "/pricing/",
       "destination": "/pricing",
       "permanent": true
