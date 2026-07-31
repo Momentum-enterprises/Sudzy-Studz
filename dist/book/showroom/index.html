@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Book Showroom, Sudzy Studz Mobile Detailing</title>
+<meta name="description" content="Book a Showroom detail on Sudzy Studz Mobile Detailing." />
+<link rel="icon" type="image/png" href="/brand_assets/logo.png" sizes="any" />
+<link rel="apple-touch-icon" href="/brand_assets/logo.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Sudzy Studz Mobile Detailing" />
+<meta property="og:title" content="Book Showroom, Sudzy Studz Mobile Detailing" />
+<meta property="og:description" content="Book a Showroom detail on Sudzy Studz Mobile Detailing." />
+<meta property="og:image" content="/brand_assets/logo.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Book Showroom, Sudzy Studz Mobile Detailing" />
+<meta name="twitter:description" content="Book a Showroom detail on Sudzy Studz Mobile Detailing." />
+<meta name="twitter:image" content="/brand_assets/logo.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..800,30..100;1,9..144,300..800,30..100&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink:    '#0B2830',
+        deep:   '#0C3F4E',
+        teal:   '#0C9FE4',
+        aqua:   '#2CC6F0',
+        foam:   '#D4EEFB',
+        cream:  '#F6F1E7',
+        paper:  '#FBF8F1',
+        coral:  '#0C9FE4',
+        sun:    '#F2B844',
+      },
+      fontFamily: {
+        display: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+        sans:    ['"DM Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
+    },
+  },
+};
+</script>
+
+<style>
+  :root {
+    --ink:   #0B2830;
+    --deep:  #0C3F4E;
+    --teal:  #0C9FE4;
+    --aqua:  #2CC6F0;
+    --foam:  #D4EEFB;
+    --cream: #F6F1E7;
+    --paper: #FBF8F1;
+    --coral: #0C9FE4;
+    --sun:   #F2B844;
+
+    --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+    --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --shadow-lg: 0 18px 40px -16px rgba(12,63,78,.28), 0 40px 80px -32px rgba(12,63,78,.18);
+  }
+
+  html, body {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  body {
+    font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .headline {
+    font-family: 'Fraunces', ui-serif, Georgia, serif;
+    font-variation-settings: 'opsz' 144, 'SOFT' 80;
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--teal);
+  }
+
+  .grain::before {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    opacity: .35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.04  0 0 0 0 0.24  0 0 0 0 0.3  0 0 0 0.14 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .hero-bg {
+    background:
+      radial-gradient(ellipse 60% 45% at 15% 18%, rgba(44,198,240,.28), transparent 60%),
+      radial-gradient(ellipse 55% 40% at 92% 10%, rgba(242,184,68,.18), transparent 55%),
+      radial-gradient(ellipse 70% 55% at 85% 95%, rgba(12,159,228,.18), transparent 60%),
+      linear-gradient(180deg, #FBF8F1 0%, #F6F1E7 100%);
+  }
+
+  .glass {
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(18px) saturate(1.15);
+    -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border: 1px solid rgba(255,255,255,0.75);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+    padding: .95rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: -0.005em;
+    transition: transform .35s var(--ease-spring), box-shadow .35s var(--ease-out-soft), background-color .25s ease, color .25s ease;
+  }
+  .btn:active { transform: translateY(1px) scale(.985); }
+  .btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    box-shadow: 0 10px 24px -10px rgba(11,40,48,.55), inset 0 1px 0 rgba(255,255,255,.12);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 36px -12px rgba(11,40,48,.55); }
+  .btn-coral {
+    background: var(--coral);
+    color: #fff;
+    box-shadow: 0 10px 22px -10px rgba(12,159,228,.55), inset 0 1px 0 rgba(255,255,255,.28);
+  }
+  .btn-coral:hover { transform: translateY(-2px); box-shadow: 0 18px 34px -12px rgba(12,159,228,.7); }
+
+  .nav-link {
+    position: relative;
+    padding: .4rem 0;
+    color: rgba(11,40,48,.72);
+    transition: color .25s ease;
+  }
+  .nav-link::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+    height: 1.5px; background: currentColor;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .45s var(--ease-out-soft);
+  }
+  .nav-link:hover { color: var(--ink); }
+  .nav-link:hover::after { transform: scaleX(1); }
+  .nav-link.is-active { color: var(--ink); }
+  .nav-link.is-active::after { transform: scaleX(1); }
+
+  ::selection { background: var(--coral); color: #fff; }
+  .logo-img { filter: saturate(1.04); }
+
+  .calendar-shell {
+    height: 100%;
+    min-height: 0;
+    border-radius: 28px;
+    overflow: hidden;
+  }
+</style>
+</head>
+<body class="overflow-hidden h-screen">
+
+<nav id="nav" class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8">
+    <div class="mt-3 md:mt-4 flex items-center justify-between rounded-full pl-5 pr-2 py-2 glass">
+      <a href="/" class="flex items-center group">
+        <img src="../../brand_assets/logo.png" alt="Sudzy Studz" class="logo-img h-14 md:h-16 w-auto transition-transform duration-500 group-hover:scale-[1.03]" />
+      </a>
+
+      <div class="hidden md:flex items-center gap-7 text-[0.92rem]">
+        <a href="/pricing/" class="nav-link">Pricing</a>
+        <a href="/book" class="nav-link is-active" aria-current="page">Book</a>
+      </div>
+
+      <a href="/pricing/" class="btn btn-primary !py-2.5 !px-5 text-[0.88rem]">
+        Pricing
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main id="top" class="h-screen overflow-hidden hero-bg grain">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-28 md:pt-32 pb-5 h-full flex flex-col">
+    <div class="max-w-[760px]">
+      <span class="eyebrow">BOOK</span>
+      <h1 class="headline text-[2.1rem] sm:text-[2.8rem] md:text-[3.4rem] lg:text-[3.85rem] text-ink mt-4">
+        Book a Showroom <span class="italic text-coral">detail</span>.
+      </h1>
+      <p class="mt-6 text-[1.03rem] md:text-[1.12rem] text-ink/76 font-light max-w-[42ch]">
+        Tap a date. The calendar stays still so it is easier to pick a time.
+      </p>
+    </div>
+
+    <section class="mt-6 md:mt-8 flex-1 min-h-0">
+      <div class="calendar-shell glass p-3 md:p-4">
+        <div id="my-cal-inline-showroomdetail" class="w-full h-full overflow-hidden"></div>
+      </div>
+      <p class="mission-line mt-3 text-center text-sm text-ink/65">100% of profits go to Pro Kids, First Tee - San Diego.</p>
+    </section>
+  </div>
+</main>
+
+<script type="text/javascript">
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (!window.location.hash) window.scrollTo(0, 0);
+
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal;
+      let ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {};
+        cal.q = cal.q || [];
+        d.head.appendChild(d.createElement("script")).src = A;
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        if (typeof namespace === "string") {
+          cal.ns[namespace] = cal.ns[namespace] || api;
+          p(cal.ns[namespace], ar);
+          p(cal, ["initNamespace", namespace]);
+        } else {
+          p(cal, ar);
+        }
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, "https://app.cal.com/embed/embed.js", "init");
+
+  Cal("init", "showroomdetail", { origin: "https://app.cal.com" });
+  Cal.config = Cal.config || {};
+  Cal.config.forwardQueryParams = true;
+  Cal.ns.showroomdetail("inline", {
+    elementOrSelector: "#my-cal-inline-showroomdetail",
+    config: { layout: "month_view" },
+    calLink: "sudzystudz/showroomdetail",
+  });
+  Cal.ns.showroomdetail("ui", {
+    cssVarsPerTheme: { light: { "cal-brand": "#2196F3" } },
+    hideEventTypeDetails: true,
+    layout: "month_view",
+  });
+</script>
+</body>
+</html>

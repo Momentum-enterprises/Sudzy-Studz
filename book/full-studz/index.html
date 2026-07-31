@@ -304,25 +304,105 @@ tailwind.config = {
       </div>
     </div>
 
-    <div class="embed-shell px-5 md:px-8">
-      <!-- Cal inline embed code begins -->
-      <div style="width:100%;min-height:700px;overflow:scroll" id="my-cal-inline-full-studz-detail"></div>
-      <script type="text/javascript">
-        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", "full-studz-detail", {origin:"https://app.cal.com"});
+    <!-- Add-on picker -->
+    <div id="addon-step" class="max-w-[1240px] mx-auto px-5 md:px-8 pb-10 md:pb-14">
+      <div class="surface rounded-[28px] p-6 md:p-8">
+        <div class="mb-6">
+          <div class="eyebrow text-teal">Step 2 — Customize</div>
+          <h2 class="mt-2 font-display text-[1.5rem] md:text-[1.85rem] text-ink" style="font-variation-settings:'opsz' 144,'SOFT' 80">Any add-ons?</h2>
+          <p class="mt-1 text-[0.92rem] text-ink/60">Select extras to include. We'll note them on your booking.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
+            <input type="checkbox" class="addon-cb-fs mt-0.5 accent-[#0C9FE4]" data-name="Wax &amp; Protection" data-price="99">
+            <div class="flex-1"><div class="font-semibold text-ink text-[0.95rem]">Wax &amp; Protection</div><div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$99</div></div>
+          </label>
+          <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
+            <input type="checkbox" class="addon-cb-fs mt-0.5 accent-[#0C9FE4]" data-name="Steam Clean Interior" data-price="45">
+            <div class="flex-1"><div class="font-semibold text-ink text-[0.95rem]">Steam Clean Interior</div><div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$45</div></div>
+          </label>
+          <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
+            <input type="checkbox" class="addon-cb-fs mt-0.5 accent-[#0C9FE4]" data-name="Headlight Restoration" data-price="40">
+            <div class="flex-1"><div class="font-semibold text-ink text-[0.95rem]">Headlight Restoration</div><div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$40</div></div>
+          </label>
+          <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
+            <input type="checkbox" class="addon-cb-fs mt-0.5 accent-[#0C9FE4]" data-name="Carpet Shampoo" data-price="40">
+            <div class="flex-1"><div class="font-semibold text-ink text-[0.95rem]">Carpet Shampoo</div><div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$40</div></div>
+          </label>
+          <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
+            <input type="checkbox" class="addon-cb-fs mt-0.5 accent-[#0C9FE4]" data-name="Odor Treatment" data-price="25">
+            <div class="flex-1"><div class="font-semibold text-ink text-[0.95rem]">Odor Treatment</div><div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$25</div></div>
+          </label>
+          <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
+            <input type="checkbox" class="addon-cb-fs mt-0.5 accent-[#0C9FE4]" data-name="Plastic Correction" data-price="25">
+            <div class="flex-1"><div class="font-semibold text-ink text-[0.95rem]">Plastic Correction</div><div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$25</div></div>
+          </label>
+        </div>
+        <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-4">
+          <div id="addon-total-fs" class="hidden rounded-[12px] bg-[#f0faff] border border-teal/20 px-5 py-3 text-[0.95rem] font-semibold text-ink">
+            Add-ons total: <span id="addon-total-price-fs" class="text-teal">$0</span>
+          </div>
+          <button onclick="proceedToBookFS()" class="btn btn-coral">
+            Continue to pick a time
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+          <button onclick="proceedToBookFS()" class="text-[0.88rem] text-ink/50 hover:text-ink transition-colors underline underline-offset-2">No add-ons, just book</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calendar -->
+    <div id="cal-section-fs" class="hidden">
+      <div class="max-w-[1240px] mx-auto px-5 md:px-8 mb-3">
+        <button onclick="document.getElementById('cal-section-fs').classList.add('hidden');document.getElementById('addon-step').style.display='';window.scrollTo({top:document.getElementById('addon-step').offsetTop-100,behavior:'smooth'})" class="inline-flex items-center gap-2 text-[0.88rem] text-ink/55 hover:text-ink transition-colors">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M15 10H5m0 0 4-4m-4 4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Back to add-ons
+        </button>
+      </div>
+      <div id="addon-reminder-fs" class="hidden max-w-[1240px] mx-auto px-5 md:px-8 mb-4">
+        <div class="rounded-[16px] bg-[#0B2830] px-5 py-3.5 flex items-center gap-3 text-[0.9rem] text-white">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" class="shrink-0"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 4v4m0 4h.01" stroke="#2CC6F0" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span>Add-ons selected: <span id="addon-reminder-text-fs" class="font-semibold text-[#2CC6F0]"></span> — pre-filled in your booking notes.</span>
+        </div>
+      </div>
+      <div class="embed-shell px-5 md:px-8">
+        <div style="width:100%;min-height:700px;overflow:scroll" id="my-cal-inline-full-studz-detail"></div>
+      </div>
+    </div>
+
+    <script>
+    function proceedToBookFS() {
+      const cbs = document.querySelectorAll('.addon-cb-fs:checked');
+      const items = [...cbs].map(cb => cb.dataset.name + ' (+$' + cb.dataset.price + ')');
+      const notes = items.length > 0 ? 'Add-ons requested: ' + items.join(', ') : '';
+      document.getElementById('addon-step').style.display = 'none';
+      const calSection = document.getElementById('cal-section-fs');
+      calSection.classList.remove('hidden');
+      if (items.length > 0) {
+        document.getElementById('addon-reminder-fs').classList.remove('hidden');
+        document.getElementById('addon-reminder-text-fs').textContent = items.join(', ');
+      }
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement('script')).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === 'string'){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ['initNamespace', namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, 'https://app.cal.com/embed/embed.js', 'init');
+      Cal('init', 'full-studz-detail', {origin:'https://app.cal.com'});
       Cal.config = Cal.config || {};
       Cal.config.forwardQueryParams = true;
-
-        Cal.ns["full-studz-detail"]("inline", {
-          elementOrSelector:"#my-cal-inline-full-studz-detail",
-          config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"auto"},
-          calLink: "sudzystudz/full-studz-detail",
-        });
-
-        Cal.ns["full-studz-detail"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#2196F3"}},"hideEventTypeDetails":true,"layout":"month_view"});
-        </script>
-      <!-- Cal inline embed code ends -->
-    </div>
+      Cal.ns['full-studz-detail']('inline', {
+        elementOrSelector: '#my-cal-inline-full-studz-detail',
+        config: {layout:'month_view', useSlotsViewOnSmallScreen:'true', theme:'auto', prefill: notes ? {notes} : {}},
+        calLink: 'sudzystudz/full-studz-detail',
+      });
+      Cal.ns['full-studz-detail']('ui', {cssVarsPerTheme:{light:{'cal-brand':'#2196F3'}}, hideEventTypeDetails:true, layout:'month_view'});
+      calSection.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+    document.querySelectorAll('.addon-cb-fs').forEach(cb => {
+      cb.addEventListener('change', () => {
+        const total = [...document.querySelectorAll('.addon-cb-fs:checked')].reduce((s,c) => s + Number(c.dataset.price), 0);
+        const el = document.getElementById('addon-total-fs');
+        document.getElementById('addon-total-price-fs').textContent = '$' + total;
+        total > 0 ? el.classList.remove('hidden') : el.classList.add('hidden');
+      });
+    });
+    </script>
 
     <p class="mission-line mt-2 md:mt-4 pb-12 md:pb-16">100% of profits go to Pro Kids, First Tee - San Diego.</p>
   </section>

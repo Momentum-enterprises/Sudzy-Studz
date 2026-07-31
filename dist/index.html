@@ -5,19 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sudzy Studz Mobile Detailing, We detail. They play.</title>
 <meta name="description" content="Sudzy Studz Mobile Detailing, a student-founded LLC in San Diego. 100% of profits from car detailing are donated to Pro Kids, First Tee – San Diego, which provides golf equipment, coaching, and programs to kids in City Heights and Oceanside who can't afford to play. First responders and military always detail free." />
+<link rel="icon" type="image/png" href="/assets/logo-BIttpzlB.png" sizes="any" />
+<link rel="apple-touch-icon" href="/assets/logo-BIttpzlB.png" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Sudzy Studz Mobile Detailing" />
 <meta property="og:title" content="Sudzy Studz Mobile Detailing, We detail. They play." />
 <meta property="og:description" content="A student-founded mobile detailing LLC in San Diego. Every detail helps put a club in a kid's hands by donating 100% of profits to Pro Kids, First Tee – San Diego, the nonprofit that equips kids in City Heights and Oceanside with golf gear, coaching, and programs." />
-<meta property="og:image" content="brand_assets/logo.png" />
+<meta property="og:image" content="/brand_assets/logo.png" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Sudzy Studz Mobile Detailing, We detail. They play." />
 <meta name="twitter:description" content="A student-founded mobile detailing LLC in San Diego. Every detail helps put a club in a kid's hands by donating 100% of profits to Pro Kids, First Tee – San Diego, the nonprofit that equips kids with golf gear, coaching, and programs." />
-<meta name="twitter:image" content="brand_assets/logo.png" />
+<meta name="twitter:image" content="/brand_assets/logo.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -719,7 +721,7 @@ tailwind.config = {
         <a href="#prokids" class="nav-link">Impact</a>
         <a href="#story" class="nav-link">Our Story</a>
         <a href="/pricing/" class="nav-link">Pricing</a>
-        <a href="mailto:contact@sudzystudz.com?subject=Book%20a%20detail" class="nav-link">Book</a>
+        <a href="/book" class="nav-link">Book</a>
       </div>
 
       <div class="flex items-center gap-2">
@@ -751,7 +753,7 @@ tailwind.config = {
     <a href="#prokids" class="mobile-nav-link">Impact <span aria-hidden="true">→</span></a>
     <a href="#story" class="mobile-nav-link">Our Story <span aria-hidden="true">→</span></a>
     <a href="/pricing/" class="mobile-nav-link">Pricing <span aria-hidden="true">→</span></a>
-    <a href="mailto:contact@sudzystudz.com?subject=Book%20a%20detail" class="mobile-nav-link">Book a detail <span aria-hidden="true">→</span></a>
+    <a href="/book" class="mobile-nav-link">Book a detail <span aria-hidden="true">→</span></a>
     <a href="#donate" class="mobile-nav-link mt-2 text-coral">Give directly <span aria-hidden="true">→</span></a>
   </nav>
 </div>
@@ -798,7 +800,7 @@ tailwind.config = {
             Give Directly
             <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           </a>
-          <a href="mailto:contact@sudzystudz.com?subject=Book%20a%20detail" class="btn btn-primary">
+          <a href="/book" class="btn btn-primary">
             Book a detail
             <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           </a>
@@ -814,12 +816,8 @@ tailwind.config = {
         <div class="glass rounded-[26px] p-6 md:p-7 relative">
           <div class="flex items-center justify-between">
             <span class="eyebrow">Donation impact</span>
-            <span class="text-xs px-2.5 py-1 rounded-full bg-coral/10 text-coral font-medium tracking-wide inline-flex items-center gap-1.5">
-              <span class="relative inline-flex h-1.5 w-1.5">
-                <span class="absolute inline-flex h-full w-full rounded-full bg-coral opacity-75 animate-ping"></span>
-                <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-coral"></span>
-              </span>
-              LIVE
+            <span id="liveUpdatedBadge" class="text-[11px] px-2.5 py-1 rounded-full bg-ink/5 text-ink/70 font-medium tracking-wide">
+              Last Updated
             </span>
           </div>
 
@@ -858,11 +856,6 @@ tailwind.config = {
           </div>
         </div>
 
-        <!-- caption chip -->
-        <div class="mt-4 flex items-center gap-2 text-xs text-ink/55 pl-1">
-          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M10 1.8 12.5 7 18 7.8l-4 3.9.9 5.5L10 14.6 5.1 17.2 6 11.7 2 7.8 7.5 7 10 1.8Z" fill="#F2B844"/></svg>
-          <span id="lastUpdated">Last Updated July 30, 2026 at 12:00 PM PDT</span>
-        </div>
       </div>
 
 
@@ -943,9 +936,9 @@ tailwind.config = {
 
       <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch team-members-grid">
         <figure class="reveal team-member cofounder flex flex-col h-full px-3 py-4 md:px-5 md:py-6">
-          <div class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)]">
+          <a href="https://www.linkedin.com/in/brody-glazer-2b91663b8/" target="_blank" rel="noopener noreferrer" aria-label="View Brody Glazer's LinkedIn profile" class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)] overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink cursor-pointer">
             <img src="/assets/brody1-D7ddi-lw.png" alt="Portrait of Brody Glazer" loading="lazy"/>
-          </div>
+          </a>
           <figcaption class="mt-4 md:mt-5 text-center md:text-left">
             <a href="https://www.linkedin.com/in/brody-glazer-2b91663b8/" target="_blank" rel="noopener noreferrer" class="team-link" aria-label="View Brody Glazer's LinkedIn profile">
               <span class="font-display text-[1.95rem] text-paper team-link__text">Brody Glazer</span>
@@ -964,9 +957,9 @@ tailwind.config = {
         </figure>
 
         <figure class="reveal team-member cofounder flex flex-col h-full px-3 py-4 md:px-5 md:py-6" style="transition-delay:.12s">
-          <div class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)]">
+          <a href="https://www.linkedin.com/in/james-field-29b334403/" target="_blank" rel="noopener noreferrer" aria-label="View James Field's LinkedIn profile" class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)] overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink cursor-pointer">
             <img src="/assets/james-wAki9KB-.jpeg" alt="Portrait of James Field" loading="lazy"/>
-          </div>
+          </a>
           <figcaption class="mt-4 md:mt-5 text-center md:text-left">
             <a href="https://www.linkedin.com/in/james-field-29b334403/" target="_blank" rel="noopener noreferrer" class="team-link" aria-label="View James Field's LinkedIn profile">
               <span class="font-display text-[1.95rem] text-paper team-link__text">James Field</span>
@@ -985,9 +978,9 @@ tailwind.config = {
         </figure>
 
         <figure class="reveal team-member flex flex-col h-full px-3 py-4 md:px-5 md:py-6" style="transition-delay:.24s">
-          <div class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)]">
+          <a href="https://www.linkedin.com/in/owen-field-26192537a/" target="_blank" rel="noopener noreferrer" aria-label="View Owen Field's LinkedIn profile" class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)] overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink cursor-pointer">
             <img src="/assets/Owen-BUiQY6r3.JPG" alt="Portrait of Owen Field" loading="lazy"/>
-          </div>
+          </a>
           <figcaption class="mt-4 md:mt-5 text-center md:text-left">
             <a href="https://www.linkedin.com/in/owen-field-26192537a/" target="_blank" rel="noopener noreferrer" class="team-link" aria-label="View Owen Field's LinkedIn profile">
               <span class="font-display text-[1.95rem] text-paper team-link__text">Owen Field</span>
@@ -1006,9 +999,9 @@ tailwind.config = {
         </figure>
 
         <figure class="reveal team-member flex flex-col h-full px-3 py-4 md:px-5 md:py-6" style="transition-delay:.36s">
-          <div class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)]">
+          <a href="https://www.linkedin.com/in/daniel-rianhard-6911a83a8/" target="_blank" rel="noopener noreferrer" aria-label="View Daniel Rianhard's LinkedIn profile" class="portrait aspect-[3/4] border border-white/10 shadow-[0_20px_60px_-30px_rgba(255,255,255,0.18)] overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink cursor-pointer">
             <img src="/assets/daniel-4r6eHm5A.png" alt="Portrait of Daniel Rianhard" loading="lazy"/>
-          </div>
+          </a>
           <figcaption class="mt-4 md:mt-5 text-center md:text-left">
             <a href="https://www.linkedin.com/in/daniel-rianhard-6911a83a8/" target="_blank" rel="noopener noreferrer" class="team-link" aria-label="View Daniel Rianhard's LinkedIn profile">
               <span class="font-display text-[1.95rem] text-paper team-link__text">Daniel Rianhard</span>
@@ -1043,11 +1036,9 @@ tailwind.config = {
         Real kids. <span class="italic text-teal">Real impact</span>.
       </h2>
 
-      <!-- In partnership with — Pro Kids text + flag mark (swap with official logo when available) -->
       <div class="mt-6 flex items-center gap-3 flex-wrap">
         <span class="text-[10px] tracking-[0.22em] uppercase text-ink/55 font-medium">In partnership with</span>
         <span class="inline-flex items-center gap-2 text-ink/85">
-          <!-- Golf flag logomark placeholder -->
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M6 21V3" stroke="#0C9FE4" stroke-width="1.8" stroke-linecap="round"/>
             <path d="M6 3l11 3.5L6 10V3z" fill="#F2B844" stroke="#F2B844" stroke-width="1" stroke-linejoin="round"/>
@@ -1158,7 +1149,7 @@ tailwind.config = {
   <div class="max-w-[1240px] mx-auto px-5 md:px-8 py-20 md:py-24">
     <div class="reveal flex flex-col gap-5 mb-10">
       <div>
-        <span class="eyebrow">Our work</span>
+        <span class="eyebrow">Work</span>
         <h2 class="headline text-[2rem] md:text-[2.8rem] lg:text-[3.2rem] mt-3 text-ink max-w-[20ch]">
           Real detailing work, shown in images.
         </h2>
@@ -1170,7 +1161,7 @@ tailwind.config = {
 
     <div class="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       <figure class="group relative overflow-hidden rounded-[28px] border border-ink/10 bg-white aspect-[4/5] shadow-[0_16px_38px_-20px_rgba(11,40,48,0.35)]">
-        <a href="assets/bmw%20side.jpg" data-work-photo="BMW Exterior" aria-label="Open BMW exterior photo" class="block h-full w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
+        <a href="assets/bmw%20side.jpg" data-work-photo="BMW Exterior" aria-label="Open BMW exterior photo" class="block h-full w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
           <img src="/assets/bmw%20side-9zt6Xcsw.jpg" alt="BMW exterior side detail" class="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.05]" />
           <div class="pointer-events-none absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
             <figcaption class="text-[0.78rem] tracking-[0.08em] uppercase text-white/90">BMW Exterior</figcaption>
@@ -1179,7 +1170,7 @@ tailwind.config = {
       </figure>
 
       <figure class="group relative overflow-hidden rounded-[28px] border border-ink/10 bg-white aspect-[4/5] shadow-[0_16px_38px_-20px_rgba(11,40,48,0.35)]">
-        <a href="assets/bmw%20interior.webp" data-work-photo="BMW Interior" aria-label="Open BMW interior photo" class="block h-full w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
+        <a href="assets/bmw%20interior.webp" data-work-photo="BMW Interior" aria-label="Open BMW interior photo" class="block h-full w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
           <img src="/assets/bmw%20interior-DUYNTmq9.webp" alt="BMW interior detail" class="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.05]" />
           <div class="pointer-events-none absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
             <figcaption class="text-[0.78rem] tracking-[0.08em] uppercase text-white/90">BMW Interior</figcaption>
@@ -1188,7 +1179,7 @@ tailwind.config = {
       </figure>
 
       <figure class="group relative overflow-hidden rounded-[28px] border border-ink/10 bg-white aspect-[4/5] shadow-[0_16px_38px_-20px_rgba(11,40,48,0.35)]">
-        <a href="assets/lexus%20side.jpeg" data-work-photo="Lexus Exterior" aria-label="Open Lexus exterior photo" class="block h-full w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
+        <a href="assets/lexus%20side.jpeg" data-work-photo="Lexus Exterior" aria-label="Open Lexus exterior photo" class="block h-full w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
           <img src="/assets/lexus%20side-HkP-T1qU.jpeg" alt="Lexus exterior side detail" class="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.05]" />
           <div class="pointer-events-none absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
             <figcaption class="text-[0.78rem] tracking-[0.08em] uppercase text-white/90">Lexus Exterior</figcaption>
@@ -1197,7 +1188,7 @@ tailwind.config = {
       </figure>
 
       <figure class="group relative overflow-hidden rounded-[28px] border border-ink/10 bg-white aspect-[4/5] shadow-[0_16px_38px_-20px_rgba(11,40,48,0.35)]">
-        <a href="assets/lexus%20interior.jpeg" data-work-photo="Lexus Interior" aria-label="Open Lexus interior photo" class="block h-full w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
+        <a href="assets/lexus%20interior.jpeg" data-work-photo="Lexus Interior" aria-label="Open Lexus interior photo" class="block h-full w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/70 focus-visible:ring-offset-2 focus-visible:ring-offset-paper">
           <img src="/assets/lexus%20interior-Bj1AbJfO.jpeg" alt="Lexus interior detail" class="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.05]" />
           <div class="pointer-events-none absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/50 to-transparent">
             <figcaption class="text-[0.78rem] tracking-[0.08em] uppercase text-white/90">Lexus Interior</figcaption>
@@ -1325,7 +1316,7 @@ tailwind.config = {
     // (data-count="2") values in the hero card. One place to edit, no digging.
     // Format: 'YYYY-MM-DDTHH:MM:SS-OFFSET' where OFFSET is -07:00 for PDT (Mar–Nov)
     // or -08:00 for PST (Nov–Mar). Example: new Date('2026-04-20T22:42:00-07:00').
-    // TODO: wire this to a real data source when the project gets a backend.
+    // Update this from live donation data when the backend is ready.
     lastUpdated: new Date('2026-07-30T12:00:00-07:00'),
   };
 
@@ -1401,24 +1392,14 @@ tailwind.config = {
     window.scrollTo(0, 0);
   }
 
-  // ---- Last-updated timestamp ----
-  // Renders CONFIG.lastUpdated in the viewer's local timezone — a visitor in
-  // San Diego sees PDT/PST, a visitor in NYC sees EDT/EST, etc. The Intl API
-  // auto-resolves DST based on the actual date stored on CONFIG.lastUpdated.
+  // ---- Last-updated badge ----
   (function initLastUpdated() {
-    const el = document.getElementById('lastUpdated');
-    if (!el || !(CONFIG.lastUpdated instanceof Date) || isNaN(CONFIG.lastUpdated)) return;
-    const dateStr = CONFIG.lastUpdated.toLocaleDateString('en-US', {
-      month: 'long', day: 'numeric', year: 'numeric',
+    const badgeEl = document.getElementById('liveUpdatedBadge');
+    if (!badgeEl || !(CONFIG.lastUpdated instanceof Date) || isNaN(CONFIG.lastUpdated)) return;
+    const shortDateStr = CONFIG.lastUpdated.toLocaleDateString('en-US', {
+      month: 'short', day: 'numeric', year: 'numeric',
     });
-    const timeStr = CONFIG.lastUpdated.toLocaleTimeString('en-US', {
-      hour: 'numeric', minute: '2-digit', hour12: true,
-    });
-    // Pull the short tz abbreviation (PDT/PST/EDT/etc.) from the formatted string
-    const tzAbbr = CONFIG.lastUpdated.toLocaleString('en-US', {
-      timeZoneName: 'short',
-    }).split(' ').pop();
-    el.textContent = `Last Updated ${dateStr} at ${timeStr} ${tzAbbr}`;
+    badgeEl.textContent = `Updated ${shortDateStr}`;
   })();
 
   // ---- Count-up stats ----
@@ -1613,7 +1594,7 @@ tailwind.config = {
     const impactLabel      = document.getElementById('impactLabel');
     const monthlyIncentive = document.getElementById('monthlyIncentive');
 
-    // Impact copy — TODO: confirm $/impact figures with Pro Kids before launch
+    // Impact copy is based on current campaign assumptions and can be refined later.
     const IMPACT = {
       once: {
         '25':    'Covers a set of golf balls for one kid.',

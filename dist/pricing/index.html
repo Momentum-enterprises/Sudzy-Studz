@@ -134,13 +134,6 @@ tailwind.config = {
   .nav-link.is-active { color: var(--ink); }
   .nav-link.is-active::after { transform: scaleX(1); }
   .logo-img { filter: saturate(1.04); }
-  .glass {
-    background: rgba(251,248,241,0.85);
-    border: 1px solid rgba(11,40,48,0.10);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 8px 28px -12px rgba(11,40,48,0.18);
-  }
 </style>
 </head>
 <body class="overflow-x-hidden min-h-screen">
@@ -151,15 +144,12 @@ tailwind.config = {
         <img src="/brand_assets/logo.png" alt="Sudzy Studz" class="logo-img h-9 md:h-14 w-auto transition-transform duration-500 group-hover:scale-[1.03]" />
       </a>
       <div class="hidden md:flex items-center gap-7 text-[0.92rem]">
-        <a href="/#about" class="nav-link">About</a>
-        <a href="/#prokids" class="nav-link">Impact</a>
-        <a href="/#story" class="nav-link">Our Story</a>
         <a href="/pricing/" class="nav-link is-active" aria-current="page">Pricing</a>
         <a href="/book" class="nav-link">Book</a>
       </div>
-      <a href="/#donate" class="btn btn-primary !py-2.5 !px-5 text-[0.88rem]">
-        Give Directly
-        <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <a href="/book" class="btn btn-coral !py-2 !px-4 text-[0.8rem] md:!py-2.5 md:!px-5 md:text-[0.88rem]">
+        <span class="md:hidden">Book</span>
+        <span class="hidden md:inline">Book a detail</span>
       </a>
     </div>
   </div>
@@ -167,7 +157,7 @@ tailwind.config = {
 
 <main class="hero-bg grain">
   <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-28 md:pt-22 pb-14 md:pb-18">
-    <section class="grid gap-5 items-start">
+    <section class="grid gap-5 lg:grid-cols-[1.15fr_.85fr] items-start">
       <div class="pt-1 max-w-[700px]">
         <span class="eyebrow">Pricing</span>
         <h1 class="headline text-[1.75rem] sm:text-[2.4rem] md:text-[3rem] lg:text-[3.35rem] text-ink mt-4 max-w-[12ch] leading-[0.94]">
@@ -178,6 +168,22 @@ tailwind.config = {
         </p>
       </div>
 
+      <div class="surface rounded-[28px] p-4 md:p-5 lg:p-6">
+        <div class="grid gap-3">
+          <div class="rounded-[18px] border border-[#e6f2fb] bg-[#f7fbff] px-4 py-3.5 flex items-center justify-between">
+            <span class="text-[10px] tracking-[0.2em] uppercase text-teal/75">Mobile service</span>
+            <span class="text-sm font-medium text-ink">We come to you</span>
+          </div>
+          <div class="rounded-[18px] border border-[#e7f0e8] bg-[#f7fbf7] px-4 py-3.5 flex items-center justify-between">
+            <span class="text-[10px] tracking-[0.2em] uppercase text-[#4a8b63]">Mission</span>
+            <span class="text-sm font-medium text-ink">100% of profits support Pro Kids</span>
+          </div>
+          <div class="rounded-[18px] border border-[#f1e0bb] bg-[#fffaf0] px-4 py-3.5 flex items-center justify-between">
+            <span class="text-[10px] tracking-[0.2em] uppercase text-[#ad6b2d]">Priority</span>
+            <span class="text-sm font-medium text-ink">First responders and military free</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="mt-6 surface rounded-[34px] p-4 md:p-5">
@@ -251,28 +257,42 @@ tailwind.config = {
           </div>
         </article>
 
-        <article class="rounded-[24px] bg-[#0B2830] p-6 md:p-7 flex flex-col min-h-[28rem] shadow-[0_24px_56px_-20px_rgba(11,40,48,0.55),0_8px_24px_-12px_rgba(12,159,228,0.2)] relative overflow-hidden">
-          <!-- decorative radial glow -->
-          <div class="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full" style="background:radial-gradient(circle,rgba(12,159,228,0.18) 0%,transparent 70%)"></div>
-          <!-- badge -->
-          <span class="self-start rounded-full bg-teal px-4 py-1.5 text-[0.7rem] font-semibold tracking-[0.2em] uppercase text-white shadow-[0_6px_18px_-6px_rgba(12,159,228,0.7)]">Most Popular</span>
-          <!-- title -->
-          <h3 class="mt-5 font-display text-[2.4rem] leading-[0.95] text-white" style="font-variation-settings:'opsz' 144,'SOFT' 80">Showroom</h3>
-          <p class="mt-2 text-[0.92rem] text-white/50">3 hours</p>
-          <!-- price -->
-          <p class="mt-5 text-white">
-            <span class="text-[0.95rem] font-medium text-white/60">From </span><span class="text-[2.6rem] font-display font-semibold leading-none" style="font-variation-settings:'opsz' 144,'SOFT' 80">$169</span>
-          </p>
-          <!-- description -->
-          <p class="mt-5 text-[0.97rem] text-white/70 leading-relaxed">
-            Our deep clean. Everything in Full Studz plus wax and paint protection, steam clean interior, carpet and upholstery shampoo, streak-free glass, and free pet hair removal.
-          </p>
-          <!-- book button -->
-          <div class="mt-auto pt-6">
-            <a href="/book/showroom" class="flex w-full items-center justify-center gap-2 rounded-full bg-white py-3.5 text-[0.95rem] font-semibold text-[#0B2830] shadow-[0_8px_24px_-10px_rgba(255,255,255,0.3)] transition-transform duration-300 hover:-translate-y-0.5">
-              Book Showroom
-              <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-            </a>
+        <article class="rounded-[24px] border-2 border-[#1c5f8b] bg-white p-5 md:p-6 flex flex-col min-h-[28rem] shadow-[0_18px_48px_-28px_rgba(28,95,139,0.35)] relative">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#1c5f8b] px-4 py-1 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-white shadow-[0_10px_28px_-10px_rgba(28,95,139,0.65)]">Most popular choice</span>
+          <div class="flex items-start justify-between gap-4 pt-2">
+            <div>
+              <div class="text-[12px] tracking-[0.24em] uppercase text-teal font-semibold">Showroom</div>
+              <div class="mt-2 text-sm italic text-ink/60">~2.5-3 hours · the deep clean</div>
+            </div>
+          </div>
+          <div class="mt-5 rounded-[18px] bg-[#edf8ff] px-4 py-4 border border-[#d8ecf8]">
+            <div class="flex items-center justify-between py-1.5">
+              <span class="text-[1.02rem] font-semibold text-[#12527d]">Sedan</span>
+              <span class="text-[1.18rem] font-semibold text-teal">$169</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5">
+              <span class="text-[1.02rem] font-semibold text-[#12527d]">SUV / Truck</span>
+              <span class="text-[1.18rem] font-semibold text-teal">$189</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5">
+              <span class="text-[1.02rem] font-semibold text-[#12527d]">XL Vehicle</span>
+              <span class="text-[1.18rem] font-semibold text-teal">$209</span>
+            </div>
+          </div>
+          <ul class="mt-5 space-y-2.5 text-[0.96rem] text-ink/85">
+            <li class="flex items-start gap-2.5"><span class="mt-2 h-2 w-2 rounded-full bg-sky-400 shrink-0"></span><span>Everything in Full Studz</span></li>
+            <li class="flex items-start gap-2.5"><span class="mt-2 h-2 w-2 rounded-full bg-sky-400 shrink-0"></span><span>Steam clean interior</span></li>
+            <li class="flex items-start gap-2.5"><span class="mt-2 h-2 w-2 rounded-full bg-sky-400 shrink-0"></span><span>Carpet &amp; upholstery shampoo</span></li>
+            <li class="flex items-start gap-2.5"><span class="mt-2 h-2 w-2 rounded-full bg-sky-400 shrink-0"></span><span>Streak-free glass polish</span></li>
+            <li class="flex items-start gap-2.5"><span class="mt-2 h-2 w-2 rounded-full bg-[#f2b844] shrink-0"></span><span><span class="font-semibold text-[#c57400]">FREE</span> Pet Hair Removal <span class="text-ink/55">($45 value)</span></span></li>
+          </ul>
+          <div class="mt-5 rounded-[18px] border-2 border-[#f2b844] bg-[#fff9ef] px-4 py-4 text-center">
+            <div class="text-[10px] tracking-[0.24em] uppercase text-[#4f8a43] font-semibold">Save</div>
+            <div class="mt-1 text-[2.75rem] leading-none font-display text-[#d97f00]">$60</div>
+            <div class="mt-1 text-[0.9rem] text-[#0f4468] font-semibold">$130 value for just +$70</div>
+          </div>
+          <div class="mt-auto pt-5 border-t border-ink/10">
+            <a href="/book/showroom" class="btn btn-coral w-full">Book Showroom</a>
           </div>
         </article>
       </div>
@@ -294,26 +314,7 @@ tailwind.config = {
           <div class="flex items-center justify-between border-b border-ink/10 py-3"><span>Odor Treatment</span><span class="font-semibold text-teal">$25</span></div>
           <div class="flex items-center justify-between border-b border-ink/10 py-3"><span>Plastic Correction</span><span class="font-semibold text-teal">$25</span></div>
         </div>
-        <div class="mt-5 relative overflow-hidden rounded-[18px] bg-gradient-to-r from-[#0C3F4E] to-[#0C9FE4] px-5 py-4 flex items-start gap-4">
-          <!-- sparkle / star icon -->
-          <div class="shrink-0 mt-0.5 h-9 w-9 rounded-full bg-white/15 flex items-center justify-center">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17 5.8 21.3l2.4-7.4L2 9.4h7.6L12 2z" fill="white" opacity="0.9"/>
-            </svg>
-          </div>
-          <div class="flex-1 min-w-0">
-            <p class="text-[0.8rem] tracking-[0.18em] uppercase text-white/60 font-medium mb-1">Showroom includes</p>
-            <p class="text-[0.97rem] text-white font-medium leading-snug">
-              <span class="text-[#F2B844] font-semibold">Pet Hair Removal</span> and <span class="text-[#F2B844] font-semibold">Carpet Shampoo</span> are bundled into Showroom — no add-on charge.
-            </p>
-            <a href="/book/showroom" class="mt-3 inline-flex items-center gap-1.5 text-[0.82rem] font-semibold text-white/80 hover:text-white transition-colors">
-              View Showroom package
-              <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-            </a>
-          </div>
-          <!-- decorative circle -->
-          <div class="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/5"></div>
-        </div>
+        <p class="mt-4 text-sm text-ink/60">Included items like Pet Hair Removal and Carpet Shampoo are part of Showroom at no extra cost.</p>
       </div>
 
       <div class="surface rounded-[26px] p-5 md:p-6">
@@ -337,7 +338,11 @@ tailwind.config = {
           <h2 class="mt-3 font-display text-[1.8rem] md:text-[2.2rem] text-ink">Simple rates. Real service. Clean results.</h2>
           <p class="mt-3 text-[0.98rem] text-ink/72 max-w-[54ch]">Every detail is mobile, mission-driven, and built to be easy to book. If you just want a car to look properly detailed, these packages are the cleanest path to it.</p>
         </div>
-
+        <div class="flex flex-wrap gap-2.5">
+          <span class="rounded-full bg-[#eef7ee] px-4 py-2 text-sm text-[#4a8b63]">First responders free</span>
+          <span class="rounded-full bg-[#e6f7ff] px-4 py-2 text-sm text-teal">Book from your phone</span>
+          <span class="rounded-full bg-[#fff4df] px-4 py-2 text-sm text-[#ad6b2d]">100% donated</span>
+        </div>
       </div>
     </section>
   </div>

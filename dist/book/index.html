@@ -3,21 +3,19 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Book Quick Studz, Sudzy Studz Mobile Detailing</title>
-<meta name="description" content="Book a Quick Studz detail on Sudzy Studz Mobile Detailing." />
-<link rel="icon" type="image/png" href="/brand_assets/logo.png" sizes="any" />
-<link rel="apple-touch-icon" href="/brand_assets/logo.png" />
+<title>Book a detail, Sudzy Studz Mobile Detailing</title>
+<meta name="description" content="Pick a Sudzy Studz package and book your detail directly on our site." />
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Sudzy Studz Mobile Detailing" />
-<meta property="og:title" content="Book Quick Studz, Sudzy Studz Mobile Detailing" />
-<meta property="og:description" content="Book a Quick Studz detail on Sudzy Studz Mobile Detailing." />
-<meta property="og:image" content="/brand_assets/logo.png" />
+<meta property="og:title" content="Book a detail, Sudzy Studz Mobile Detailing" />
+<meta property="og:description" content="Pick a Sudzy Studz package and book your detail directly on our site." />
+<meta property="og:image" content="../brand_assets/logo.png" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Book Quick Studz, Sudzy Studz Mobile Detailing" />
-<meta name="twitter:description" content="Book a Quick Studz detail on Sudzy Studz Mobile Detailing." />
-<meta name="twitter:image" content="/brand_assets/logo.png" />
+<meta name="twitter:title" content="Book a detail, Sudzy Studz Mobile Detailing" />
+<meta name="twitter:description" content="Pick a Sudzy Studz package and book your detail directly on our site." />
+<meta name="twitter:image" content="../brand_assets/logo.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -209,15 +207,160 @@ tailwind.config = {
   }
   .mobile-nav-panel.is-open { opacity: 1; transform: none; pointer-events: auto; }
 
-  .embed-shell {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 30px 0 40px;
+  .book-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 24px;
+    border: 1px solid rgba(11,40,48,.08);
+    background: rgba(255,255,255,.78);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
   }
 
-  @media (min-width: 768px) {
-    .embed-shell { padding: 60px 0; }
+  .book-card--dark {
+    color: var(--paper);
+    background: var(--ink);
+    border-color: rgba(255,255,255,.08);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .book-card__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 2rem 1.75rem 1.75rem;
+  }
+
+  .book-card__badge {
+    position: absolute;
+    left: 1.25rem;
+    top: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: .46rem .85rem;
+    font-size: .66rem;
+    font-weight: 800;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    background: #2196F3;
+    color: #fff;
+    box-shadow: 0 12px 24px -12px rgba(33,150,243,.58);
+  }
+
+  .book-card--featured .book-card__inner {
+    padding-top: 3.1rem;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .55rem 0;
+    border-bottom: 1px solid rgba(11,40,48,.08);
+  }
+  .price-row:last-child { border-bottom: 0; }
+  .price-row.on-dark { border-bottom-color: rgba(255,255,255,.12); }
+
+  .price-row__label {
+    color: rgba(11,40,48,.62);
+    font-size: .9rem;
+    letter-spacing: .01em;
+  }
+
+  .price-row__label.on-dark {
+    color: rgba(255,255,255,.72);
+  }
+
+  .price-row__value {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'opsz' 144, 'SOFT' 92;
+    font-weight: 500;
+    font-size: 1.35rem;
+    letter-spacing: -0.03em;
+    color: var(--deep);
+  }
+
+  .price-row__value.on-dark {
+    color: #fff;
+  }
+
+  .book-card__duration {
+    margin-top: .25rem;
+    color: rgba(11,40,48,.54);
+    font-size: .84rem;
+    font-weight: 500;
+  }
+
+  .book-card__duration.on-dark {
+    color: rgba(255,255,255,.58);
+  }
+
+  .book-card__price-note {
+    margin-top: 1.15rem;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'opsz' 144, 'SOFT' 92;
+    font-size: 1.55rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--deep);
+  }
+
+  .book-card__price-note.on-dark {
+    color: #fff;
+  }
+
+  .book-card__button {
+    transition: transform .28s var(--ease-spring), box-shadow .28s var(--ease-out-soft), filter .28s ease, background-color .28s ease, color .28s ease;
+  }
+
+  .book-card__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 36px -18px rgba(11,40,48,.42);
+  }
+
+  .book-card__button:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
+  }
+
+  .book-card__button--dark {
+    background: #fff;
+    color: var(--ink);
+    box-shadow: 0 14px 30px -14px rgba(255,255,255,.22);
+  }
+
+  .book-card__button--dark:hover {
+    background: #f8fbff;
+    box-shadow: 0 22px 34px -18px rgba(255,255,255,.20);
+  }
+
+  .book-card__button--primary:hover {
+    background: #1f89df;
+  }
+
+  .book-collection {
+    position: relative;
+    margin-top: 3rem;
+    padding: 1.25rem;
+    border-radius: 32px;
+    background: rgba(255,255,255,.42);
+    border: 1px solid rgba(11,40,48,.06);
+    box-shadow: 0 20px 42px -30px rgba(11,40,48,.22);
+  }
+
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'opsz' 144, 'SOFT' 100;
+    font-weight: 350;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
   }
 
   .mission-line {
@@ -236,7 +379,7 @@ tailwind.config = {
   <div class="max-w-[1240px] mx-auto px-5 md:px-8">
     <div id="navInner" class="mt-3 md:mt-4 flex items-center justify-between rounded-full pl-5 pr-2 py-2 transition-all duration-500 glass">
       <a href="/" class="flex items-center group">
-        <img src="../../brand_assets/logo.png" alt="Sudzy Studz" class="logo-img h-14 md:h-16 w-auto transition-transform duration-500 group-hover:scale-[1.03]" />
+        <img src="../brand_assets/logo.png" alt="Sudzy Studz" class="logo-img h-14 md:h-16 w-auto transition-transform duration-500 group-hover:scale-[1.03]" />
       </a>
 
       <div class="hidden md:flex items-center gap-7 text-[0.92rem]">
@@ -263,24 +406,6 @@ tailwind.config = {
   </div>
 </nav>
 
-<div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
-<div class="mobile-nav-panel" id="mobileNavPanel" aria-label="Mobile navigation" hidden>
-  <div class="flex items-center justify-between mb-3">
-    <div class="text-[0.72rem] tracking-[0.22em] uppercase text-ink/50">Navigate</div>
-    <button id="mobileNavClose" class="h-9 w-9 rounded-full border border-ink/10 text-ink/70 transition hover:text-ink" aria-label="Close menu">
-      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-    </button>
-  </div>
-  <nav class="flex flex-col gap-1">
-    <a href="/#about" class="mobile-nav-link">About <span aria-hidden="true">→</span></a>
-    <a href="/#prokids" class="mobile-nav-link">Impact <span aria-hidden="true">→</span></a>
-    <a href="/#story" class="mobile-nav-link">Our Story <span aria-hidden="true">→</span></a>
-    <a href="/pricing/" class="mobile-nav-link">Pricing <span aria-hidden="true">→</span></a>
-    <a href="/book" class="mobile-nav-link">Book <span aria-hidden="true">→</span></a>
-    <a href="/#donate" class="mobile-nav-link mt-2 text-coral">Give directly <span aria-hidden="true">→</span></a>
-  </nav>
-</div>
-
 <main id="top">
   <section class="hero-bg relative grain overflow-hidden">
     <svg class="absolute -top-10 -left-14 w-[260px] h-[260px] opacity-70" viewBox="0 0 200 200" aria-hidden="true">
@@ -292,150 +417,87 @@ tailwind.config = {
       <circle cx="14" cy="14" r="4" fill="#fff" opacity=".7"/>
     </svg>
 
-    <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-32 md:pt-40 pb-8 md:pb-10 relative">
+    <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-32 md:pt-40 pb-16 md:pb-20 relative">
       <div class="max-w-[760px]">
         <span class="eyebrow">BOOK</span>
-        <h1 class="headline text-[2.35rem] sm:text-[3.1rem] md:text-[4rem] lg:text-[4.5rem] text-ink mt-4">
-          Book a Quick Studz <span class="italic text-coral">detail</span>.
+        <h1 class="headline text-[2.05rem] sm:text-[2.75rem] md:text-[3.45rem] lg:text-[3.85rem] text-ink mt-4">
+          Pick your <span class="italic text-coral">detail</span>.
         </h1>
-        <p class="mt-7 text-[1.1rem] md:text-[1.22rem] text-ink/80 font-light max-w-[48ch]">
-          Pick a time that works for you. We will confirm within 24 hours.
+        <p class="mt-7 text-[1.1rem] md:text-[1.22rem] text-ink/80 font-light max-w-[42ch]">
+          Choose a package to see available times.
         </p>
       </div>
-    </div>
 
-    <!-- Add-on picker -->
-    <div id="addon-step" class="max-w-[1240px] mx-auto px-5 md:px-8 pb-10 md:pb-14">
-      <div class="surface rounded-[28px] p-6 md:p-8">
-        <div class="mb-6">
-          <div class="eyebrow text-teal">Step 2 — Customize</div>
-          <h2 class="mt-2 font-display text-[1.5rem] md:text-[1.85rem] text-ink" style="font-variation-settings:'opsz' 144,'SOFT' 80">Any add-ons?</h2>
-          <p class="mt-1 text-[0.92rem] text-ink/60">Select extras to include. We'll note them on your booking.</p>
-        </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3" id="addon-grid">
-          <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
-            <input type="checkbox" class="addon-cb mt-0.5 accent-[#0C9FE4]" data-name="Wax &amp; Protection" data-price="99">
-            <div class="flex-1">
-              <div class="font-semibold text-ink text-[0.95rem]">Wax &amp; Protection</div>
-              <div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$99</div>
+      <div class="book-collection">
+      <div class="grid gap-5 md:grid-cols-3 items-stretch">
+        <article class="book-card">
+          <div class="book-card__inner">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h2 class="headline text-[1.95rem] text-ink">Quick Studz</h2>
+                <p class="book-card__duration">60 minutes</p>
+              </div>
             </div>
-          </label>
-          <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
-            <input type="checkbox" class="addon-cb mt-0.5 accent-[#0C9FE4]" data-name="Steam Clean Interior" data-price="45">
-            <div class="flex-1">
-              <div class="font-semibold text-ink text-[0.95rem]">Steam Clean Interior</div>
-              <div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$45</div>
+            <div class="book-card__price-note">From $49</div>
+            <p class="mt-4 text-[0.98rem] text-ink/74 flex-1">
+              Exterior pressure wash, hand dry, wheel and rim clean, tires dressed, and windows. Perfect for weekly maintenance.
+            </p>
+            <div class="mt-7">
+              <a href="/book/quick-studz" class="btn btn-coral book-card__button book-card__button--primary w-full justify-center">
+                Book Quick Studz
+                <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </a>
             </div>
-          </label>
-          <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
-            <input type="checkbox" class="addon-cb mt-0.5 accent-[#0C9FE4]" data-name="Headlight Restoration" data-price="40">
-            <div class="flex-1">
-              <div class="font-semibold text-ink text-[0.95rem]">Headlight Restoration</div>
-              <div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$40</div>
-            </div>
-          </label>
-          <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
-            <input type="checkbox" class="addon-cb mt-0.5 accent-[#0C9FE4]" data-name="Carpet Shampoo" data-price="40">
-            <div class="flex-1">
-              <div class="font-semibold text-ink text-[0.95rem]">Carpet Shampoo</div>
-              <div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$40</div>
-            </div>
-          </label>
-          <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
-            <input type="checkbox" class="addon-cb mt-0.5 accent-[#0C9FE4]" data-name="Odor Treatment" data-price="25">
-            <div class="flex-1">
-              <div class="font-semibold text-ink text-[0.95rem]">Odor Treatment</div>
-              <div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$25</div>
-            </div>
-          </label>
-          <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
-            <input type="checkbox" class="addon-cb mt-0.5 accent-[#0C9FE4]" data-name="Plastic Correction" data-price="25">
-            <div class="flex-1">
-              <div class="font-semibold text-ink text-[0.95rem]">Plastic Correction</div>
-              <div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$25</div>
-            </div>
-          </label>
-        </div>
-        <!-- total + CTA -->
-        <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-4">
-          <div id="addon-total" class="hidden rounded-[12px] bg-[#f0faff] border border-teal/20 px-5 py-3 text-[0.95rem] font-semibold text-ink">
-            Add-ons total: <span id="addon-total-price" class="text-teal">$0</span>
           </div>
-          <button onclick="proceedToBookQS()" class="btn btn-coral">
-            Continue to pick a time
-            <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </button>
-          <button onclick="proceedToBookQS()" class="text-[0.88rem] text-ink/50 hover:text-ink transition-colors underline underline-offset-2">No add-ons, just book</button>
-        </div>
+        </article>
+
+        <article class="book-card">
+          <div class="book-card__inner">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h2 class="headline text-[1.95rem] text-ink">Full Studz</h2>
+                <p class="book-card__duration">2 hours</p>
+              </div>
+            </div>
+            <div class="book-card__price-note">From $99</div>
+            <p class="mt-4 text-[0.98rem] text-ink/74 flex-1">
+              Everything in Quick Studz plus full interior vacuum, air blowout, dash and console wipe, door jambs, and air freshener.
+            </p>
+            <div class="mt-7">
+              <a href="/book/full-studz" class="btn btn-coral book-card__button book-card__button--primary w-full justify-center">
+                Book Full Studz
+                <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="book-card book-card--dark book-card--featured">
+          <span class="book-card__badge">Most Popular</span>
+          <div class="book-card__inner">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h2 class="headline text-[1.95rem] text-paper">Showroom</h2>
+                <p class="book-card__duration on-dark">3 hours</p>
+              </div>
+            </div>
+            <div class="book-card__price-note on-dark">From $169</div>
+            <p class="mt-4 text-[0.98rem] text-paper/82 flex-1">
+              Our deep clean. Everything in Full Studz plus wax and paint protection, steam clean interior, carpet and upholstery shampoo, streak-free glass, and free pet hair removal.
+            </p>
+            <div class="mt-7">
+              <a href="/book/showroom" class="btn btn-coral book-card__button book-card__button--dark w-full justify-center">
+                Book Showroom
+                <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
       </div>
+      </div>
+
+      <p class="mission-line mt-10 md:mt-12">100% of profits go to Pro Kids, First Tee - San Diego.</p>
     </div>
-
-    <!-- Calendar (hidden until add-on step is complete) -->
-    <div id="cal-section" class="hidden">
-      <div class="max-w-[1240px] mx-auto px-5 md:px-8 mb-3">
-        <button onclick="document.getElementById('cal-section').classList.add('hidden');document.getElementById('addon-step').style.display='';window.scrollTo({top:document.getElementById('addon-step').offsetTop-100,behavior:'smooth'})" class="inline-flex items-center gap-2 text-[0.88rem] text-ink/55 hover:text-ink transition-colors">
-          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M15 10H5m0 0 4-4m-4 4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          Back to add-ons
-        </button>
-      </div>
-      <div id="addon-reminder" class="hidden max-w-[1240px] mx-auto px-5 md:px-8 mb-4">
-        <div class="rounded-[16px] bg-[#0B2830] px-5 py-3.5 flex items-center gap-3 text-[0.9rem] text-white">
-          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" class="shrink-0"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 4v4m0 4h.01" stroke="#2CC6F0" stroke-width="1.6" stroke-linecap="round"/></svg>
-          <span>Add-ons selected: <span id="addon-reminder-text" class="font-semibold text-[#2CC6F0]"></span> — these are pre-filled in your booking notes.</span>
-        </div>
-      </div>
-      <div class="embed-shell px-5 md:px-8">
-        <div style="width:100%;min-height:700px;overflow:scroll" id="my-cal-inline-quick-studz"></div>
-      </div>
-    </div>
-
-    <script>
-    function proceedToBookQS() {
-      const cbs = document.querySelectorAll('.addon-cb:checked');
-      const items = [...cbs].map(cb => cb.dataset.name + ' (+$' + cb.dataset.price + ')');
-      const notes = items.length > 0 ? 'Add-ons requested: ' + items.join(', ') : '';
-
-      document.getElementById('addon-step').style.display = 'none';
-      const calSection = document.getElementById('cal-section');
-      calSection.classList.remove('hidden');
-
-      if (items.length > 0) {
-        document.getElementById('addon-reminder').classList.remove('hidden');
-        document.getElementById('addon-reminder-text').textContent = items.join(', ');
-      }
-
-      // Init Cal.com with prefilled notes
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement('script')).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === 'string'){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ['initNamespace', namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, 'https://app.cal.com/embed/embed.js', 'init');
-      Cal('init', 'quick-studz', {origin:'https://app.cal.com'});
-      Cal.config = Cal.config || {};
-      Cal.config.forwardQueryParams = true;
-      Cal.ns['quick-studz']('inline', {
-        elementOrSelector: '#my-cal-inline-quick-studz',
-        config: {layout:'month_view', useSlotsViewOnSmallScreen:'true', prefill: notes ? {notes} : {}},
-        calLink: 'sudzystudz/quick-studz',
-      });
-      Cal.ns['quick-studz']('ui', {cssVarsPerTheme:{light:{'cal-brand':'#2196F3'}}, hideEventTypeDetails:true, layout:'month_view'});
-
-      calSection.scrollIntoView({behavior:'smooth', block:'start'});
-    }
-
-    document.querySelectorAll('.addon-cb').forEach(cb => {
-      cb.addEventListener('change', () => {
-        const cbs = document.querySelectorAll('.addon-cb:checked');
-        const total = [...cbs].reduce((s, c) => s + Number(c.dataset.price), 0);
-        const totalEl = document.getElementById('addon-total');
-        const totalPrice = document.getElementById('addon-total-price');
-        if (total > 0) {
-          totalEl.classList.remove('hidden');
-          totalPrice.textContent = '$' + total;
-        } else {
-          totalEl.classList.add('hidden');
-        }
-      });
-    });
-    </script>
-
-    <p class="mission-line mt-2 md:mt-4 pb-12 md:pb-16">100% of profits go to Pro Kids, First Tee - San Diego.</p>
   </section>
 </main>
 
@@ -444,7 +506,7 @@ tailwind.config = {
     <div class="grid md:grid-cols-12 gap-10">
       <div class="md:col-span-4">
         <a href="/" class="inline-flex">
-          <img src="../../brand_assets/logo.png" alt="Sudzy Studz" class="logo-img h-14 w-auto" />
+          <img src="../brand_assets/logo.png" alt="Sudzy Studz" class="logo-img h-14 w-auto" />
         </a>
         <p class="mt-5 text-ink/65 text-[0.98rem] max-w-[44ch]">
           A student-founded business in San Diego. Sudzy Studz LLC donates 100% of detailing profits to <span style="white-space: nowrap;">Pro Kids, First Tee - San Diego</span>.

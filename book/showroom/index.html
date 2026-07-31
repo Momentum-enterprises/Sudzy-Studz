@@ -96,6 +96,12 @@ tailwind.config = {
     color: var(--teal);
   }
 
+  .surface {
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(11,40,48,0.10);
+    box-shadow: 0 20px 50px -30px rgba(11,40,48,0.24);
+  }
+
   .grain::before {
     content: "";
     position: absolute; inset: 0;
@@ -173,7 +179,7 @@ tailwind.config = {
   }
 </style>
 </head>
-<body class="overflow-hidden h-screen">
+<body class="overflow-x-hidden">
 
 <nav id="nav" class="fixed top-0 inset-x-0 z-50">
   <div class="max-w-[1240px] mx-auto px-5 md:px-8">
@@ -183,85 +189,141 @@ tailwind.config = {
       </a>
 
       <div class="hidden md:flex items-center gap-7 text-[0.92rem]">
+        <a href="/#about" class="nav-link">About</a>
+        <a href="/#prokids" class="nav-link">Impact</a>
+        <a href="/#story" class="nav-link">Our Story</a>
         <a href="/pricing/" class="nav-link">Pricing</a>
         <a href="/book" class="nav-link is-active" aria-current="page">Book</a>
       </div>
 
-      <a href="/pricing/" class="btn btn-primary !py-2.5 !px-5 text-[0.88rem]">
-        Pricing
+      <a href="/#donate" class="btn btn-primary !py-2.5 !px-5 text-[0.88rem]">
+        Give Directly
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </a>
     </div>
   </div>
 </nav>
 
-<main id="top" class="h-screen overflow-hidden hero-bg grain">
-  <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-28 md:pt-32 pb-5 h-full flex flex-col">
+<main id="top" class="hero-bg grain">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-28 md:pt-40 pb-8 md:pb-10">
     <div class="max-w-[760px]">
       <span class="eyebrow">BOOK</span>
       <h1 class="headline text-[2.1rem] sm:text-[2.8rem] md:text-[3.4rem] lg:text-[3.85rem] text-ink mt-4">
         Book a Showroom <span class="italic text-coral">detail</span>.
       </h1>
       <p class="mt-6 text-[1.03rem] md:text-[1.12rem] text-ink/76 font-light max-w-[42ch]">
-        Tap a date. The calendar stays still so it is easier to pick a time.
+        Pick your add-ons, then choose a time that works for you.
       </p>
     </div>
+  </div>
 
-    <section class="mt-6 md:mt-8 flex-1 min-h-0">
-      <div class="calendar-shell glass p-3 md:p-4">
-        <div id="my-cal-inline-showroomdetail" class="w-full h-full overflow-hidden"></div>
+  <!-- Add-on picker -->
+  <div id="addon-step-sr" class="max-w-[1240px] mx-auto px-5 md:px-8 pb-10 md:pb-14">
+    <div class="surface rounded-[28px] p-6 md:p-8">
+      <div class="mb-6">
+        <div class="eyebrow text-teal">Step 2 — Customize</div>
+        <h2 class="mt-2 font-display text-[1.5rem] md:text-[1.85rem] text-ink" style="font-variation-settings:'opsz' 144,'SOFT' 80">Any add-ons?</h2>
+        <p class="mt-1 text-[0.92rem] text-ink/60">Carpet Shampoo and Pet Hair Removal are already included in Showroom.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
+          <input type="checkbox" class="addon-cb-sr mt-0.5 accent-[#0C9FE4]" data-name="Wax &amp; Protection" data-price="99">
+          <div class="flex-1"><div class="font-semibold text-ink text-[0.95rem]">Wax &amp; Protection</div><div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$99</div></div>
+        </label>
+        <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
+          <input type="checkbox" class="addon-cb-sr mt-0.5 accent-[#0C9FE4]" data-name="Headlight Restoration" data-price="40">
+          <div class="flex-1"><div class="font-semibold text-ink text-[0.95rem]">Headlight Restoration</div><div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$40</div></div>
+        </label>
+        <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
+          <input type="checkbox" class="addon-cb-sr mt-0.5 accent-[#0C9FE4]" data-name="Odor Treatment" data-price="25">
+          <div class="flex-1"><div class="font-semibold text-ink text-[0.95rem]">Odor Treatment</div><div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$25</div></div>
+        </label>
+        <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
+          <input type="checkbox" class="addon-cb-sr mt-0.5 accent-[#0C9FE4]" data-name="Plastic Correction" data-price="25">
+          <div class="flex-1"><div class="font-semibold text-ink text-[0.95rem]">Plastic Correction</div><div class="text-teal font-semibold text-[0.9rem] mt-0.5">+$25</div></div>
+        </label>
+      </div>
+      <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-4">
+        <div id="addon-total-sr" class="hidden rounded-[12px] bg-[#f0faff] border border-teal/20 px-5 py-3 text-[0.95rem] font-semibold text-ink">
+          Add-ons total: <span id="addon-total-price-sr" class="text-teal">$0</span>
+        </div>
+        <button onclick="proceedToBookSR()" class="btn btn-coral">
+          Continue to pick a time
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <button onclick="proceedToBookSR()" class="text-[0.88rem] text-ink/50 hover:text-ink transition-colors underline underline-offset-2">No add-ons, just book</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calendar -->
+  <div id="cal-section-sr" class="hidden pb-16">
+    <div class="max-w-[1240px] mx-auto px-5 md:px-8 mb-3">
+      <button onclick="document.getElementById('cal-section-sr').classList.add('hidden');document.getElementById('addon-step-sr').style.display='';window.scrollTo({top:document.getElementById('addon-step-sr').offsetTop-100,behavior:'smooth'})" class="inline-flex items-center gap-2 text-[0.88rem] text-ink/55 hover:text-ink transition-colors">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M15 10H5m0 0 4-4m-4 4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Back to add-ons
+      </button>
+    </div>
+    <div id="addon-reminder-sr" class="hidden max-w-[1240px] mx-auto px-5 md:px-8 mb-4">
+      <div class="rounded-[16px] bg-[#0B2830] px-5 py-3.5 flex items-center gap-3 text-[0.9rem] text-white">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" class="shrink-0"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 4v4m0 4h.01" stroke="#2CC6F0" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span>Add-ons selected: <span id="addon-reminder-text-sr" class="font-semibold text-[#2CC6F0]"></span> — pre-filled in your booking notes.</span>
+      </div>
+    </div>
+    <div class="max-w-[1240px] mx-auto px-5 md:px-8">
+      <div class="calendar-shell glass p-3 md:p-4" style="min-height:700px">
+        <div id="my-cal-inline-showroomdetail" class="w-full h-full overflow-hidden" style="min-height:680px"></div>
       </div>
       <p class="mission-line mt-3 text-center text-sm text-ink/65">100% of profits go to Pro Kids, First Tee - San Diego.</p>
-    </section>
+    </div>
   </div>
 </main>
 
 <script type="text/javascript">
-  document.documentElement.style.overflow = 'hidden';
-  document.body.style.overflow = 'hidden';
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  if (!window.location.hash) window.scrollTo(0, 0);
+  function proceedToBookSR() {
+    const cbs = document.querySelectorAll('.addon-cb-sr:checked');
+    const items = [...cbs].map(cb => cb.dataset.name + ' (+$' + cb.dataset.price + ')');
+    const notes = items.length > 0 ? 'Add-ons requested: ' + items.join(', ') : '';
+    document.getElementById('addon-step-sr').style.display = 'none';
+    const calSection = document.getElementById('cal-section-sr');
+    calSection.classList.remove('hidden');
+    if (items.length > 0) {
+      document.getElementById('addon-reminder-sr').classList.remove('hidden');
+      document.getElementById('addon-reminder-text-sr').textContent = items.join(', ');
+    }
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal; let ar = arguments;
+        if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement('script')).src = A; cal.loaded = true; }
+        if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === 'string') { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ['initNamespace', namespace]); } else { p(cal, ar); } return; }
+        p(cal, ar);
+      };
+    })(window, 'https://app.cal.com/embed/embed.js', 'init');
+    Cal('init', 'showroomdetail', { origin: 'https://app.cal.com' });
+    Cal.config = Cal.config || {};
+    Cal.config.forwardQueryParams = true;
+    Cal.ns.showroomdetail('inline', {
+      elementOrSelector: '#my-cal-inline-showroomdetail',
+      config: { layout: 'month_view', prefill: notes ? { notes } : {} },
+      calLink: 'sudzystudz/showroomdetail',
+    });
+    Cal.ns.showroomdetail('ui', {
+      cssVarsPerTheme: { light: { 'cal-brand': '#2196F3' } },
+      hideEventTypeDetails: true,
+      layout: 'month_view',
+    });
+    calSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
-  (function (C, A, L) {
-    let p = function (a, ar) { a.q.push(ar); };
-    let d = C.document;
-    C.Cal = C.Cal || function () {
-      let cal = C.Cal;
-      let ar = arguments;
-      if (!cal.loaded) {
-        cal.ns = {};
-        cal.q = cal.q || [];
-        d.head.appendChild(d.createElement("script")).src = A;
-        cal.loaded = true;
-      }
-      if (ar[0] === L) {
-        const api = function () { p(api, arguments); };
-        const namespace = ar[1];
-        api.q = api.q || [];
-        if (typeof namespace === "string") {
-          cal.ns[namespace] = cal.ns[namespace] || api;
-          p(cal.ns[namespace], ar);
-          p(cal, ["initNamespace", namespace]);
-        } else {
-          p(cal, ar);
-        }
-        return;
-      }
-      p(cal, ar);
-    };
-  })(window, "https://app.cal.com/embed/embed.js", "init");
-
-  Cal("init", "showroomdetail", { origin: "https://app.cal.com" });
-  Cal.config = Cal.config || {};
-  Cal.config.forwardQueryParams = true;
-  Cal.ns.showroomdetail("inline", {
-    elementOrSelector: "#my-cal-inline-showroomdetail",
-    config: { layout: "month_view" },
-    calLink: "sudzystudz/showroomdetail",
-  });
-  Cal.ns.showroomdetail("ui", {
-    cssVarsPerTheme: { light: { "cal-brand": "#2196F3" } },
-    hideEventTypeDetails: true,
-    layout: "month_view",
+  document.querySelectorAll('.addon-cb-sr').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const total = [...document.querySelectorAll('.addon-cb-sr:checked')].reduce((s,c) => s + Number(c.dataset.price), 0);
+      const el = document.getElementById('addon-total-sr');
+      document.getElementById('addon-total-price-sr').textContent = '$' + total;
+      total > 0 ? el.classList.remove('hidden') : el.classList.add('hidden');
+    });
   });
 </script>
 </body>
