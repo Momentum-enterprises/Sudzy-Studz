@@ -58,12 +58,14 @@ tailwind.config = {
     --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
     --shadow-lg: 0 18px 40px -16px rgba(12,63,78,.28), 0 40px 80px -32px rgba(12,63,78,.18);
   }
-  html, body { height: 100%; overflow: hidden; }
+  html, body { min-height: 100%; }
   body {
     font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
     background: var(--paper);
     color: var(--ink);
     line-height: 1.7;
+    overflow-x: hidden;
+    overflow-y: auto;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -132,7 +134,7 @@ tailwind.config = {
   .logo-img { filter: saturate(1.04); }
 </style>
 </head>
-<body class="overflow-hidden h-screen">
+<body class="overflow-x-hidden min-h-screen">
 <nav class="fixed top-0 inset-x-0 z-50">
   <div class="max-w-[1240px] mx-auto px-5 md:px-8">
     <div class="mt-3 md:mt-4 flex items-center justify-between rounded-full pl-5 pr-2 py-2 glass">
@@ -148,8 +150,8 @@ tailwind.config = {
   </div>
 </nav>
 
-<main class="h-full hero-bg grain overflow-hidden">
-  <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-24 md:pt-28 h-full flex flex-col">
+<main class="hero-bg grain">
+  <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-20 md:pt-26 pb-12 md:pb-16 flex flex-col gap-6">
     <div class="grid gap-5 lg:grid-cols-[1.1fr_.9fr] items-end">
       <div class="max-w-[760px]">
         <span class="eyebrow">Pricing</span>
@@ -188,7 +190,7 @@ tailwind.config = {
       </div>
     </div>
 
-    <section class="mt-5 md:mt-6 flex-1 min-h-0">
+    <section class="md:mt-1">
       <div class="glass rounded-[30px] border border-ink/8 p-4 md:p-5 h-full">
         <div class="grid gap-4 lg:gap-5 md:grid-cols-3 h-full">
           <article class="rounded-[22px] border border-[#cfe8f5] bg-[#f4fbff] p-5 md:p-6 flex flex-col shadow-[0_12px_30px_-24px_rgba(12,159,228,0.35)]">
