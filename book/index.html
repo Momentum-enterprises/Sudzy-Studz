@@ -621,7 +621,6 @@ tailwind.config = {
                     <span class="choice-card h-full">
                       <span class="choice-title">
                         <span>Quick Studz</span>
-                        <span class="choice-price" data-package-price="quick">$49</span>
                       </span>
                       <span class="choice-subtitle">Sedan $49, SUV / Truck $69, XL Vehicle $79</span>
                     </span>
@@ -631,7 +630,6 @@ tailwind.config = {
                     <span class="choice-card h-full">
                       <span class="choice-title">
                         <span>Full Studz</span>
-                        <span class="choice-price" data-package-price="full">$99</span>
                       </span>
                       <span class="choice-subtitle">Sedan $99, SUV / Truck $119, XL Vehicle $139</span>
                     </span>
@@ -641,7 +639,6 @@ tailwind.config = {
                     <span class="choice-card h-full">
                       <span class="choice-title">
                         <span>Showroom</span>
-                        <span class="choice-price" data-package-price="showroom">$169</span>
                       </span>
                       <span class="choice-subtitle">Sedan $169, SUV / Truck $189, XL Vehicle $209</span>
                     </span>
@@ -704,17 +701,17 @@ tailwind.config = {
                   <label class="field-label" for="preferredTime1">Preferred date and time (pick 3 options that work for you)</label>
                   <div class="field-grid mt-3">
                     <div>
-                      <input class="field-input" id="preferredTime1" name="preferredTime1" type="text" placeholder="Saturday morning" required />
+                      <input class="field-input" id="preferredTime1" name="preferredTime1" type="datetime-local" required />
                       <div class="field-help">Option 1</div>
                       <div class="field-error" data-error-for="preferredTime1"></div>
                     </div>
                     <div>
-                      <input class="field-input" id="preferredTime2" name="preferredTime2" type="text" placeholder="Sunday afternoon" required />
+                      <input class="field-input" id="preferredTime2" name="preferredTime2" type="datetime-local" required />
                       <div class="field-help">Option 2</div>
                       <div class="field-error" data-error-for="preferredTime2"></div>
                     </div>
                     <div>
-                      <input class="field-input" id="preferredTime3" name="preferredTime3" type="text" placeholder="Tuesday after 4 PM" required />
+                      <input class="field-input" id="preferredTime3" name="preferredTime3" type="datetime-local" required />
                       <div class="field-help">Option 3</div>
                       <div class="field-error" data-error-for="preferredTime3"></div>
                     </div>
@@ -801,6 +798,10 @@ tailwind.config = {
               <li class="flex items-start gap-2.5">
                 <svg class="mt-1 shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3 3 7-7" stroke="#0C9FE4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <span>No email app required to send your request</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="mt-1 shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3 3 7-7" stroke="#0C9FE4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Requests can auto-drop into your team calendar</span>
               </li>
             </ul>
           </div>
@@ -978,6 +979,20 @@ tailwind.config = {
     if (!target) return;
     target.checked = true;
     touched.add('package');
+  }
+
+  function setDateTimeMinimums() {
+    const now = new Date();
+    const minutes = Math.ceil(now.getMinutes() / 5) * 5;
+    now.setMinutes(minutes);
+    now.setSeconds(0, 0);
+    const minValue = now.toISOString().slice(0, 16);
+    ['preferredTime1', 'preferredTime2', 'preferredTime3'].forEach((name) => {
+      const input = form.elements[name];
+      if (input && input.type === 'datetime-local') {
+        input.min = minValue;
+      }
+    });
   }
 
   function validatePhone(value) {
@@ -1192,6 +1207,7 @@ tailwind.config = {
   });
 
   applyPreselectionFromQuery();
+  setDateTimeMinimums();
   updatePackagePrices();
   updateTotal();
   validateForm(false);
