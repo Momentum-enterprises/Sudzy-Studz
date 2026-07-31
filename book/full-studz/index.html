@@ -376,7 +376,7 @@ tailwind.config = {
     function proceedToBookFS() {
       const cbs = document.querySelectorAll('.addon-cb-fs:checked');
       const items = [...cbs].map(cb => cb.dataset.name + ' (+$' + cb.dataset.price + ')');
-      document.getElementById('addon-step-fs').classList.add('hidden');
+      document.getElementById('addon-step').classList.add('hidden');
       document.getElementById('cal-section-fs').classList.remove('hidden');
       document.getElementById('back-bar-fs').classList.remove('hidden');
       if (items.length > 0) {
@@ -387,10 +387,10 @@ tailwind.config = {
     }
     
     function goBackToAddOnsFS() {
-      document.getElementById('addon-step-fs').classList.remove('hidden');
+      document.getElementById('addon-step').classList.remove('hidden');
       document.getElementById('cal-section-fs').classList.add('hidden');
       document.getElementById('back-bar-fs').classList.add('hidden');
-      window.scrollTo({top: document.getElementById('addon-step-fs').offsetTop - 100, behavior: 'smooth'});
+      window.scrollTo({top: document.getElementById('addon-step').offsetTop - 100, behavior: 'smooth'});
     }
     document.querySelectorAll('.addon-cb-fs').forEach(cb => {
       cb.addEventListener('change', () => {
