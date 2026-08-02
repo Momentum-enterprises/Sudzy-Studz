@@ -220,10 +220,35 @@ tailwind.config = {
   <!-- Add-on picker -->
   <div id="addon-step-sr" class="max-w-[1240px] mx-auto px-5 md:px-8 pb-10 md:pb-14">
     <div class="surface rounded-[28px] p-6 md:p-8">
-      <div class="mb-6">
+      <div class="mb-5">
         <div class="eyebrow text-teal">Step 2 — Customize</div>
-        <h2 class="mt-2 font-display text-[1.5rem] md:text-[1.85rem] text-ink" style="font-variation-settings:'opsz' 144,'SOFT' 80">Any add-ons?</h2>
-        <p class="mt-1 text-[0.92rem] text-ink/60">Carpet Shampoo and Pet Hair Removal are already included in Showroom.</p>
+      </div>
+      <!-- Vehicle Size -->
+      <div class="mb-7 pb-7 border-b border-ink/10">
+        <h3 class="font-display text-[1.2rem] md:text-[1.35rem] text-ink mb-1" style="font-variation-settings:'opsz' 144,'SOFT' 80">What size vehicle?</h3>
+        <p class="mt-1 text-[0.88rem] text-ink/55 mb-4">Prices vary by vehicle size.</p>
+        <div class="grid grid-cols-3 gap-3">
+          <label class="cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex flex-col items-center gap-2 text-center transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
+            <input type="radio" name="vehicle-sr" class="sr-only vehicle-rb-sr" value="Sedan" data-base="169">
+            <span class="font-semibold text-ink text-[0.95rem]">Sedan</span>
+            <span class="text-teal font-semibold text-[0.88rem]">$169</span>
+          </label>
+          <label class="cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex flex-col items-center gap-2 text-center transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
+            <input type="radio" name="vehicle-sr" class="sr-only vehicle-rb-sr" value="SUV / Truck" data-base="189">
+            <span class="font-semibold text-ink text-[0.95rem]">SUV / Truck</span>
+            <span class="text-teal font-semibold text-[0.88rem]">$189</span>
+          </label>
+          <label class="cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex flex-col items-center gap-2 text-center transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
+            <input type="radio" name="vehicle-sr" class="sr-only vehicle-rb-sr" value="XL Vehicle" data-base="209">
+            <span class="font-semibold text-ink text-[0.95rem]">XL Vehicle</span>
+            <span class="text-teal font-semibold text-[0.88rem]">$209</span>
+          </label>
+        </div>
+      </div>
+      <!-- Add-ons (optional) -->
+      <div class="mb-4">
+        <h3 class="font-display text-[1.1rem] text-ink mb-1">Any add-ons?</h3>
+        <p class="text-[0.88rem] text-ink/55">Optional extras. Carpet Shampoo and Pet Hair Removal are already included.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
         <label class="addon-card cursor-pointer rounded-[16px] border border-ink/10 bg-white p-4 flex items-start gap-3 transition hover:border-teal/50 hover:shadow-[0_4px_16px_-8px_rgba(12,159,228,0.25)] has-[:checked]:border-teal has-[:checked]:bg-[#f0faff]">
@@ -244,14 +269,13 @@ tailwind.config = {
         </label>
       </div>
       <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-4">
-        <div id="addon-total-sr" class="hidden rounded-[12px] bg-[#f0faff] border border-teal/20 px-5 py-3 text-[0.95rem] font-semibold text-ink">
-          Add-ons total: <span id="addon-total-price-sr" class="text-teal">$0</span>
+        <div id="running-total-sr" class="hidden rounded-[12px] bg-[#f0faff] border border-teal/20 px-5 py-3 text-[0.95rem] font-semibold text-ink">
+          Total: <span id="running-total-price-sr" class="text-teal">$0</span>
         </div>
-        <button onclick="proceedToBookSR()" class="btn btn-coral">
+        <button id="continue-btn-sr" onclick="proceedToBookSR()" class="btn btn-coral opacity-50 cursor-not-allowed" disabled>
           Continue to pick a time
           <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M5 10h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
-        <button onclick="proceedToBookSR()" class="text-[0.88rem] text-ink/50 hover:text-ink transition-colors underline underline-offset-2">No add-ons, just book</button>
       </div>
     </div>
   </div>
@@ -261,26 +285,20 @@ tailwind.config = {
 
   <!-- Calendar (hidden until add-on step is complete) -->
   <div id="cal-section-sr" class="hidden max-w-[860px] mx-auto w-full px-5 md:px-8">
-    <!-- Add-ons banner with back link -->
+    <!-- Booking summary banner -->
     <div id="addon-reminder-sr" class="hidden mb-3">
       <div class="rounded-[14px] bg-[#0B2830] px-4 py-3 flex items-center justify-between gap-3 text-[0.88rem] text-white">
         <div class="flex items-center gap-2.5 min-w-0">
           <svg width="15" height="15" viewBox="0 0 20 20" fill="none" class="shrink-0"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 4v4m0 4h.01" stroke="#2CC6F0" stroke-width="1.6" stroke-linecap="round"/></svg>
-          <span class="truncate">Add-ons: <span id="addon-reminder-text-sr" class="font-semibold text-[#2CC6F0]"></span></span>
+          <span id="addon-reminder-text-sr" class="truncate text-white/90"></span>
         </div>
-        <button onclick="goBackToAddOnsSR()" class="shrink-0 flex items-center gap-1.5 text-white/60 hover:text-white transition text-[0.82rem] font-medium" aria-label="Change add-ons">
+        <button onclick="goBackToAddOnsSR()" class="shrink-0 flex items-center gap-1.5 text-white/60 hover:text-white transition text-[0.82rem] font-medium" aria-label="Change selections">
           <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M15 10H5m0 0 4-4m-4 4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           Change
         </button>
       </div>
     </div>
-    <!-- Back link (shown when no add-ons selected) -->
-    <div id="back-link-sr" class="hidden mb-3">
-      <button onclick="goBackToAddOnsSR()" class="flex items-center gap-1.5 text-ink/50 hover:text-ink transition text-[0.85rem] font-medium" aria-label="Change add-ons">
-        <svg width="13" height="13" viewBox="0 0 20 20" fill="none"><path d="M15 10H5m0 0 4-4m-4 4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        Change add-ons
-      </button>
-    </div>
+    <div id="back-link-sr" class="hidden"></div>
     <!-- Calendar card -->
     <div class="rounded-[20px] bg-white border border-black/[0.07] shadow-[0_4px_24px_-6px_rgba(11,40,48,0.12)] overflow-hidden">
       <div id="my-cal-inline-showroomdetail" style="width:100%;height:700px;overflow:hidden"></div>
@@ -290,36 +308,67 @@ tailwind.config = {
 </main>
 
 <script type="text/javascript">
+  function updateTotalSR() {
+    var vRb = document.querySelector('.vehicle-rb-sr:checked');
+    var base = vRb ? Number(vRb.dataset.base) : 0;
+    var addonTotal = Array.from(document.querySelectorAll('.addon-cb-sr:checked')).reduce(function(s,c){ return s + Number(c.dataset.price); }, 0);
+    var total = base + addonTotal;
+    var el = document.getElementById('running-total-sr');
+    if (vRb) {
+      document.getElementById('running-total-price-sr').textContent = '$' + total;
+      el.classList.remove('hidden');
+      var btn = document.getElementById('continue-btn-sr');
+      btn.disabled = false;
+      btn.classList.remove('opacity-50', 'cursor-not-allowed');
+    } else {
+      el.classList.add('hidden');
+      var btn = document.getElementById('continue-btn-sr');
+      btn.disabled = true;
+      btn.classList.add('opacity-50', 'cursor-not-allowed');
+    }
+  }
+
   function proceedToBookSR() {
-    const cbs = document.querySelectorAll('.addon-cb-sr:checked');
-    const items = [...cbs].map(cb => cb.dataset.name + ' (+$' + cb.dataset.price + ')');
+    var vRb = document.querySelector('.vehicle-rb-sr:checked');
+    if (!vRb) return;
+    var vehicleName = vRb.value;
+    var base = Number(vRb.dataset.base);
+    var cbs = document.querySelectorAll('.addon-cb-sr:checked');
+    var items = Array.from(cbs).map(function(cb){ return cb.dataset.name + ' (+$' + cb.dataset.price + ')'; });
+    var addonTotal = Array.from(cbs).reduce(function(s,c){ return s + Number(c.dataset.price); }, 0);
+    var total = base + addonTotal;
+    var notesParts = ['Vehicle: ' + vehicleName + ' ($' + base + ')'];
+    if (items.length > 0) notesParts.push('Add-ons: ' + items.join(', '));
+    notesParts.push('Total: $' + total);
+    var notesStr = notesParts.join(' | ');
     document.getElementById('addon-step-sr').classList.add('hidden');
     document.getElementById('cal-section-sr').classList.remove('hidden');
-    if (items.length > 0) {
-      document.getElementById('addon-reminder-sr').classList.remove('hidden');
-      document.getElementById('addon-reminder-text-sr').textContent = items.join(', ');
-      document.getElementById('back-link-sr').classList.add('hidden');
-    } else {
-      document.getElementById('back-link-sr').classList.remove('hidden');
-    }
+    var bannerParts = ['Vehicle: ' + vehicleName];
+    if (items.length > 0) bannerParts.push('Add-ons: ' + items.join(', '));
+    bannerParts.push('Total: $' + total);
+    document.getElementById('addon-reminder-sr').classList.remove('hidden');
+    document.getElementById('addon-reminder-text-sr').textContent = bannerParts.join(' \u00b7 ');
+    Cal.ns['showroomdetail']('inline', {
+      elementOrSelector: '#my-cal-inline-showroomdetail',
+      config: { layout: 'month_view', notes: notesStr },
+      calLink: 'sudzystudz/showroomdetail',
+    });
+    Cal.ns['showroomdetail']('ui', { cssVarsPerTheme: { light: { 'cal-brand': '#2196F3' } }, hideEventTypeDetails: true, layout: 'month_view' });
     window.scrollTo({top: 0});
     document.body.style.overflow = 'hidden';
   }
 
+  document.querySelectorAll('.vehicle-rb-sr').forEach(function(rb) {
+    rb.addEventListener('change', updateTotalSR);
+  });
   document.querySelectorAll('.addon-cb-sr').forEach(function(cb) {
-    cb.addEventListener('change', function() {
-      const total = [...document.querySelectorAll('.addon-cb-sr:checked')].reduce(function(s,c) { return s + Number(c.dataset.price); }, 0);
-      const el = document.getElementById('addon-total-sr');
-      document.getElementById('addon-total-price-sr').textContent = '$' + total;
-      total > 0 ? el.classList.remove('hidden') : el.classList.add('hidden');
-    });
+    cb.addEventListener('change', updateTotalSR);
   });
 
   function goBackToAddOnsSR() {
     document.getElementById('addon-step-sr').classList.remove('hidden');
     document.getElementById('cal-section-sr').classList.add('hidden');
     document.getElementById('addon-reminder-sr').classList.add('hidden');
-    document.getElementById('back-link-sr').classList.add('hidden');
     document.body.style.overflow = '';
   }
 
@@ -337,16 +386,6 @@ tailwind.config = {
   Cal('init', 'showroomdetail', { origin: 'https://app.cal.com' });
   Cal.config = Cal.config || {};
   Cal.config.forwardQueryParams = true;
-  Cal.ns.showroomdetail('inline', {
-    elementOrSelector: '#my-cal-inline-showroomdetail',
-    config: { layout: 'month_view' },
-    calLink: 'sudzystudz/showroomdetail',
-  });
-  Cal.ns.showroomdetail('ui', {
-    cssVarsPerTheme: { light: { 'cal-brand': '#2196F3' } },
-    hideEventTypeDetails: true,
-    layout: 'month_view',
-  });
 </script>
 </body>
 </html>
