@@ -845,7 +845,9 @@ tailwind.config = {
         </div>
 
         <!-- Card 2: In the Field -->
-        <div class="glass rounded-[26px] p-6 md:p-7 relative">
+        <!-- The "What We've Done" stats card is only shown once we've made our first donation to Pro Kids. -->
+        <!-- It automatically appears when CONFIG.donationAmount > 0. -->
+        <div id="stats-card" class="glass rounded-[26px] p-6 md:p-7 relative">
           <span class="eyebrow">What we've done</span>
           <div class="mt-5 grid grid-cols-2 gap-6 items-start">
             <div class="text-center">
@@ -1328,6 +1330,17 @@ tailwind.config = {
   const fmtMoney = (n, opts={}) => new Intl.NumberFormat('en-US', { style:'currency', currency:'USD', maximumFractionDigits:0, ...opts }).format(n);
   const fmtNum   = (n) => new Intl.NumberFormat('en-US').format(n);
 
+  // The "What We've Done" card is hidden until the first donation is made.
+  // Update CONFIG.donationAmount above to any value greater than 0 to show it.
+  (function() {
+    var statsCard = document.getElementById('stats-card');
+    if (statsCard) {
+      if (CONFIG.donationAmount <= 0) {
+        statsCard.style.display = 'none';
+      }
+    }
+  })();
+
   async function loadDonationData() {
     if (!CONFIG.liveDataUrl) return null;
     try {
@@ -1352,6 +1365,12 @@ tailwind.config = {
       CONFIG.donationAmount = data.donationAmount;
       CONFIG.donationGoal = data.donationGoal;
       CONFIG.lastUpdated = data.lastUpdated;
+    }
+
+    // Show or hide the "What We've Done" card based on donation amount.
+    var statsCard = document.getElementById('stats-card');
+    if (statsCard) {
+      statsCard.style.display = CONFIG.donationAmount > 0 ? '' : 'none';
     }
 
     const pct = Math.min(100, Math.round((CONFIG.donationAmount / CONFIG.donationGoal) * 100));
