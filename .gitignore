@@ -4,3 +4,4 @@
 node_modules/
 temporary screenshots/
 *.log
+/images-original
