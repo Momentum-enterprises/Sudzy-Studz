@@ -448,15 +448,13 @@ tailwind.config = {
         calLink: 'sudzystudz/full-studz-detail',
       });
       Cal.ns['full-studz-detail']('ui', { cssVarsPerTheme: { light: { 'cal-brand': '#2196F3' } }, hideEventTypeDetails: true, layout: 'month_view' });
-      window.scrollTo({top: 0});
-      document.body.style.overflow = 'hidden';
+      window.scrollTo({top: document.getElementById('cal-section-fs').offsetTop - 80, behavior: 'smooth'});
     }
     
     function goBackToAddOnsFS() {
       document.getElementById('addon-step').classList.remove('hidden');
       document.getElementById('cal-section-fs').classList.add('hidden');
       document.getElementById('addon-reminder-fs').classList.add('hidden');
-      document.body.style.overflow = '';
     }
 
     document.querySelectorAll('.vehicle-rb-fs').forEach(function(rb) {

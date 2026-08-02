@@ -464,15 +464,13 @@ tailwind.config = {
         calLink: 'sudzystudz/quick-studz',
       });
       Cal.ns['quick-studz']('ui', { cssVarsPerTheme: { light: { 'cal-brand': '#2196F3' } }, hideEventTypeDetails: true, layout: 'month_view' });
-      window.scrollTo({top: 0});
-      document.body.style.overflow = 'hidden';
+      window.scrollTo({top: document.getElementById('cal-section').offsetTop - 80, behavior: 'smooth'});
     }
     
     function goBackToAddOnsQS() {
       document.getElementById('addon-step').classList.remove('hidden');
       document.getElementById('cal-section').classList.add('hidden');
       document.getElementById('addon-reminder').classList.add('hidden');
-      document.body.style.overflow = '';
     }
 
     document.querySelectorAll('.vehicle-rb-qs').forEach(function(rb) {
