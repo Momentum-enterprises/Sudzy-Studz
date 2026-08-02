@@ -66,11 +66,7 @@ tailwind.config = {
     --shadow-lg: 0 18px 40px -16px rgba(12,63,78,.28), 0 40px 80px -32px rgba(12,63,78,.18);
   }
 
-  html, body {
-    overflow: hidden;
-    height: 100%;
-  }
-
+  html { scroll-behavior: smooth; }
   body {
     font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
     background: var(--paper);
@@ -222,7 +218,7 @@ tailwind.config = {
   </div>
 
   <!-- Add-on picker -->
-  <div id="addon-step-sr" class="max-w-[1240px] mx-auto px-5 md:px-8 pb-10 md:pb-14">
+  <div id="addon-step-sr" class="max-w-[1240px] mx-auto px-5 md:px-8 pb-20 md:pb-24">
     <div class="surface rounded-[28px] p-6 md:p-8">
       <div class="mb-5">
         <div class="eyebrow text-teal">Step 2 — Customize</div>
