@@ -25,6 +25,7 @@ const filesToCopy = [
   'site.webmanifest',
   'sitemap.xml',
   'robots.txt',
+  'tailwind.css',
 ];
 
 async function exists(targetPath) {
