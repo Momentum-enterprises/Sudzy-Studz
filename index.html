@@ -754,23 +754,6 @@
     <circle cx="20" cy="20" r="18" fill="#F2B844" opacity=".5"/>
   </svg>
 
-  <!-- Pinned Pro Kids photo — bulletin board style, top right corner -->
-  <figure class="hidden xl:block absolute z-10 pointer-events-none select-none" aria-hidden="true"
-    style="top:80px;right:40px;transform:rotate(2.8deg);filter:drop-shadow(0 12px 28px rgba(11,40,48,0.32)) drop-shadow(0 3px 6px rgba(11,40,48,0.18));">
-    <!-- Red thumbtack -->
-    <div style="position:absolute;left:50%;top:-11px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 38% 32%, #e74c3c 0%, #a93226 100%);box-shadow:0 2px 6px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.3);z-index:2;">
-      <div style="position:absolute;top:5px;left:5px;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.5);"></div>
-    </div>
-    <!-- White polaroid frame -->
-    <div style="background:#fefefe;padding:8px 8px 26px;width:210px;position:relative;">
-      <!-- Subtle grain on the white paper -->
-      <div style="position:absolute;inset:0;opacity:0.04;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);pointer-events:none;"></div>
-      <img src="assets/pro%20kids.jpg" alt="Pro Kids First Tee San Diego" width="210" height="158" loading="lazy" decoding="async"
-        style="display:block;width:100%;height:158px;object-fit:cover;" />
-      <p style="text-align:center;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(11,40,48,0.42);margin-top:8px;font-family:'DM Sans',sans-serif;font-weight:600;line-height:1;">Pro Kids, First Tee</p>
-    </div>
-  </figure>
-
   <div class="max-w-[1240px] mx-auto px-5 md:px-8 pt-32 md:pt-40 pb-24 md:pb-32 relative">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
@@ -1035,7 +1018,9 @@
          radial-gradient(ellipse 70% 35% at 50% 70%, rgba(44,198,240,0.10), transparent 60%);"></div>
 
   <div class="max-w-[1240px] mx-auto px-5 md:px-8 py-24 md:py-32 relative">
-    <div class="max-w-[820px] reveal">
+    <div class="reveal grid md:grid-cols-2 gap-10 md:gap-16 items-center max-w-[1240px]">
+      <!-- Left: text -->
+      <div>
       <span class="eyebrow">Where the money goes</span>
       <h2 class="headline text-[2.2rem] md:text-[3.4rem] lg:text-[4rem] mt-4 text-ink max-w-[20ch]">
         Real kids. <span class="italic text-teal">Real impact</span>.
@@ -1056,6 +1041,23 @@
       <p class="mt-4 text-ink/70 text-[1.05rem] leading-relaxed max-w-[60ch]">
         Every dollar of profit goes to <span style="white-space: nowrap;">Pro Kids, First Tee, San Diego</span>, a 30-year-old nonprofit serving underserved youth across the county. Here are their 2025 results.
       </p>
+      </div>
+
+      <!-- Right: pinned Pro Kids photo -->
+      <div class="flex justify-center md:justify-end">
+        <figure class="relative select-none" style="transform:rotate(2.5deg);filter:drop-shadow(0 14px 32px rgba(11,40,48,0.28)) drop-shadow(0 3px 8px rgba(11,40,48,0.14));">
+          <!-- Red thumbtack -->
+          <div style="position:absolute;left:50%;top:-12px;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 38% 32%, #e74c3c 0%, #a93226 100%);box-shadow:0 2px 7px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.28);z-index:2;">
+            <div style="position:absolute;top:5px;left:5px;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.48);"></div>
+          </div>
+          <!-- White polaroid frame -->
+          <div style="background:#fefefe;padding:9px 9px 28px;width:clamp(180px,22vw,260px);position:relative;">
+            <img src="assets/pro%20kids.jpg" alt="Pro Kids First Tee San Diego" width="260" height="195" loading="lazy" decoding="async"
+              style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;" />
+            <p style="text-align:center;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(11,40,48,0.4);margin-top:9px;font-family:'DM Sans',sans-serif;font-weight:600;line-height:1;">Pro Kids, First Tee</p>
+          </div>
+        </figure>
+      </div>
     </div>
 
     <!-- Stats card — elevated white surface containing all four numbers -->
